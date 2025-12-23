@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+
 export default function Hero() {
     return (
         <>
@@ -15,8 +17,8 @@ export default function Hero() {
 
                 <div className="relative z-10 text-center max-w-5xl px-4">
                     <div className="inline-flex items-center gap-2 border border-subtle px-3 py-1 rounded-full mb-8 bg-surface/50">
-                        <span className="w-2 h-2 bg-danger rounded-full animate-blink"></span>
-                        <span className="font-mono text-xs text-gray-400 uppercase tracking-widest">Global Threat Index: High</span>
+                        <span className="w-2 h-2 bg-safe rounded-full animate-pulse"></span>
+                        <span className="font-mono text-xs text-gray-400 uppercase tracking-widest">System Status: Online</span>
                     </div>
 
                     <h1 className="font-sans text-[12vw] md:text-[8rem] font-bold leading-[0.85] tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-600">
@@ -24,38 +26,42 @@ export default function Hero() {
                     </h1>
 
                     <p className="font-mono text-gray-400 mt-8 max-w-xl mx-auto leading-relaxed text-sm md:text-base">
-                        A decentralized consensus layer for risk assessment. We validate identity, solvency, and intent before the transaction touches the mempool.
+                        The Universal Trust Score Layer. We analyze on-chain and off-chain data to generate real-time reputation scores for wallets, contracts, and tokens.
                     </p>
 
                     <div className="mt-12 flex flex-col md:flex-row gap-4 justify-center items-center">
-                        <button className="group relative px-8 py-4 bg-neon text-black font-mono font-bold hover:bg-white transition-colors w-full md:w-auto">
-                            <span className="relative z-10">INTEGRATE API_KEY</span>
+                        <a href="/apidashboard" className="group relative px-8 py-4 bg-neon text-black font-mono font-bold hover:bg-white transition-colors w-full md:w-auto flex items-center justify-center gap-2">
+                            <span className="relative z-10">LIVE DEMO</span>
+                            <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" strokeWidth={2} />
                             <div className="absolute inset-0 bg-white translate-x-1 translate-y-1 -z-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform border border-black"></div>
-                        </button>
+                        </a>
                         <div className="font-mono text-gray-500 text-xs flex gap-4">
-                            <span>// ZK-PROOFS</span>
-                            <span>// ON-CHAIN ANALYTICS</span>
+                            <span>// AI-POWERED</span>
+                            <span>// MULTI-CHAIN</span>
                         </div>
                     </div>
                 </div>
 
                 {/* Scroll Indicator */}
                 <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em]">Initialize</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em]">Scroll to Scan</span>
                     <div className="w-[1px] h-12 bg-gradient-to-b from-neon to-transparent"></div>
                 </div>
             </header>
 
+
             {/* Partner Ticker */}
-            <section className="border-y border-white/5 py-4 bg-surface overflow-hidden relative">
+            <section className="border-y border-white/5 py-4 bg-surface overflow-hidden relative pointer-events-none select-none">
+                {/* Left Fade */}
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10 pointer-events-none"></div>
+
+                {/* Right Fade */}
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none"></div>
+
                 <div className="flex gap-16 font-sans text-2xl md:text-4xl font-bold uppercase text-white/20 whitespace-nowrap animate-marquee">
-                    <span>Ethereum Foundation</span>
+                    <span>Ethereum</span>
                     <span>•</span>
-                    <span>Polygon Security</span>
-                    <span>•</span>
-                    <span>Chainlink</span>
-                    <span>•</span>
-                    <span>Consensys</span>
+                    <span>Polygon</span>
                     <span>•</span>
                     <span>Arbitrum</span>
                     <span>•</span>
@@ -63,14 +69,19 @@ export default function Hero() {
                     <span>•</span>
                     <span>Base</span>
                     <span>•</span>
-                    <span>Ethereum Foundation</span>
+                    <span>Solana</span>
                     <span>•</span>
-                    <span>Polygon Security</span>
+                    <span>Binance Smart Chain</span>
                     <span>•</span>
-                    <span>Chainlink</span>
+                    <span>Ethereum</span>
+                    <span>•</span>
+                    <span>Polygon</span>
+                    <span>•</span>
+                    <span>Arbitrum</span>
                     <span>•</span>
                 </div>
             </section>
+
         </>
     );
 }

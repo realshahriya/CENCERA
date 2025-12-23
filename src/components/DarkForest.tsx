@@ -1,3 +1,5 @@
+import { CheckCircle2 } from "lucide-react";
+
 export default function DarkForest() {
     return (
         <section className="py-32 px-6 relative">
@@ -12,20 +14,23 @@ export default function DarkForest() {
                     />
 
                     {/* Floating Data Card */}
-                    <div className="absolute -bottom-10 -right-10 bg-black border border-danger/50 p-6 max-w-xs z-20 backdrop-blur-md">
+                    <div className="absolute -bottom-10 -right-10 bg-black border border-safe/50 p-6 max-w-xs z-20 backdrop-blur-md shadow-xl">
                         <div className="flex justify-between items-center mb-4">
-                            <span className="font-mono text-xs text-danger">SYBIL_ATTACK_DETECTED</span>
-                            <span className="text-danger animate-pulse">⚠</span>
+                            <div className="flex items-center gap-2">
+                                <CheckCircle2 className="w-4 h-4 text-safe" strokeWidth={2} />
+                                <span className="font-mono text-xs text-safe">WALLET_VERIFIED</span>
+                            </div>
+                            <span className="text-safe animate-pulse">✓</span>
                         </div>
                         <div className="space-y-2 font-mono text-[10px] text-gray-400">
                             <div className="flex justify-between">
-                                <span>Origin:</span> <span className="text-white">0x4f...9a2</span>
+                                <span>Address:</span> <span className="text-white">0x71...c4a</span>
                             </div>
                             <div className="flex justify-between">
-                                <span>Vector:</span> <span className="text-white">Flash Loan</span>
+                                <span>Entity:</span> <span className="text-white">Uniswap Protocol</span>
                             </div>
                             <div className="flex justify-between">
-                                <span>Risk Score:</span> <span className="text-danger">99.8%</span>
+                                <span>Trust Score:</span> <span className="text-safe">98.5/100</span>
                             </div>
                         </div>
                     </div>
@@ -36,17 +41,17 @@ export default function DarkForest() {
                         THE DARK<br />FOREST IS <span className="text-danger">REAL</span>.
                     </h2>
                     <p className="font-mono text-gray-400 mb-8 leading-relaxed">
-                        Validators are blind to intent. Bridges are honeypots. Without a decentralized reputation layer, every interaction is a dice roll.
+                        No universal Web3 trust metric exists. Users often fall victim to scams, rug pulls, and malicious actors because there's no easy way to gauge legitimacy.
                     </p>
                     <ul className="space-y-4 font-mono text-sm border-l border-white/10 pl-6">
                         <li className="flex items-center gap-3 text-gray-300">
-                            <span className="text-danger">✕</span> $4.2B Lost to Hacks in 2023
+                            <span className="text-danger">✕</span> No Standard Reputation System
                         </li>
                         <li className="flex items-center gap-3 text-gray-300">
-                            <span className="text-danger">✕</span> Identity Fraud on L2s
+                            <span className="text-danger">✕</span> High Risk of Phishing
                         </li>
                         <li className="flex items-center gap-3 text-gray-300">
-                            <span className="text-danger">✕</span> Regulatory Non-Compliance
+                            <span className="text-danger">✕</span> Opaque Contract Risks
                         </li>
                     </ul>
                 </div>
