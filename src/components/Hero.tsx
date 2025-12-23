@@ -53,10 +53,10 @@ export default function Hero() {
             {/* Partner Ticker */}
             <section className="border-y border-white/5 py-4 bg-surface overflow-hidden relative pointer-events-none select-none">
                 {/* Left Fade */}
-                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10 pointer-events-none"></div>
+                <div className="absolute left-0 top-0 bottom-0 w-48 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/90 via-[#0A0A0A]/60 to-transparent z-10 pointer-events-none"></div>
 
                 {/* Right Fade */}
-                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-48 bg-gradient-to-l from-[#0A0A0A] via-[#0A0A0A]/90 via-[#0A0A0A]/60 to-transparent z-10 pointer-events-none"></div>
 
                 <div className="flex gap-16 font-sans text-2xl md:text-4xl font-bold uppercase text-white/20 whitespace-nowrap animate-marquee">
                     <span>Ethereum</span>
