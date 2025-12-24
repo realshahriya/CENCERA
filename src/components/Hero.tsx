@@ -1,6 +1,76 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
+
+interface Partner {
+    name: string;
+    logoUrl: string;
+}
 
 export default function Hero() {
+    const [hasLogos, setHasLogos] = useState(false);
+    const [partners, setPartners] = useState<Partner[]>([]);
+    const [loadedCount, setLoadedCount] = useState(0);
+
+    useEffect(() => {
+        // Dynamically fetch partner list from GitHub repo
+        const fetchPartners = async () => {
+            try {
+                const response = await fetch('https://api.github.com/repos/CENCERA-PROTOCOL/partners/contents');
+                const data = await response.json();
+
+                if (Array.isArray(data)) {
+                    // Filter for directories only (partners)
+                    const partnerFolders = data.filter((item: any) => item.type === 'dir');
+
+                    // Build partner list with logo URLs
+                    const partnerList: Partner[] = partnerFolders.map((folder: any) => ({
+                        name: folder.name,
+                        logoUrl: `https://raw.githubusercontent.com/CENCERA-PROTOCOL/partners/main/${folder.name}/logo.svg`
+                    }));
+
+                    setPartners(partnerList);
+                    if (partnerList.length > 0) {
+                        setHasLogos(true);
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to fetch partners:', error);
+                setHasLogos(false);
+            }
+        };
+
+        fetchPartners();
+    }, []);
+
+    useEffect(() => {
+        // Hide belt if no logos loaded after 5 seconds
+        const timer = setTimeout(() => {
+            if (loadedCount === 0 && partners.length > 0) {
+                setHasLogos(false);
+            }
+        }, 5000);
+        return () => clearTimeout(timer);
+    }, [loadedCount, partners]);
+
+    const handleImageLoad = () => {
+        setLoadedCount(prev => prev + 1);
+    };
+
+    const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+        const img = e.currentTarget;
+        const formats = ['svg', 'png', 'jpg', 'jpeg'];
+        const current = img.src.split('.').pop();
+        const nextIndex = formats.indexOf(current || '') + 1;
+
+        if (nextIndex < formats.length) {
+            img.src = img.src.replace(/\.[^.]+$/, `.${formats[nextIndex]}`);
+        } else {
+            img.style.display = 'none';
+        }
+    };
+
     return (
         <>
             {/* Fixed Overlay Elements */}
@@ -50,37 +120,44 @@ export default function Hero() {
             </header>
 
 
-            {/* Partner Ticker - DISABLED */}
-            {/* 
-            <section className="border-y border-white/5 py-4 bg-surface overflow-hidden relative pointer-events-none select-none">
-                <div className="absolute left-0 top-0 bottom-0 w-48 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/90 via-[#0A0A0A]/60 to-transparent z-10 pointer-events-none"></div>
+            {/* Partner Ticker - Image Based - Auto-hides if no logos available */}
+            {hasLogos && (
+                <section className="border-y border-white/5 py-6 bg-surface overflow-hidden relative pointer-events-none select-none">
+                    {/* Left Fade */}
+                    <div className="absolute left-0 top-0 bottom-0 w-48 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/90 via-[#0A0A0A]/60 to-transparent z-10 pointer-events-none"></div>
 
-                <div className="absolute right-0 top-0 bottom-0 w-48 bg-gradient-to-l from-[#0A0A0A] via-[#0A0A0A]/90 via-[#0A0A0A]/60 to-transparent z-10 pointer-events-none"></div>
+                    {/* Right Fade */}
+                    <div className="absolute right-0 top-0 bottom-0 w-48 bg-gradient-to-l from-[#0A0A0A] via-[#0A0A0A]/90 via-[#0A0A0A]/60 to-transparent z-10 pointer-events-none"></div>
 
-                <div className="flex gap-16 font-sans text-2xl md:text-4xl font-bold uppercase text-white/20 whitespace-nowrap animate-marquee">
-                    <span>Ethereum</span>
-                    <span>•</span>
-                    <span>Polygon</span>
-                    <span>•</span>
-                    <span>Arbitrum</span>
-                    <span>•</span>
-                    <span>Optimism</span>
-                    <span>•</span>
-                    <span>Base</span>
-                    <span>•</span>
-                    <span>Solana</span>
-                    <span>•</span>
-                    <span>Binance Smart Chain</span>
-                    <span>•</span>
-                    <span>Ethereum</span>
-                    <span>•</span>
-                    <span>Polygon</span>
-                    <span>•</span>
-                    <span>Arbitrum</span>
-                    <span>•</span>
-                </div>
-            </section>
-            */}
+                    <div className="flex gap-12 items-center whitespace-nowrap animate-marquee">
+                        {/* Dynamically rendered partner logos */}
+                        {partners.map((partner, index) => (
+                            <React.Fragment key={`${partner.name}-${index}`}>
+                                <img
+                                    src={partner.logoUrl}
+                                    alt={partner.name}
+                                    className="h-8 opacity-40 grayscale hover:opacity-60 hover:grayscale-0 transition-all"
+                                    onLoad={handleImageLoad}
+                                    onError={handleImageError}
+                                />
+                                <span className="text-white/10">•</span>
+                            </React.Fragment>
+                        ))}
+                        {/* Duplicate for seamless loop */}
+                        {partners.map((partner, index) => (
+                            <React.Fragment key={`${partner.name}-dup-${index}`}>
+                                <img
+                                    src={partner.logoUrl}
+                                    alt={partner.name}
+                                    className="h-8 opacity-40 grayscale hover:opacity-60 hover:grayscale-0 transition-all"
+                                    onError={handleImageError}
+                                />
+                                {index < partners.length - 1 && <span className="text-white/10">•</span>}
+                            </React.Fragment>
+                        ))}
+                    </div>
+                </section>
+            )}
 
         </>
     );
