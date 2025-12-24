@@ -5,7 +5,6 @@ import ImmutableDefense from "../components/ImmutableDefense";
 import Integration from "../components/Integration";
 import Roadmap from "../components/Roadmap";
 import NetworkStats from "../components/NetworkStats";
-import Waitlist from "../components/Waitlist";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
       <Integration />
       <Roadmap />
       <NetworkStats />
-      <Waitlist />
       <Footer />
     </main>
   );
