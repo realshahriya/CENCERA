@@ -41,7 +41,13 @@ body {
   background: #030303;
   color: #ffffff;
   overflow-x: hidden;
-  cursor: crosshair;
+}
+
+/* Only show crosshair cursor on pointer devices (desktop) */
+@media (pointer: fine) {
+  body {
+    cursor: crosshair;
+  }
 }
 
 * {
