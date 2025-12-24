@@ -26,23 +26,19 @@ export default function Roadmap() {
                                 </div>
                                 <span className="font-mono text-xs text-gray-500">Q4 2025</span>
                             </div>
-                            <h4 className="font-sans text-xl font-bold mb-4">Phase 1: Core Platform</h4>
+                            <h4 className="font-sans text-xl font-bold mb-4">Phase 1: Foundation</h4>
                             <ul className="space-y-2 text-sm font-mono text-gray-400">
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Complete blockchain integration</span>
+                                    <span>Team Building</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Expand multi-chain support</span>
+                                    <span>Research</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Enhanced AI analysis with GPT-4</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>User authentication system</span>
+                                    <span>Initial Planning</span>
                                 </li>
                             </ul>
                         </div>
@@ -58,23 +54,19 @@ export default function Roadmap() {
                                 </div>
                                 <span className="font-mono text-xs text-gray-500">Q1 2026</span>
                             </div>
-                            <h4 className="font-sans text-xl font-bold mb-4">Phase 2: Advanced Security</h4>
+                            <h4 className="font-sans text-xl font-bold mb-4">Phase 2: Testnet</h4>
                             <ul className="space-y-2 text-sm font-mono text-gray-400">
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Real-time transaction monitoring</span>
+                                    <span>Testnet Launch</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Smart contract source analysis</span>
+                                    <span>Basic Features Launch</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Automated audit reports</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>NFT collection analysis</span>
+                                    <span>Partnerships</span>
                                 </li>
                             </ul>
                         </div>
@@ -90,23 +82,19 @@ export default function Roadmap() {
                                 </div>
                                 <span className="font-mono text-xs text-gray-500">Q2 2026</span>
                             </div>
-                            <h4 className="font-sans text-xl font-bold mb-4">Phase 3: Integration & SDK</h4>
+                            <h4 className="font-sans text-xl font-bold mb-4">Phase 3: Mainnet V1</h4>
                             <ul className="space-y-2 text-sm font-mono text-gray-400">
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>JavaScript/TypeScript SDK</span>
+                                    <span>Mainnet Launch (V1)</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Browser extension launch</span>
+                                    <span>Pilot Integrations</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Mobile wallet SDK</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Webhook notifications</span>
+                                    <span>Community Report Feature Launch</span>
                                 </li>
                             </ul>
                         </div>
@@ -122,23 +110,19 @@ export default function Roadmap() {
                                 </div>
                                 <span className="font-mono text-xs text-gray-500">Q3 2026</span>
                             </div>
-                            <h4 className="font-sans text-xl font-bold mb-4">Phase 4: Enterprise & Scale</h4>
+                            <h4 className="font-sans text-xl font-bold mb-4">Phase 4: Advanced AI</h4>
                             <ul className="space-y-2 text-sm font-mono text-gray-400">
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Team accounts & RBAC</span>
+                                    <span>Advanced AI Model Launch</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>White-label solutions</span>
+                                    <span>Business Expansion</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Custom risk scoring models</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>SLA guarantees & support</span>
+                                    <span>New Features Integrations</span>
                                 </li>
                             </ul>
                         </div>

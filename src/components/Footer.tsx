@@ -1,4 +1,16 @@
-import { Twitter, Github, MessageCircle, FileText } from "lucide-react";
+import { Github, MessageCircle, FileText } from "lucide-react";
+
+// Custom X (Twitter) Icon Component
+const XIcon = ({ className }: { className?: string }) => (
+    <svg
+        viewBox="0 0 24 24"
+        className={className}
+        fill="currentColor"
+        aria-hidden="true"
+    >
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+);
 
 export default function Footer() {
     return (
@@ -30,26 +42,22 @@ export default function Footer() {
                     </div>
                     <p className="font-mono text-xs text-gray-500 mt-2 max-w-xs">
                         Universal Trust Score Layer.<br />
-                        © 2025 Topay Foundation.
+                        © 2026 CENCERA Protocol.
                     </p>
                 </div>
 
                 <div className="flex gap-6 font-mono text-xs text-gray-400">
-                    <a href="#" className="hover:text-white transition-colors flex items-center gap-2">
-                        <Twitter className="w-4 h-4" strokeWidth={1.5} />
-                        <span>TWITTER</span>
+                    <a href="https://x.com/CENCERA" className="hover:text-white transition-colors flex items-center gap-2">
+                        <XIcon className="w-4 h-4" />
                     </a>
-                    <a href="#" className="hover:text-white transition-colors flex items-center gap-2">
+                    <a href="https://github.com/CENCERA-PROTOCOL" className="hover:text-white transition-colors flex items-center gap-2">
                         <Github className="w-4 h-4" strokeWidth={1.5} />
-                        <span>GITHUB</span>
                     </a>
                     <a href="#" className="hover:text-white transition-colors flex items-center gap-2">
                         <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                        <span>DISCORD</span>
                     </a>
                     <a href="#" className="hover:text-white transition-colors flex items-center gap-2">
                         <FileText className="w-4 h-4" strokeWidth={1.5} />
-                        <span>DOCS</span>
                     </a>
                 </div>
             </div>

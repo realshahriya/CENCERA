@@ -4,7 +4,7 @@ export default function Header() {
             <a href="#" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
                 <img src="/logo.png" alt="Cencera Logo" className="w-8 h-8" />
                 <span className="font-sans font-bold text-xl tracking-tighter">
-                    CENCERA<span className="text-neon">.io</span>
+                    CENCERA
                 </span>
             </a>
 

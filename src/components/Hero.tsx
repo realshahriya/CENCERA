@@ -30,7 +30,7 @@ export default function Hero() {
                     </p>
 
                     <div className="mt-12 flex flex-col md:flex-row gap-4 justify-center items-center">
-                        <a href="/apidashboard" className="group relative px-8 py-4 bg-neon text-black font-mono font-bold hover:bg-white transition-colors w-full md:w-auto flex items-center justify-center gap-2">
+                        <a href="https://apidashboard.cencera.xyz" target="_blank" className="group relative px-8 py-4 bg-neon text-black font-mono font-bold hover:bg-white transition-colors w-full md:w-auto flex items-center justify-center gap-2">
                             <span className="relative z-10">LIVE DEMO</span>
                             <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" strokeWidth={2} />
                             <div className="absolute inset-0 bg-white translate-x-1 translate-y-1 -z-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform border border-black"></div>
