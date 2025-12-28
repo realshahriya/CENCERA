@@ -41,16 +41,16 @@ export default function Footer() {
                         <span className="font-sans font-bold text-xl sm:text-2xl tracking-tighter">CENCERA</span>
                     </div>
                     <p className="font-mono text-[10px] sm:text-xs text-gray-500 mt-2 max-w-xs">
-                        Universal Trust Score Layer.<br />
-                        © 2026 CENCERA Protocol.
+                        Trust & Safety Infrastructure.<br />
+                        © 2026 CENCERA.
                     </p>
                 </div>
 
                 <div className="flex gap-4 sm:gap-6 font-mono text-xs text-gray-400">
-                    <a href="https://x.com/CENCERA" className="hover:text-white transition-colors flex items-center gap-2">
+                    <a href="https://x.com/cencerahq" className="hover:text-white transition-colors flex items-center gap-2">
                         <XIcon className="w-4 h-4" />
                     </a>
-                    <a href="https://github.com/CENCERA-PROTOCOL" className="hover:text-white transition-colors flex items-center gap-2">
+                    <a href="https://github.com/cencerahq" className="hover:text-white transition-colors flex items-center gap-2">
                         <Github className="w-4 h-4" strokeWidth={1.5} />
                     </a>
                     <a href="#" className="hover:text-white transition-colors flex items-center gap-2">

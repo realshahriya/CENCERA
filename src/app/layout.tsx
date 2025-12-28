@@ -13,14 +13,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CENCERA - Universal Trust Score Layer",
-  description: "The Universal Trust Score Layer. We analyze on-chain and off-chain data to generate real-time reputation scores for wallets, contracts, and tokens.",
+  title: "CENCERA - Trust & Safety Infrastructure",
+  description: "Cencera is an API-first trust & safety infrastructure for Web3. We help wallets, exchanges & dApps by providing real-time risk detection & user safety layer.",
   icons: {
     icon: "/logo.png",
   },
   openGraph: {
-    title: "CENCERA - Universal Trust Score Layer",
-    description: "The Universal Trust Score Layer. We analyze on-chain and off-chain data to generate real-time reputation scores for wallets, contracts, and tokens.",
+    title: "CENCERA - Trust & Safety Infrastructure",
+    description: "Cencera is an API-first trust & safety infrastructure for Web3. We help wallets, exchanges & dApps by providing real-time risk detection & user safety layer.",
     images: ["/logo.png"],
   },
 };

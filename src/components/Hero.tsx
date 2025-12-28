@@ -92,11 +92,11 @@ export default function Hero() {
                     </div>
 
                     <h1 className="font-sans text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.85] tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-600">
-                        TRUST IS<br /> <span className="text-outline">COMPUTED.</span>
+                        TRUST & SAFETY<br /> <span className="text-outline">INFRASTRUCTURE</span>
                     </h1>
 
                     <p className="font-mono text-gray-400 mt-6 sm:mt-8 max-w-xl mx-auto leading-relaxed text-xs sm:text-sm md:text-base px-4">
-                        The Universal Trust Score Layer. We analyze on-chain and off-chain data to generate real-time reputation scores for wallets, contracts, and tokens.
+                        Cencera is an API-first trust & safety infrastructure for Web3. We help wallets, exchanges & dApps by providing real-time risk detection & user safety layer.
                     </p>
 
                     <div className="mt-8 sm:mt-12 flex flex-col md:flex-row gap-4 justify-center items-center px-4">
