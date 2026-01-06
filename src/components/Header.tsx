@@ -24,7 +24,7 @@ export default function Header() {
                 </div>
 
                 {/* Desktop Dashboard Button */}
-                <a href="/apidashboard" className="hidden md:block bg-white text-black px-5 py-2 font-mono text-sm font-bold hover:bg-neon hover:scale-105 transition-all duration-300">
+                <a href="https://ap.cencera.xyz/" className="hidden md:block bg-white text-black px-5 py-2 font-mono text-sm font-bold hover:bg-neon hover:scale-105 transition-all duration-300">
                     DASHBOARD //
                 </a>
 
