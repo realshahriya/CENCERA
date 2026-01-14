@@ -20,6 +20,7 @@ export default function Header() {
                 <div className="hidden md:flex gap-8 font-mono text-xs text-gray-400">
                     <a href="#features" className="hover:text-white transition-colors">[ FEATURES ]</a>
                     <a href="#core-mechanics" className="hover:text-white transition-colors">[ CAPABILITIES ]</a>
+                    <a href="/docs" className="hover:text-white transition-colors">[ DOCUMENTATION ]</a>
                     <a href="#roadmap" className="hover:text-white transition-colors">[ ROADMAP ]</a>
                 </div>
 
@@ -63,6 +64,13 @@ export default function Header() {
                             className="text-gray-400 hover:text-white transition-colors py-2"
                         >
                             [ CAPABILITIES ]
+                        </a>
+                        <a
+                            href="/docs"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-gray-400 hover:text-white transition-colors py-2"
+                        >
+                            [ DOCUMENTATION ]
                         </a>
                         <a
                             href="#roadmap"

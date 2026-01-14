@@ -101,13 +101,13 @@ export default function Hero() {
 
                     <div className="mt-8 sm:mt-12 flex flex-col md:flex-row gap-4 justify-center items-center px-4">
                         <a href="https://ap.cencera.xyz" target="_blank" className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-neon text-black font-mono text-sm sm:text-base font-bold hover:bg-white transition-colors w-full sm:w-auto max-w-xs md:max-w-none flex items-center justify-center gap-2">
-                            <span className="relative z-10">LIVE DEMO</span>
+                            <span className="relative z-10">Check your trust score</span>
                             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 relative z-10 group-hover:translate-x-1 transition-transform" strokeWidth={2} />
                             <div className="absolute inset-0 bg-white translate-x-1 translate-y-1 -z-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform border border-black"></div>
                         </a>
                         <div className="font-mono text-gray-500 text-[10px] sm:text-xs flex flex-wrap gap-3 sm:gap-4 justify-center">
-                            <span>// AI-POWERED</span>
-                            <span>// MULTI-CHAIN</span>
+                            <span>AI-POWERED</span>
+                            <span>MULTI-CHAIN</span>
                         </div>
                     </div>
                 </div>

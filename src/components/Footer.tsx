@@ -1,4 +1,6 @@
-import { Github, MessageCircle, FileText } from "lucide-react";
+"use client";
+
+import { Github, Linkedin, Book } from "lucide-react";
 
 // Custom X (Twitter) Icon Component
 const XIcon = ({ className }: { className?: string }) => (
@@ -12,7 +14,34 @@ const XIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
+import { useState } from "react";
+
 export default function Footer() {
+    const [email, setEmail] = useState("");
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) return;
+
+        setStatus('loading');
+
+        try {
+            const res = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            });
+
+            if (!res.ok) throw new Error('Failed');
+
+            setStatus('success');
+            setEmail("");
+        } catch (error) {
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 3000);
+        }
+    };
     return (
         <footer className="pt-20 sm:pt-28 md:pt-32 pb-8 sm:pb-12 px-4 sm:px-6 bg-void relative overflow-hidden">
 
@@ -21,16 +50,31 @@ export default function Footer() {
                     SECURE THE<br /> FUTURE.
                 </h2>
                 <div className="flex flex-col items-center">
-                    <div className="flex w-full max-w-md border-b border-white relative group">
+                    <form
+                        onSubmit={handleSubmit}
+                        className="flex w-full max-w-md border-b border-white relative group"
+                    >
                         <input
-                            type="text"
-                            placeholder="ENTER_EMAIL_ADDRESS"
-                            className="bg-transparent w-full py-3 sm:py-4 text-sm sm:text-base text-white font-mono outline-none placeholder:text-gray-600"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder={status === 'success' ? "SUBSCRIPTION_CONFIRMED" : "ENTER_EMAIL_ADDRESS"}
+                            disabled={status === 'loading' || status === 'success'}
+                            className="bg-transparent w-full py-3 sm:py-4 text-sm sm:text-base text-white font-mono outline-none placeholder:text-gray-600 disabled:opacity-50"
                         />
-                        <button className="text-neon font-mono text-xs sm:text-sm font-bold uppercase hover:text-white whitespace-nowrap">Initialize</button>
+                        <button
+                            type="submit"
+                            disabled={status === 'loading' || status === 'success'}
+                            className="text-neon font-mono text-xs sm:text-sm font-bold uppercase hover:text-white whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {status === 'loading' ? 'INITIALIZING...' : status === 'success' ? 'ACTIVE' : 'INITIALIZE'}
+                        </button>
                         {/* Loading Bar Animation */}
-                        <div className="absolute bottom-0 left-0 h-0.5 bg-neon w-0 transition-all duration-1000 group-hover:w-full"></div>
-                    </div>
+                        <div className={`absolute bottom-0 left-0 h-0.5 bg-neon transition-all duration-1000 ${status === 'loading' ? 'w-full' : 'w-0 group-hover:w-full'}`}></div>
+                    </form>
+                    {status === 'error' && (
+                        <p className="text-red-500 font-mono text-xs mt-2">CONNECTION_FAILED: PLEASE_RETRY</p>
+                    )}
                 </div>
             </div>
 
@@ -53,11 +97,11 @@ export default function Footer() {
                     <a href="https://github.com/cencerahq" className="hover:text-white transition-colors flex items-center gap-2">
                         <Github className="w-4 h-4" strokeWidth={1.5} />
                     </a>
-                    <a href="#" className="hover:text-white transition-colors flex items-center gap-2">
-                        <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+                    <a href="https://www.linkedin.com/company/cenceraxyz/" className="hover:text-white transition-colors flex items-center gap-2">
+                        <Linkedin className="w-4 h-4" strokeWidth={1.5} />
                     </a>
-                    <a href="#" className="hover:text-white transition-colors flex items-center gap-2">
-                        <FileText className="w-4 h-4" strokeWidth={1.5} />
+                    <a href="/docs" className="hover:text-white transition-colors flex items-center gap-2">
+                        <Book className="w-4 h-4" strokeWidth={1.5} />
                     </a>
                 </div>
             </div>
