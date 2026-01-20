@@ -5,9 +5,32 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: dark;
+  --bg-base: #111111;
+  --bg-deep: #141414;
+  --bg-surface: #1A1A1A;
+  --bg-elevated: #222222;
+  --bg-grid: #2A2A2A;
+  --text-primary: #E6E6E6;
+  --text-secondary: #C7C7C7;
+  --text-muted: #B0B0B0;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg-base: #141414;
+    --bg-deep: #171717;
+    --bg-surface: #1D1D1D;
+    --bg-elevated: #252525;
+    --bg-grid: #3f3e3e;
+  }
+}
+
 @layer utilities {
   .glass-panel {
-    background: rgba(23, 28, 36, 0.78);
+    background: rgba(26, 26, 26, 0.78);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.05);
   }
@@ -23,8 +46,8 @@
   }
 
   .grid-bg {
-    background-image: linear-gradient(to right, #222936 1px, transparent 1px),
-      linear-gradient(to bottom, #222936 1px, transparent 1px);
+    background-image: linear-gradient(to right, var(--bg-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--bg-grid) 1px, transparent 1px);
     background-size: 40px 40px;
     mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
   }
@@ -34,19 +57,19 @@
   }
 
   .hero-orb {
-    background: radial-gradient(circle, rgba(125, 211, 252, 0.2) 0%, rgba(125, 211, 252, 0) 60%);
+    background: radial-gradient(circle, rgba(125, 211, 252, 0.28) 0%, rgba(125, 211, 252, 0) 60%);
   }
 
   .hero-orb-purple {
-    background: radial-gradient(circle, rgba(129, 140, 248, 0.16) 0%, rgba(129, 140, 248, 0) 60%);
+    background: radial-gradient(circle, rgba(129, 140, 248, 0.22) 0%, rgba(129, 140, 248, 0) 60%);
   }
 
   .hero-orb-glow {
-    filter: drop-shadow(0 0 20px rgba(125, 211, 252, 0.16));
+    filter: drop-shadow(0 0 24px rgba(125, 211, 252, 0.22));
   }
 
   .hero-orb-glow-purple {
-    filter: drop-shadow(0 0 20px rgba(129, 140, 248, 0.14));
+    filter: drop-shadow(0 0 24px rgba(129, 140, 248, 0.2));
   }
 
   .float-slow {
@@ -120,9 +143,22 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Syne', sans-serif;
-  background: #0F131A;
-  color: #D5DBE3;
+  background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-deep) 45%, var(--bg-surface) 100%);
+  color: var(--text-primary);
   overflow-x: hidden;
+}
+
+html {
+  background: var(--bg-base);
+  color: var(--text-primary);
+}
+
+body,
+main,
+header,
+section,
+footer {
+  transition: background-color 400ms ease, background-image 400ms ease, color 250ms ease;
 }
 
 /* Only show crosshair cursor on pointer devices (desktop) */
@@ -143,11 +179,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0F131A;
+  background: var(--bg-base);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2B3342;
+  background: #2D2D2D;
   border-radius: 0px;
 }
 
@@ -171,27 +207,27 @@ button {
 }
 
 .bg-black {
-  background-color: #0F131A !important;
+  background-color: var(--bg-base) !important;
 }
 
 .bg-black\/40 {
-  background-color: rgba(15, 19, 26, 0.4) !important;
+  background-color: rgba(26, 26, 26, 0.4) !important;
 }
 
 .bg-black\/80 {
-  background-color: rgba(15, 19, 26, 0.8) !important;
+  background-color: rgba(26, 26, 26, 0.8) !important;
 }
 
 .text-black {
-  color: #0F131A !important;
+  color: var(--bg-base) !important;
 }
 
 .text-gray-400 {
-  color: #B9C2CE !important;
+  color: var(--text-secondary) !important;
 }
 
 .text-gray-500 {
-  color: #9FA9B6 !important;
+  color: var(--text-muted) !important;
 }
 
 a:focus-visible,

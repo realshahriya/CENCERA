@@ -12,6 +12,16 @@ const XIcon = ({ className }: { className?: string }) => (
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
 );
+const TelegramIcon = ({ className }: { className?: string }) => (
+    <svg
+        viewBox="0 0 24 24"
+        className={className}
+        fill="currentColor"
+        aria-hidden="true"
+    >
+        <path d="M19.74 5.04 3.7 11.2c-1.1.43-1.1 1.06-.2 1.34l4.1 1.28 1.57 4.8c.2.55.1.77.74.77.5 0 .72-.23 1-.5l2.42-2.35 5.03 3.72c.92.5 1.58.24 1.81-.85l3.28-15.49c.31-1.32-.5-1.92-1.71-1.48Zm-2.7 3.05-7.26 6.63c-.26.23-.48.45-.62.84l-.98 3.4-.52-2.99c-.07-.46-.26-.67-.65-.8l-2.63-.83 12.3-5.05c.56-.22 1.05.13.36.8Z" />
+    </svg>
+);
 
 import { useState } from "react";
 
@@ -92,7 +102,10 @@ export default function Footer() {
                     <a href="https://x.com/cencera_xyz" className="hover:text-white transition-colors flex items-center gap-2">
                         <XIcon className="w-4 h-4" />
                     </a>
-                    <a href="https://github.com/cencera_xyz" className="hover:text-white transition-colors flex items-center gap-2">
+                    <a href="https://t.me/cencera_xyz" className="hover:text-white transition-colors flex items-center gap-2">
+                        <TelegramIcon className="w-4 h-4" />
+                    </a>
+                    <a href="https://github.com/cencera-xyz" className="hover:text-white transition-colors flex items-center gap-2">
                         <Github className="w-4 h-4" strokeWidth={1.5} />
                     </a>
                     <a href="https://www.linkedin.com/company/cenceraxyz/" className="hover:text-white transition-colors flex items-center gap-2">
