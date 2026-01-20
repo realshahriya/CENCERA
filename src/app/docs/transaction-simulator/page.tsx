@@ -47,7 +47,7 @@ export default function TransactionSimulatorPage() {
                     </ul>
 
                     {/* Simple Visualization of Logic */}
-                    <div className="bg-[#0A0A0A] border border-white/10 rounded-lg p-6 font-mono text-xs flex flex-col justify-between">
+                    <div className="bg-surface border border-white/10 rounded-lg p-6 font-mono text-xs flex flex-col justify-between">
                         <div className="flex justify-between text-gray-500 mb-2"><span>Input</span> <span>Output</span></div>
                         <div className="flex items-center justify-between">
                             <div className="bg-white/10 px-3 py-2 rounded text-white">TX Signature</div>

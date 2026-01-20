@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, ArrowLeft } from "lucide-react";
 import { useState } from "react";
-import Link from "next/link";
 
 export default function DocsHeader() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function DocsHeader() {
                     </Link>
                     <div className="h-4 w-[1px] bg-white/10 mx-2"></div>
                     <Link href="/docs" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity">
-                        <img src="/logo.png" alt="Cencera Logo" className="w-6 h-6 sm:w-8 sm:h-8" />
+                        <Image src="/logo.png" alt="Cencera Logo" width={32} height={32} className="w-6 h-6 sm:w-8 sm:h-8" />
                         <span className="font-sans font-bold text-lg sm:text-xl tracking-tighter">
                             CENCERA <span className="text-neon font-mono text-xs ml-1">/ DOCS</span>
                         </span>
@@ -31,7 +32,7 @@ export default function DocsHeader() {
 
                 <div className="flex items-center gap-4">
                     {/* Desktop Dashboard Button */}
-                    <a href="https://ap.cencera.xyz/" className="hidden md:block bg-white/5 border border-white/10 text-white px-5 py-2 font-mono text-sm font-bold hover:bg-neon hover:text-black hover:border-neon transition-all duration-300">
+                    <a href="https://app.cencera.xyz/dashboard" className="hidden md:block bg-white/5 border border-white/10 text-white px-5 py-2 font-mono text-sm font-bold hover:bg-neon hover:text-black hover:border-neon transition-all duration-300">
                         DASHBOARD //
                     </a>
 
@@ -69,8 +70,8 @@ export default function DocsHeader() {
 
                     <div className="mt-8">
                         <a
-                            href="https://ap.cencera.xyz/"
-                            className="block w-full bg-white text-black px-5 py-3 font-mono text-sm font-bold hover:bg-neon transition-colors text-center"
+                            href="https://app.cencera.xyz/dashboard"
+                            className="btn-primary block w-full text-center"
                         >
                             DASHBOARD //
                         </a>

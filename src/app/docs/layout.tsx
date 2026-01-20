@@ -9,7 +9,7 @@ export default function DocumentationLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="min-h-screen bg-black text-white selection:bg-neon selection:text-black">
+        <div className="min-h-screen bg-void text-slate-100 selection:bg-neon selection:text-void">
             <DocsHeader />
 
             <div className="flex max-w-[1600px] mx-auto">

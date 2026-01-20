@@ -45,7 +45,7 @@ export default function ConnectionGuardPage() {
                 <div className="bg-surface border border-white/5 p-6 rounded-xl">
                     <h3 className="text-lg font-bold text-white mb-2">Gas Fee Monitoring</h3>
                     <p className="text-sm text-gray-400">
-                        Detects abnormal gas limits that may indicate a 'drainer' script attempting to consume max capability or complex malicious execution.
+                        Detects abnormal gas limits that may indicate a &quot;drainer&quot; script attempting to consume max capability or complex malicious execution.
                     </p>
                 </div>
             </div>

@@ -46,7 +46,7 @@ export default function TrustScorePage() {
                     </div>
                 </div>
 
-                <div className="md:w-1/3 bg-[#0A0A0A] p-6 rounded-xl border border-white/10">
+                <div className="md:w-1/3 bg-surface p-6 rounded-xl border border-white/10">
                     <h3 className="font-bold text-white mb-4 flex items-center gap-2">
                         <Gauge className="w-4 h-4 text-neon" /> Scoring Factors
                     </h3>

@@ -47,7 +47,7 @@ export default function ArchitecturePage() {
                 </div>
             </div>
 
-            <div className="space-y-6 mt-12 bg-[#0A0A0A] p-8 border border-white/10 rounded-xl">
+            <div className="space-y-6 mt-12 bg-surface p-8 border border-white/10 rounded-xl">
                 <h2 className="text-2xl font-bold tracking-tight">Data Flow Diagram</h2>
                 <div className="text-center py-12 text-gray-500 italic border-2 border-dashed border-white/5 rounded-lg">
                     [Architecture Diagram Visualization]

@@ -35,10 +35,9 @@ export default function EntityAnalysisPage() {
                 </div>
             </div>
 
-            <div className="mt-8 bg-[#0A0A0A] border border-white/10 rounded-lg p-6">
+            <div className="mt-8 bg-surface border border-white/10 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-white mb-4">Historical Score Tracking</h3>
-                <p className="text-gray-400 text-sm mb-4">View how an entity's reputation has evolved over time.</p>
-                {/* Placeholder for a chart or graph visualization */}
+                <p className="text-gray-400 text-sm mb-4">View how an entity&apos;s reputation has evolved over time.</p>
                 <div className="h-40 w-full bg-white/5 rounded flex items-center justify-center border border-dashed border-white/10">
                     <span className="text-xs text-gray-500 italic">[Historical Reputation Chart Placeholder]</span>
                 </div>

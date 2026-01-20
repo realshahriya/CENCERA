@@ -19,14 +19,14 @@ export default function DocumentationPage() {
                 </h1>
 
                 <p className="text-lg text-gray-400 max-w-2xl font-light leading-relaxed">
-                    Welcome to the developer hub. Integrate Cencera's real-time trust & safety infrastructure into your dApps, wallets, and exchanges.
+                    Welcome to the developer hub. Integrate Cencera&apos;s real-time trust & safety infrastructure into your dApps, wallets, and exchanges.
                 </p>
 
                 <div className="flex flex-wrap gap-4 pt-4">
-                    <Link href="/docs/quick-start" className="bg-neon text-black px-6 py-3 font-mono text-sm font-bold hover:bg-white transition-colors flex items-center gap-2">
+                    <Link href="/docs/quick-start" className="btn-primary flex items-center gap-2">
                         START BUILDING <ArrowRight className="w-4 h-4" />
                     </Link>
-                    <Link href="/docs/api" className="border border-white/20 text-white px-6 py-3 font-mono text-sm font-bold hover:bg-white/10 transition-colors">
+                    <Link href="/docs/api" className="btn-secondary">
                         API REFERENCE
                     </Link>
                 </div>
@@ -63,7 +63,7 @@ export default function DocumentationPage() {
             {/* Example Code Block */}
             <div className="space-y-4 pt-8">
                 <h2 className="text-2xl font-bold tracking-tight">Installation</h2>
-                <div className="bg-[#0A0A0A] border border-white/10 rounded-lg p-6 font-mono text-sm overflow-x-auto relative group">
+                <div className="bg-surface border border-white/10 rounded-lg p-6 font-mono text-sm overflow-x-auto relative group">
                     <div className="absolute top-4 right-4 flex gap-2">
                         <div className="w-3 h-3 rounded-full bg-red-500/20"></div>
                         <div className="w-3 h-3 rounded-full bg-yellow-500/20"></div>

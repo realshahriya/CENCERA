@@ -12,15 +12,15 @@ module.exports = {
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
-        void: '#030303',
-        surface: '#0A0A0A',
-        neon: '#00F0FF',
-        danger: '#FF2A3D',
-        safe: '#00FF94',
-        subtle: '#333333',
+        void: '#0F131A',
+        surface: '#171C24',
+        neon: '#7DD3FC',
+        danger: '#F87171',
+        safe: '#34D399',
+        subtle: '#2B3342',
       },
       backgroundImage: {
-        'grid-pattern': "linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)",
+        'grid-pattern': "linear-gradient(to right, #222936 1px, transparent 1px), linear-gradient(to bottom, #222936 1px, transparent 1px)",
       },
       animation: {
         scanline: 'scanline 8s linear infinite',
@@ -51,4 +51,3 @@ module.exports = {
   },
   plugins: [],
 }
-

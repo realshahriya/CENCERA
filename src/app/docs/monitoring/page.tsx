@@ -33,20 +33,20 @@ export default function MonitoringPage() {
                         Receive POST requests to your server whenever a risk event is detected.
                     </p>
 
-                    <div className="bg-[#0A0A0A] border border-white/10 rounded-lg p-6 font-mono text-sm overflow-x-auto">
+                    <div className="bg-surface border border-white/10 rounded-lg p-6 font-mono text-sm overflow-x-auto">
                         <div className="flex justify-between items-center mb-4 border-b border-white/10 pb-2">
                             <span className="text-xs text-gray-500">PAYLOAD EXAMPLE</span>
                             <span className="text-xs bg-white/10 px-2 py-0.5 rounded text-white">JSON</span>
                         </div>
                         <code className="text-gray-300">
                             {"{"}<br />
-                            &nbsp;&nbsp;<span className="text-green-400">"event"</span>: <span className="text-yellow-400">"risk_detected"</span>,<br />
-                            &nbsp;&nbsp;<span className="text-green-400">"address"</span>: <span className="text-yellow-400">"0x123...abc"</span>,<br />
-                            &nbsp;&nbsp;<span className="text-green-400">"riskSummary"</span>: {"{"}<br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-400">"score"</span>: <span className="text-red-500">12</span>,<br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-400">"flags"</span>: [<span className="text-yellow-400">"tornado_cash_interaction"</span>, <span className="text-yellow-400">"phishing_scam_origin"</span>]<br />
+                            &nbsp;&nbsp;<span className="text-green-400">&quot;event&quot;</span>: <span className="text-yellow-400">&quot;risk_detected&quot;</span>,<br />
+                            &nbsp;&nbsp;<span className="text-green-400">&quot;address&quot;</span>: <span className="text-yellow-400">&quot;0x123...abc&quot;</span>,<br />
+                            &nbsp;&nbsp;<span className="text-green-400">&quot;riskSummary&quot;</span>: {"{"}<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-400">&quot;score&quot;</span>: <span className="text-red-500">12</span>,<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-400">&quot;flags&quot;</span>: [<span className="text-yellow-400">&quot;tornado_cash_interaction&quot;</span>, <span className="text-yellow-400">&quot;phishing_scam_origin&quot;</span>]<br />
                             &nbsp;&nbsp;{"}"},<br />
-                            &nbsp;&nbsp;<span className="text-green-400">"timestamp"</span>: <span className="text-blue-400">1678901234</span><br />
+                            &nbsp;&nbsp;<span className="text-green-400">&quot;timestamp&quot;</span>: <span className="text-blue-400">1678901234</span><br />
                             {"}"}
                         </code>
                     </div>

@@ -18,7 +18,7 @@ export default function SandboxPage() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6">
                     <p className="text-gray-400 leading-relaxed">
-                        Test Cencera's detection capabilities in a safe, controlled environment. Adjust risk tolerance thresholds and visually see how the scoring engine adapts.
+                        Test Cencera&apos;s detection capabilities in a safe, controlled environment. Adjust risk tolerance thresholds and visually see how the scoring engine adapts.
                     </p>
                     <ul className="space-y-3">
                         <li className="flex items-center gap-3 text-sm text-gray-300">
@@ -35,18 +35,18 @@ export default function SandboxPage() {
                         </li>
                     </ul>
 
-                    <a href="https://ap.cencera.xyz/playground" target="_blank" className="bg-neon text-black px-6 py-3 font-mono text-sm font-bold hover:bg-white transition-colors inline-block">
+                    <a href="https://ap.cencera.xyz/playground" target="_blank" className="btn-primary inline-block">
                         LAUNCH SANDBOX //
                     </a>
                 </div>
 
-                <div className="bg-[#0A0A0A] border border-white/10 rounded-xl p-8 aspect-square flex items-center justify-center">
+                <div className="bg-surface border border-white/10 rounded-xl p-8 aspect-square flex items-center justify-center">
                     <div className="text-center">
                         <div className="inline-block relative">
                             <div className="absolute inset-0 bg-neon blur-xl opacity-20 animate-pulse"></div>
                             <Box className="w-20 h-20 text-white relative z-10" />
                         </div>
-                        <p className="mt-6 text-gray-600 font-mono text-xs">Sandbox Environment Preview</p>
+                        <p className="mt-6 text-gray-500 font-mono text-xs">Sandbox Environment Preview</p>
                     </div>
                 </div>
             </div>

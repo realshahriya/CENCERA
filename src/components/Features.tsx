@@ -2,21 +2,20 @@ import { Shield, Search, Play, Zap, Database, AlertTriangle } from "lucide-react
 
 export default function Features() {
     return (
-        <section id="features" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 relative bg-void">
-            <div className="max-w-7xl mx-auto">
+        <section id="features" className="section-padding relative bg-void">
+            <div className="section-container">
                 <div className="text-center mb-12 sm:mb-16">
-                    <h3 className="font-mono text-neon text-xs sm:text-sm mb-2">// CORE CAPABILITIES</h3>
-                    <h2 className="font-sans text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+                    <h2 className="section-title mb-4 sm:mb-6 leading-tight">
                         COMPREHENSIVE<br />SECURITY SUITE
                     </h2>
-                    <p className="font-mono text-gray-400 text-sm sm:text-base max-w-2xl mx-auto px-4">
+                    <p className="section-subtitle max-w-2xl mx-auto px-4">
                         AI-powered trust scoring and analysis for wallets, contracts, tokens, and NFTs across multiple blockchain networks
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     {/* Feature 1 */}
-                    <div className="bg-surface border border-white/10 p-6 sm:p-8 hover:border-neon/50 transition-colors group">
+                    <div className="card-surface card-hover p-6 sm:p-8 hover:border-neon/50 group">
                         <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-neon/20 to-neon/5 flex items-center justify-center mb-6">
                             <Shield className="w-6 h-6 text-neon" strokeWidth={1.5} />
                         </div>
@@ -37,7 +36,7 @@ export default function Features() {
                     </div>
 
                     {/* Feature 2 */}
-                    <div className="bg-surface border border-white/10 p-6 sm:p-8 hover:border-purple-500/50 transition-colors group">
+                    <div className="card-surface card-hover p-6 sm:p-8 hover:border-purple-500/50 group">
                         <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center mb-6">
                             <Search className="w-6 h-6 text-purple-400" strokeWidth={1.5} />
                         </div>
@@ -58,7 +57,7 @@ export default function Features() {
                     </div>
 
                     {/* Feature 3 */}
-                    <div className="bg-surface border border-white/10 p-6 sm:p-8 hover:border-blue-500/50 transition-colors group">
+                    <div className="card-surface card-hover p-6 sm:p-8 hover:border-blue-500/50 group">
                         <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-blue-500/5 flex items-center justify-center mb-6">
                             <Play className="w-6 h-6 text-blue-400" strokeWidth={1.5} />
                         </div>
@@ -79,7 +78,7 @@ export default function Features() {
                     </div>
 
                     {/* Feature 4 */}
-                    <div className="bg-surface border border-white/10 p-6 sm:p-8 hover:border-orange-500/50 transition-colors group">
+                    <div className="card-surface card-hover p-6 sm:p-8 hover:border-orange-500/50 group">
                         <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500/20 to-orange-500/5 flex items-center justify-center mb-6">
                             <AlertTriangle className="w-6 h-6 text-orange-400" strokeWidth={1.5} />
                         </div>
@@ -100,7 +99,7 @@ export default function Features() {
                     </div>
 
                     {/* Feature 5 */}
-                    <div className="bg-surface border border-white/10 p-6 sm:p-8 hover:border-green-500/50 transition-colors group">
+                    <div className="card-surface card-hover p-6 sm:p-8 hover:border-green-500/50 group">
                         <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center mb-6">
                             <Zap className="w-6 h-6 text-green-400" strokeWidth={1.5} />
                         </div>
@@ -121,7 +120,7 @@ export default function Features() {
                     </div>
 
                     {/* Feature 6 */}
-                    <div className="bg-surface border border-white/10 p-6 sm:p-8 hover:border-pink-500/50 transition-colors group">
+                    <div className="card-surface card-hover p-6 sm:p-8 hover:border-pink-500/50 group">
                         <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-pink-500/20 to-pink-500/5 flex items-center justify-center mb-6">
                             <Database className="w-6 h-6 text-pink-400" strokeWidth={1.5} />
                         </div>
@@ -145,4 +144,3 @@ export default function Features() {
         </section>
     );
 }
-

@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: "CENCERA - Trust & Safety Infrastructure",
     description: "Real-time risk detection & user safety layer for Web3.",
     images: ["/logo.png"],
-    creator: "@cencerahq",
+    creator: "@cencera_xyz",
   },
   icons: {
     icon: "/logo.png",
@@ -72,7 +72,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${syne.variable} ${jetbrainsMono.variable} antialiased selection:bg-neon selection:text-black`}
+        className={`${syne.variable} ${jetbrainsMono.variable} antialiased selection:bg-neon selection:text-void`}
       >
         {children}
       </body>

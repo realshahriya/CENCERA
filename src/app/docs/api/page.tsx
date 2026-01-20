@@ -1,6 +1,6 @@
 "use client";
 
-import { Code, Server, Lock } from "lucide-react";
+
 
 export default function ApiPage() {
     return (
@@ -18,7 +18,7 @@ export default function ApiPage() {
             <div className="space-y-8">
                 <section>
                     <h2 className="text-2xl font-bold text-white mb-4">Base URL</h2>
-                    <div className="bg-[#0A0A0A] border border-white/10 rounded-lg p-4 font-mono text-sm text-neon">
+                    <div className="bg-surface border border-white/10 rounded-lg p-4 font-mono text-sm text-neon">
                         https://api.cencera.xyz/v1
                     </div>
                 </section>
@@ -26,7 +26,7 @@ export default function ApiPage() {
                 <section className="space-y-4">
                     <h2 className="text-2xl font-bold text-white mb-2">Authentication</h2>
                     <p className="text-gray-400">Authenticate your requests by including your API key in the header.</p>
-                    <div className="bg-[#0A0A0A] border border-white/10 rounded-lg p-4 font-mono text-sm text-gray-300">
+                    <div className="bg-surface border border-white/10 rounded-lg p-4 font-mono text-sm text-gray-300">
                         Authorization: Bearer <span className="text-neon">YOUR_API_KEY</span>
                     </div>
                 </section>
