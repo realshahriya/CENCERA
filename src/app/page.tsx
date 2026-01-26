@@ -1,9 +1,10 @@
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
-import ImmutableDefense from "../components/ImmutableDefense";
+import TrustPipeline from "../components/TrustPipeline";
 import Integration from "../components/Integration";
 import Roadmap from "../components/Roadmap";
+import Faq from "../components/Faq";
 import NetworkStats from "../components/NetworkStats";
 import Footer from "../components/Footer";
 
@@ -13,9 +14,10 @@ export default function Home() {
       <Header />
       <Hero />
       <Features />
-      <ImmutableDefense />
+      <TrustPipeline />
       <Integration />
       <Roadmap />
+      <Faq />
       <NetworkStats />
       <Footer />
     </main>

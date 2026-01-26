@@ -75,6 +75,7 @@
   .float-slow {
     animation: float 16s ease-in-out infinite;
   }
+
 }
 
 @layer components {
@@ -138,6 +139,7 @@
     transform: translateY(0px);
   }
 }
+
 
 body {
   margin: 0;

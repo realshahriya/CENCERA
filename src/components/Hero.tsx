@@ -83,15 +83,13 @@ export default function Hero() {
             <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[100] mix-blend-overlay opacity-20" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/carbon-fibre.png')" }}></div>
             <div className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-void via-neon to-void z-[101]"></div>
 
-            {/* Hero Section */}
             <header className="relative min-h-screen flex flex-col justify-center items-center section-padding pt-24 sm:pt-28 overflow-hidden">
-                {/* Background Grid */}
                 <div className="absolute inset-0 bg-grid-pattern opacity-32 grid-bg"></div>
 
-                {/* Abstract Hero Glow */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] sm:w-[60vw] h-[80vw] sm:h-[60vw] hero-orb hero-orb-glow opacity-60 rounded-full blur-[120px] float-slow"></div>
                 <div className="absolute -top-20 right-10 w-[40vw] h-[40vw] hero-orb-purple hero-orb-glow-purple opacity-50 rounded-full blur-[140px]"></div>
                 <div className="absolute bottom-10 left-10 w-[35vw] h-[35vw] hero-orb hero-orb-glow opacity-40 rounded-full blur-[120px]"></div>
+                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-void/80 to-void pointer-events-none"></div>
 
                 <div className="relative z-10 text-center w-full max-w-7xl px-2 sm:px-4">
                     <h1 className="font-sans text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.9] sm:leading-[0.85] tracking-tighter text-gradient break-words px-2">
