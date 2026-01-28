@@ -1,143 +1,166 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Activity, Database, Network, Brain } from "lucide-react";
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { BadgeCheck, Cpu, Keyboard, Network } from "lucide-react";
+
+type StepShapeType = "circle" | "pill" | "square";
+
+type StepId = "input" | "gather" | "engine" | "score";
+
+type Step = {
+  id: StepId;
+  label: string;
+  topLabel: string;
+  shape: StepShapeType;
+};
+
+const steps: Step[] = [
+  {
+    id: "input",
+    label: "User input",
+    topLabel: "Input",
+    shape: "circle"
+  },
+  {
+    id: "gather",
+    label: "Signals gathered",
+    topLabel: "Signals",
+    shape: "pill"
+  },
+  {
+    id: "engine",
+    label: "AI engine",
+    topLabel: "Processing",
+    shape: "square"
+  },
+  {
+    id: "score",
+    label: "Trust score & summary",
+    topLabel: "Output",
+    shape: "circle"
+  }
+];
 
 export default function TrustPipeline() {
+  const reduceMotion = useReducedMotion() ?? false;
+  const pipelineRef = useRef<HTMLDivElement | null>(null);
+  const inView = useInView(pipelineRef, { amount: 0.35, once: true });
+  const pulseDuration = 8.8;
+  const pulseRepeatDelay = 4.2;
+  const pulseActive = inView && !reduceMotion;
+
   return (
-    <section className="section-padding border-t border-white/5 bg-void relative overflow-hidden">
-      <div className="relative px-4 sm:px-6">
-        <div className="relative">
-          <div className="relative rounded-[36px] bg-black/60 border border-white/10 px-6 sm:px-12 py-10 sm:py-12 overflow-hidden">
+    <section
+      className="section-padding border-t border-white/5 bg-void relative overflow-hidden"
+    >
+      <div className="section-container">
+        <div className="mb-10 sm:mb-12">
+          <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+            Trust Score Pipeline
+          </h2>
+        </div>
 
-            <svg
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              viewBox="0 0 1200 420"
-              preserveAspectRatio="none"
-            >
-              <motion.path
-                d="M120 90 H420 C520 90 560 140 620 200 S740 300 840 260 H1080"
-                stroke="rgba(56,189,248,0.35)"
-                strokeWidth="2"
+        <div ref={pipelineRef} className="relative mt-16 sm:mt-20 lg:mt-24">
+          <div className="hidden sm:block absolute left-[16%] right-[16%] top-[32%] lg:top-[30%] h-6 pointer-events-none">
+            <svg className="w-full h-full" viewBox="0 0 1000 100" preserveAspectRatio="none">
+              <path
+                d="M 0 50 L 1000 50"
+                stroke="rgba(125, 211, 252, 0.08)"
+                strokeWidth="1.5"
                 fill="none"
-                strokeDasharray="6 12"
-                animate={{ strokeDashoffset: [0, -120] }}
-                transition={{ duration: 6, ease: "linear", repeat: Infinity }}
               />
-              <motion.path
-                d="M120 200 H460 C540 200 580 200 620 200 C700 200 760 200 840 200 H1080"
-                stroke="rgba(129,140,248,0.35)"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="6 12"
-                animate={{ strokeDashoffset: [0, -120] }}
-                transition={{ duration: 5.5, ease: "linear", repeat: Infinity }}
-              />
-              <motion.path
-                d="M120 310 H420 C520 310 560 260 620 220 S740 120 840 150 H1080"
-                stroke="rgba(56,189,248,0.35)"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="6 12"
-                animate={{ strokeDashoffset: [0, -120] }}
-                transition={{ duration: 6.5, ease: "linear", repeat: Infinity }}
-              />
+              {pulseActive ? (
+                <motion.path
+                  d="M 0 50 L 1000 50"
+                  stroke="rgba(125, 211, 252, 0.95)"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  fill="none"
+                  strokeDasharray="120 880"
+                  initial={{ strokeDashoffset: 0, opacity: 0 }}
+                  animate={{ strokeDashoffset: [0, -1000], opacity: [0, 1, 1, 0] }}
+                  transition={{
+                    duration: pulseDuration,
+                    ease: "linear",
+                    times: [0, 0.05, 0.9, 1],
+                    repeat: Infinity,
+                    repeatDelay: pulseRepeatDelay
+                  }}
+                  style={{ filter: "drop-shadow(0 0 12px rgba(125, 211, 252, 0.9))" }}
+                />
+              ) : null}
             </svg>
-            <div className="absolute inset-x-[12%] top-1/2 -translate-y-1/2 h-16 pointer-events-none">
-              <div className="absolute inset-y-1/2 -translate-y-1/2 left-0 right-0 rounded-full bg-black/80" />
-              <motion.div
-                className="absolute inset-y-1/2 -translate-y-1/2 left-0 right-0 h-[3px] rounded-full"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(90deg, rgba(255,255,255,0.06), rgba(125,211,252,0.8), rgba(255,255,255,0.06))",
-                  backgroundSize: "200% 100%",
-                }}
-                animate={{ backgroundPosition: ["0% 50%", "-200% 50%"] }}
-                transition={{ duration: 4, ease: "linear", repeat: Infinity }}
+          </div>
+
+          <div className="sm:hidden absolute left-1/2 top-[10%] bottom-[10%] w-10 -translate-x-1/2 pointer-events-none">
+            <svg className="w-full h-full" viewBox="0 0 100 1000" preserveAspectRatio="none">
+              <path
+                d="M 50 0 L 50 1000"
+                stroke="rgba(125, 211, 252, 0.08)"
+                strokeWidth="1.5"
+                fill="none"
               />
-            </div>
-
-            <motion.div
-              className="absolute -left-6 top-8 sm:top-10 w-16 h-16 rounded-2xl border border-white/10 bg-black/70"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-              className="absolute -left-10 bottom-10 w-20 h-20 rounded-[20px] border border-white/10 bg-black/70 rotate-6"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-              className="absolute -right-6 top-12 w-16 h-16 rounded-2xl border border-white/10 bg-black/70"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-              className="absolute -right-8 bottom-8 w-24 h-24 rounded-[26px] border border-white/10 bg-black/70 -rotate-6"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
-            />
-
-            <div className="relative grid gap-8 sm:gap-10 grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_minmax(0,1fr)] items-center">
-              <div className="space-y-5">
-                <PipelineSource
-                  icon={Activity}
-                  label="On-chain"
+              {pulseActive ? (
+                <motion.path
+                  d="M 50 0 L 50 1000"
+                  stroke="rgba(125, 211, 252, 0.95)"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  fill="none"
+                  strokeDasharray="120 880"
+                  initial={{ strokeDashoffset: 0, opacity: 0 }}
+                  animate={{ strokeDashoffset: [0, -1000], opacity: [0, 1, 1, 0] }}
+                  transition={{
+                    duration: pulseDuration,
+                    ease: "linear",
+                    times: [0, 0.05, 0.9, 1],
+                    repeat: Infinity,
+                    repeatDelay: pulseRepeatDelay
+                  }}
+                  style={{ filter: "drop-shadow(0 0 12px rgba(125, 211, 252, 0.9))" }}
                 />
-                <PipelineSource
-                  icon={Database}
-                  label="Entity graph"
-                />
-                <PipelineSource
-                  icon={Network}
-                  label="Market"
-                />
-              </div>
+              ) : null}
+            </svg>
+          </div>
 
-              <div className="relative flex flex-col items-center">
-                <div className="relative rounded-[28px] bg-gradient-to-br from-white/8 via-black/70 to-white/5 border border-white/20 px-10 py-8">
-                  <div className="absolute inset-x-6 top-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                  <div className="absolute inset-x-6 bottom-4 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                  <div className="relative flex flex-col items-center gap-3">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-[18px] bg-black/70 border border-white/30 shadow-[inset_0_0_12px_rgba(255,255,255,0.06)]">
-                      <Brain className="w-6 h-6 text-white" strokeWidth={1.5} />
-                    </div>
-                    <div className="text-center">
-                      <div className="font-mono text-[11px] tracking-[0.22em] text-slate-100/80 uppercase">
-                        Cencera Engine
-                      </div>
-                      <div className="mt-2 flex items-center justify-center gap-2 text-[10px] font-mono text-gray-400">
-                        <span className="h-1 w-1 rounded-full bg-white/50" />
-                        <span>Realtime Scoring Core</span>
-                        <span className="h-1 w-1 rounded-full bg-white/30" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center gap-6">
-                <div className="relative flex items-center justify-center">
-                  <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full border border-white/20 bg-black/70 flex items-center justify-center">
-                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border border-white/10 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="font-mono text-[10px] text-gray-400 uppercase tracking-[0.2em]">
-                          Trust Score
-                        </div>
-                        <div className="text-3xl sm:text-4xl font-bold text-white tracking-[0.06em]">
-                          0–100
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <motion.div
-                    className="absolute -z-10 w-48 h-48 sm:w-56 sm:h-56 rounded-full border border-dotted border-white/12"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+          <div className="relative flex flex-col sm:flex-row items-stretch justify-between gap-8 sm:gap-6 lg:gap-10 sm:mt-6 lg:mt-8">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.id}
+                className="relative flex flex-col items-center text-center gap-3 sm:gap-4 flex-1"
+                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ delay: index * 0.08, duration: 0.45, ease: "easeOut" }}
+              >
+                <div className="relative mb-1 flex items-center justify-center h-20 sm:h-24">
+                  <StepShape
+                    key={`${step.id}-${pulseActive ? "pulse" : "static"}`}
+                    stepId={step.id}
+                    type={step.shape}
+                    reduceMotion={reduceMotion}
+                    inView={inView}
+                    pulseActive={pulseActive}
+                    pulseDuration={pulseDuration}
+                    pulseRepeatDelay={pulseRepeatDelay}
+                    pulseIndex={index}
+                    pulseCount={steps.length}
                   />
+                  <span className="absolute -top-6 left-1/2 -translate-x-1/2 font-mono text-[10px] text-gray-500 uppercase tracking-[0.18em]">
+                    {step.topLabel}
+                  </span>
                 </div>
-              </div>
-            </div>
+
+                <div className="max-w-[220px]">
+                  <div
+                    className="font-sans text-sm sm:text-base font-semibold tracking-[0.04em] uppercase text-white"
+                  >
+                    {step.label}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
@@ -145,22 +168,257 @@ export default function TrustPipeline() {
   );
 }
 
-type PipelineSourceProps = {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  label: string;
-};
+function StepShape({
+  stepId,
+  type,
+  reduceMotion,
+  inView,
+  pulseActive,
+  pulseDuration,
+  pulseRepeatDelay,
+  pulseIndex,
+  pulseCount
+}: {
+  stepId: StepId;
+  type: "circle" | "pill" | "square";
+  reduceMotion: boolean;
+  inView: boolean;
+  pulseActive: boolean;
+  pulseDuration: number;
+  pulseRepeatDelay: number;
+  pulseIndex: number;
+  pulseCount: number;
+}) {
+  const baseBorder = "rgba(255, 255, 255, 0.12)";
+  const glowBorder = "rgba(125, 211, 252, 0.85)";
+  const shadow = "0 20px 50px rgba(0,0,0,0.5)";
+  const glowShadow = `0 0 0 1px rgba(125, 211, 252, 0.85), 0 0 40px rgba(125, 211, 252, 0.45), 0 0 70px rgba(125, 211, 252, 0.25), ${shadow}`;
+  const startMin = 0.06;
+  const startMax = 0.78;
+  const pulsePosition = pulseCount > 1 ? pulseIndex / (pulseCount - 1) : 0;
+  const glowStart = startMin + pulsePosition * (startMax - startMin);
+  const glowEndAll = 0.9;
+  const glowSnap = Math.min(0.99, glowStart + 0.002);
+  const iconBase = "rgba(255, 255, 255, 0.58)";
+  const iconGlow = "rgba(125, 211, 252, 0.95)";
+  const Icon = stepId === "input" ? Keyboard : stepId === "gather" ? Network : stepId === "engine" ? Cpu : BadgeCheck;
 
-function PipelineSource({ icon: Icon, label }: PipelineSourceProps) {
   return (
-    <div className="flex flex-col gap-2">
-      <div className="inline-flex items-center gap-4 rounded-[18px] border border-white/20 bg-black/70 px-4 py-3 shadow-[inset_0_0_12px_rgba(255,255,255,0.04)]">
-        <div className="w-9 h-9 rounded-[12px] bg-white/5 flex items-center justify-center border border-white/10">
-          <Icon className="w-4 h-4 text-white" strokeWidth={1.5} />
-        </div>
-        <div className="font-sans text-sm sm:text-base font-semibold text-white tracking-[0.02em]">
-          {label}
-        </div>
-      </div>
-    </div>
+    <motion.div
+      className="relative flex items-center justify-center border bg-surface w-20 h-16 sm:w-24 sm:h-20 rounded-2xl"
+      style={{ boxShadow: shadow, borderColor: baseBorder, transformStyle: "preserve-3d" }}
+      animate={
+        reduceMotion || !pulseActive
+          ? undefined
+          : {
+              boxShadow: [shadow, shadow, glowShadow, glowShadow, shadow],
+              borderColor: [baseBorder, baseBorder, glowBorder, glowBorder, baseBorder]
+            }
+      }
+      transition={
+        reduceMotion || !pulseActive
+          ? undefined
+          : {
+              duration: pulseDuration,
+              ease: "linear",
+              times: [0, glowStart, glowSnap, glowEndAll, 1],
+              repeat: Infinity,
+              repeatDelay: pulseRepeatDelay
+            }
+      }
+      whileHover={
+        reduceMotion
+          ? undefined
+          : { scale: 1.05, rotateX: 7, rotateY: -5, transition: { duration: 0.3, ease: "easeOut" } }
+      }
+    >
+      {inView && stepId === "gather" ? (
+        reduceMotion ? (
+          <svg
+            className="absolute -top-10 -bottom-10 -left-12 -right-12 w-auto h-auto opacity-45 pointer-events-none"
+            viewBox="0 0 140 110"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+            focusable="false"
+            style={{ filter: "drop-shadow(0 0 18px rgba(125, 211, 252, 0.45))" }}
+          >
+            <g
+              stroke="rgba(125, 211, 252, 0.34)"
+              strokeWidth="1.6"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="12" y1="18" x2="40" y2="30" />
+              <line x1="128" y1="18" x2="100" y2="30" />
+              <line x1="12" y1="92" x2="40" y2="80" />
+              <line x1="128" y1="92" x2="100" y2="80" />
+              <line x1="70" y1="10" x2="70" y2="26" />
+              <line x1="70" y1="100" x2="70" y2="84" />
+              <line x1="18" y1="55" x2="36" y2="55" />
+              <line x1="122" y1="55" x2="104" y2="55" />
+            </g>
+
+            <g
+              stroke="rgba(125, 211, 252, 0.3)"
+              strokeWidth="1.1"
+              fill="none"
+              strokeLinecap="round"
+            >
+              <line x1="40" y1="30" x2="70" y2="55" />
+              <line x1="100" y1="30" x2="70" y2="55" />
+              <line x1="40" y1="80" x2="70" y2="55" />
+              <line x1="100" y1="80" x2="70" y2="55" />
+              <line x1="36" y1="55" x2="70" y2="55" />
+              <line x1="104" y1="55" x2="70" y2="55" />
+            </g>
+
+            <g>
+              <circle cx="12" cy="18" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
+              <circle cx="12" cy="18" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="128" cy="18" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
+              <circle cx="128" cy="18" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="12" cy="92" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
+              <circle cx="12" cy="92" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="128" cy="92" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
+              <circle cx="128" cy="92" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="70" cy="10" r="2.4" fill="rgba(125, 211, 252, 0.6)" />
+              <circle cx="70" cy="10" r="5.8" stroke="rgba(125, 211, 252, 0.22)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="70" cy="100" r="2.4" fill="rgba(125, 211, 252, 0.6)" />
+              <circle cx="70" cy="100" r="5.8" stroke="rgba(125, 211, 252, 0.22)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="18" cy="55" r="2.6" fill="rgba(125, 211, 252, 0.62)" />
+              <circle cx="18" cy="55" r="6.2" stroke="rgba(125, 211, 252, 0.23)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="122" cy="55" r="2.6" fill="rgba(125, 211, 252, 0.62)" />
+              <circle cx="122" cy="55" r="6.2" stroke="rgba(125, 211, 252, 0.23)" strokeWidth="1.2" fill="none" />
+            </g>
+          </svg>
+        ) : (
+          <motion.svg
+            className="absolute -top-10 -bottom-10 -left-12 -right-12 w-auto h-auto pointer-events-none"
+            viewBox="0 0 140 110"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+            focusable="false"
+            initial={{ opacity: 0.16 }}
+            animate={{
+              opacity: [0.16, 0.16, 0.8, 0.8, 0.16],
+              x: [0, 3.5, -2.5, 2, 0],
+              y: [0, -2, 3, -1.2, 0],
+              rotate: [0, 1.3, -1.7, 0.8, 0]
+            }}
+            transition={{
+              opacity: {
+                duration: pulseDuration,
+                ease: "linear",
+                times: [0, glowStart, glowSnap, glowEndAll, 1],
+                repeat: Infinity,
+                repeatDelay: pulseRepeatDelay
+              },
+              x: { duration: 4.2, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" },
+              y: { duration: 4.9, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" },
+              rotate: { duration: 6.1, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }
+            }}
+            style={{ filter: "drop-shadow(0 0 18px rgba(125, 211, 252, 0.55))" }}
+          >
+            <g
+              stroke="rgba(125, 211, 252, 0.34)"
+              strokeWidth="1.6"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="12" y1="18" x2="40" y2="30" />
+              <line x1="128" y1="18" x2="100" y2="30" />
+              <line x1="12" y1="92" x2="40" y2="80" />
+              <line x1="128" y1="92" x2="100" y2="80" />
+              <line x1="70" y1="10" x2="70" y2="26" />
+              <line x1="70" y1="100" x2="70" y2="84" />
+              <line x1="18" y1="55" x2="36" y2="55" />
+              <line x1="122" y1="55" x2="104" y2="55" />
+            </g>
+
+            <g
+              stroke="rgba(125, 211, 252, 0.3)"
+              strokeWidth="1.1"
+              fill="none"
+              strokeLinecap="round"
+            >
+              <line x1="40" y1="30" x2="70" y2="55" />
+              <line x1="100" y1="30" x2="70" y2="55" />
+              <line x1="40" y1="80" x2="70" y2="55" />
+              <line x1="100" y1="80" x2="70" y2="55" />
+              <line x1="36" y1="55" x2="70" y2="55" />
+              <line x1="104" y1="55" x2="70" y2="55" />
+            </g>
+
+            <g>
+              <circle cx="12" cy="18" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
+              <circle cx="12" cy="18" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="128" cy="18" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
+              <circle cx="128" cy="18" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="12" cy="92" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
+              <circle cx="12" cy="92" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="128" cy="92" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
+              <circle cx="128" cy="92" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="70" cy="10" r="2.4" fill="rgba(125, 211, 252, 0.6)" />
+              <circle cx="70" cy="10" r="5.8" stroke="rgba(125, 211, 252, 0.22)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="70" cy="100" r="2.4" fill="rgba(125, 211, 252, 0.6)" />
+              <circle cx="70" cy="100" r="5.8" stroke="rgba(125, 211, 252, 0.22)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="18" cy="55" r="2.6" fill="rgba(125, 211, 252, 0.62)" />
+              <circle cx="18" cy="55" r="6.2" stroke="rgba(125, 211, 252, 0.23)" strokeWidth="1.2" fill="none" />
+
+              <circle cx="122" cy="55" r="2.6" fill="rgba(125, 211, 252, 0.62)" />
+              <circle cx="122" cy="55" r="6.2" stroke="rgba(125, 211, 252, 0.23)" strokeWidth="1.2" fill="none" />
+            </g>
+          </motion.svg>
+        )
+      ) : null}
+
+      <motion.div
+        className="relative z-10"
+        style={{ color: iconBase }}
+        animate={
+          reduceMotion || !pulseActive
+            ? undefined
+            : {
+                color: [iconBase, iconBase, iconGlow, iconGlow, iconBase],
+                filter: [
+                  "drop-shadow(0 0 0 rgba(125, 211, 252, 0))",
+                  "drop-shadow(0 0 0 rgba(125, 211, 252, 0))",
+                  "drop-shadow(0 0 16px rgba(125, 211, 252, 0.65))",
+                  "drop-shadow(0 0 16px rgba(125, 211, 252, 0.65))",
+                  "drop-shadow(0 0 0 rgba(125, 211, 252, 0))"
+                ],
+                scale: type === "circle" ? 1 : 0.98
+              }
+        }
+        transition={
+          reduceMotion || !pulseActive
+            ? undefined
+            : {
+                duration: pulseDuration,
+                ease: "linear",
+                times: [0, glowStart, glowSnap, glowEndAll, 1],
+                repeat: Infinity,
+                repeatDelay: pulseRepeatDelay
+              }
+        }
+      >
+        <Icon className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={1.6} />
+      </motion.div>
+    </motion.div>
   );
 }

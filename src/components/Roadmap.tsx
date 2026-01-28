@@ -1,22 +1,39 @@
+ "use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import { CheckCircle2, Circle } from "lucide-react";
 
 export default function Roadmap() {
+    const reduceMotion = useReducedMotion();
+
     return (
         <section id="roadmap" className="section-padding border-t border-white/5 bg-void relative overflow-hidden">
             {/* Background decoration */}
             <div className="hidden md:block absolute top-0 left-0 font-mono text-[6rem] sm:text-[10rem] font-bold text-white/[0.09] pointer-events-none select-none -translate-y-1/2 -translate-x-1/4">2025</div>
 
             <div className="section-container">
-                <div className="text-center mb-12 sm:mb-16">
+                <motion.div
+                    initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.35 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="text-center mb-12 sm:mb-16"
+                >
                     <h2 className="section-title text-3xl sm:text-4xl md:text-6xl mb-4">DEVELOPMENT ROADMAP</h2>
                     <p className="section-subtitle text-xs sm:text-sm max-w-2xl mx-auto px-4">
                         Our path to becoming the industry-standard security API for Web3
                     </p>
-                </div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                     {/* Phase 1 */}
-                    <div className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-neon/50">
+                    <motion.div
+                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.25 }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
+                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-neon/50"
+                    >
                         <div className="absolute top-0 right-0 font-mono text-5xl sm:text-6xl font-bold text-white/[0.09] p-4">01</div>
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-4">
@@ -41,10 +58,16 @@ export default function Roadmap() {
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Phase 2 */}
-                    <div className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-purple-500/50">
+                    <motion.div
+                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.25 }}
+                        transition={{ delay: 0.05, duration: 0.5, ease: "easeOut" }}
+                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-purple-500/50"
+                    >
                         <div className="absolute top-0 right-0 font-mono text-5xl sm:text-6xl font-bold text-white/[0.09] p-4">02</div>
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-4">
@@ -69,10 +92,16 @@ export default function Roadmap() {
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Phase 3 */}
-                    <div className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-blue-500/50">
+                    <motion.div
+                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.25 }}
+                        transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
+                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-blue-500/50"
+                    >
                         <div className="absolute top-0 right-0 font-mono text-5xl sm:text-6xl font-bold text-white/[0.09] p-4">03</div>
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-4">
@@ -97,10 +126,16 @@ export default function Roadmap() {
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Phase 4 */}
-                    <div className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-orange-500/50">
+                    <motion.div
+                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.25 }}
+                        transition={{ delay: 0.15, duration: 0.5, ease: "easeOut" }}
+                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-orange-500/50"
+                    >
                         <div className="absolute top-0 right-0 font-mono text-5xl sm:text-6xl font-bold text-white/[0.09] p-4">04</div>
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-4">
@@ -125,7 +160,7 @@ export default function Roadmap() {
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

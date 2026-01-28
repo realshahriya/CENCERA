@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
 import TrustPipeline from "../components/TrustPipeline";
+import DarkForest from "../components/DarkForest";
 import Integration from "../components/Integration";
 import Roadmap from "../components/Roadmap";
 import Faq from "../components/Faq";
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <Features />
       <TrustPipeline />
+      <DarkForest />
       <Integration />
       <Roadmap />
       <Faq />
