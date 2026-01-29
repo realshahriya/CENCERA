@@ -88,8 +88,8 @@ export default function Hero() {
 
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] sm:w-[60vw] h-[80vw] sm:h-[60vw] hero-orb hero-orb-glow opacity-60 rounded-full blur-[120px] float-slow"></div>
                 <div className="absolute -top-20 right-10 w-[40vw] h-[40vw] hero-orb-purple hero-orb-glow-purple opacity-50 rounded-full blur-[140px]"></div>
-                <div className="absolute bottom-10 left-10 w-[35vw] h-[35vw] hero-orb hero-orb-glow opacity-40 rounded-full blur-[120px]"></div>
-                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-void/80 to-void pointer-events-none"></div>
+                <div className="absolute bottom-10 left-10 w-[32vw] h-[32vw] hero-orb hero-orb-glow opacity-25 rounded-full blur-[110px]"></div>
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-void/60 to-void pointer-events-none"></div>
 
                 <div className="relative z-10 text-center w-full max-w-7xl px-2 sm:px-4">
                     <h1 className="font-sans text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.9] sm:leading-[0.85] tracking-tighter text-gradient break-words px-2">
