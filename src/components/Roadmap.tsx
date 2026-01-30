@@ -72,7 +72,7 @@ export default function Roadmap() {
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-4">
                                 <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
-                                    <Circle className="w-5 h-5 text-purple-400" strokeWidth={2} />
+                                    <CheckCircle2 className="w-5 h-5 text-purple-400" strokeWidth={2} />
                                 </div>
                                 <span className="font-mono text-[10px] sm:text-xs text-gray-500">Q1 2026</span>
                             </div>
