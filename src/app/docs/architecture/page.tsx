@@ -17,8 +17,8 @@ export default function ArchitecturePage() {
 
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 <div className="space-y-4 p-6 rounded-xl bg-surface border border-white/5">
-                    <div className="w-12 h-12 bg-blue-500/10 flex items-center justify-center rounded-lg">
-                        <Layers className="w-6 h-6 text-blue-400" />
+                    <div className="w-12 h-12 bg-mint/10 flex items-center justify-center rounded-lg">
+                        <Layers className="w-6 h-6 text-mint" />
                     </div>
                     <h3 className="text-xl font-bold">1. Data Ingestion</h3>
                     <p className="text-sm text-gray-400 leading-relaxed">
@@ -37,8 +37,8 @@ export default function ArchitecturePage() {
                 </div>
 
                 <div className="space-y-4 p-6 rounded-xl bg-surface border border-white/5">
-                    <div className="w-12 h-12 bg-purple-500/10 flex items-center justify-center rounded-lg">
-                        <Database className="w-6 h-6 text-purple-400" />
+                    <div className="w-12 h-12 bg-secondary/10 flex items-center justify-center rounded-lg">
+                        <Database className="w-6 h-6 text-secondary" />
                     </div>
                     <h3 className="text-xl font-bold">3. Global Edge Network</h3>
                     <p className="text-sm text-gray-400 leading-relaxed">

@@ -8,15 +8,18 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Syne', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['"TT Octosquares"', 'var(--font-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       colors: {
         void: '#111111',
         surface: '#1A1A1A',
-        neon: '#7DD3FC',
+        neon: '#92DCE5',
+        secondary: '#7DCD85',
+        mint: '#88D5B5',
+        soft: '#F3E8EE',
         danger: '#F87171',
-        safe: '#34D399',
+        safe: '#7DCD85',
         subtle: '#2A2A2A',
       },
       backgroundImage: {

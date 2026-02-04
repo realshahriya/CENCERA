@@ -18,7 +18,7 @@ export default function MonitoringPage() {
             <div className="space-y-8">
                 <section className="space-y-4">
                     <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-                        <Activity className="w-6 h-6 text-emerald-400" /> Active Surveillance
+                        <Activity className="w-6 h-6 text-secondary" /> Active Surveillance
                     </h2>
                     <p className="text-gray-400 leading-relaxed">
                         The Monitoring API allows you to subscribe to specific addresses or contracts. Cencera nodes will actively watch the mempool and confirmed blocks for any activity related to your watched entities.
@@ -40,20 +40,20 @@ export default function MonitoringPage() {
                         </div>
                         <code className="text-gray-300">
                             {"{"}<br />
-                            &nbsp;&nbsp;<span className="text-green-400">&quot;event&quot;</span>: <span className="text-yellow-400">&quot;risk_detected&quot;</span>,<br />
-                            &nbsp;&nbsp;<span className="text-green-400">&quot;address&quot;</span>: <span className="text-yellow-400">&quot;0x123...abc&quot;</span>,<br />
-                            &nbsp;&nbsp;<span className="text-green-400">&quot;riskSummary&quot;</span>: {"{"}<br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-400">&quot;score&quot;</span>: <span className="text-red-500">12</span>,<br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-400">&quot;flags&quot;</span>: [<span className="text-yellow-400">&quot;tornado_cash_interaction&quot;</span>, <span className="text-yellow-400">&quot;phishing_scam_origin&quot;</span>]<br />
+                            &nbsp;&nbsp;<span className="text-mint">&quot;event&quot;</span>: <span className="text-soft">&quot;risk_detected&quot;</span>,<br />
+                            &nbsp;&nbsp;<span className="text-mint">&quot;address&quot;</span>: <span className="text-soft">&quot;0x123...abc&quot;</span>,<br />
+                            &nbsp;&nbsp;<span className="text-mint">&quot;riskSummary&quot;</span>: {"{"}<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-mint">&quot;score&quot;</span>: <span className="text-danger">12</span>,<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-mint">&quot;flags&quot;</span>: [<span className="text-soft">&quot;tornado_cash_interaction&quot;</span>, <span className="text-soft">&quot;phishing_scam_origin&quot;</span>]<br />
                             &nbsp;&nbsp;{"}"},<br />
-                            &nbsp;&nbsp;<span className="text-green-400">&quot;timestamp&quot;</span>: <span className="text-blue-400">1678901234</span><br />
+                            &nbsp;&nbsp;<span className="text-mint">&quot;timestamp&quot;</span>: <span className="text-neon">1678901234</span><br />
                             {"}"}
                         </code>
                     </div>
                 </section>
 
                 <section className="bg-surface border border-white/5 p-6 rounded-xl flex items-start gap-4">
-                    <Radio className="w-6 h-6 text-red-500 animate-pulse mt-1" />
+                    <Radio className="w-6 h-6 text-danger animate-pulse mt-1" />
                     <div>
                         <h3 className="font-bold text-white text-lg">WebSocket Stream</h3>
                         <p className="text-gray-400 text-sm mt-2 leading-relaxed">

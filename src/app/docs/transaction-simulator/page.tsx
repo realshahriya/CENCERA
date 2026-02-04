@@ -31,14 +31,14 @@ export default function TransactionSimulatorPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                     <ul className="space-y-4">
                         <li className="flex items-start gap-4 p-4 rounded-lg bg-white/5">
-                            <AlertOctagon className="w-6 h-6 text-red-500 shrink-0 mt-1" />
+                            <AlertOctagon className="w-6 h-6 text-danger shrink-0 mt-1" />
                             <div>
                                 <h4 className="font-bold text-white">Honeypot Detection</h4>
                                 <p className="text-xs text-gray-400 mt-1">Detects tokens that can be bought but not sold, or have exorbitant transfer taxes.</p>
                             </div>
                         </li>
                         <li className="flex items-start gap-4 p-4 rounded-lg bg-white/5">
-                            <CheckCircle className="w-6 h-6 text-green-500 shrink-0 mt-1" />
+                            <CheckCircle className="w-6 h-6 text-secondary shrink-0 mt-1" />
                             <div>
                                 <h4 className="font-bold text-white">State Change Preview</h4>
                                 <p className="text-xs text-gray-400 mt-1">Visual breakdown of all balance changes for native tokens, ERC-20s, and NFTs.</p>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
@@ -10,19 +11,17 @@ export default function Header() {
     return (
         <>
             <nav className="fixed top-0 w-full flex justify-between items-center px-4 sm:px-6 py-4 sm:py-6 z-50 glass-panel">
-                <a href="#" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity">
-                    <Image src="/logo.png" alt="Cencera Logo" width={32} height={32} className="w-6 h-6 sm:w-8 sm:h-8" />
+                <Link href="/" className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity">
+                    <Image src="/logo.png" alt="Cencera Logo" width={40} height={40} className="w-7 h-7 sm:w-9 sm:h-9 shrink-0" />
                     <span className="font-sans font-bold text-lg sm:text-xl tracking-tighter">
                         CENCERA
                     </span>
-                </a>
+                </Link>
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex gap-8 font-mono text-xs text-gray-400">
-                    <a href="#features" className="hover:text-white transition-colors">[ FEATURES ]</a>
-                    <a href="#core-mechanics" className="hover:text-white transition-colors">[ CAPABILITIES ]</a>
-                    <a href="/docs" className="hover:text-white transition-colors">[ DOCUMENTATION ]</a>
-                    <a href="#roadmap" className="hover:text-white transition-colors">[ ROADMAP ]</a>
+                    <Link href="/docs" className="hover:text-white transition-colors">[ DOCUMENTATION ]</Link>
+                    <Link href="/brand-guidelines" className="hover:text-white transition-colors">[ BRAND ]</Link>
                 </div>
 
                 {/* Desktop Dashboard Button */}
@@ -52,34 +51,41 @@ export default function Header() {
             <div className={`fixed top-0 right-0 h-full w-64 bg-surface border-l border-white/10 z-50 md:hidden transform transition-transform duration-300 ease-in-out ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                 <div className="flex flex-col h-full p-6 pt-20">
                     <nav className="flex flex-col gap-6 font-mono text-sm">
-                        <a
-                            href="#features"
+                        <Link
+                            href="/#features"
                             onClick={() => setMobileMenuOpen(false)}
                             className="text-gray-400 hover:text-white transition-colors py-2"
                         >
                             [ FEATURES ]
-                        </a>
-                        <a
-                            href="#core-mechanics"
+                        </Link>
+                        <Link
+                            href="/#core-mechanics"
                             onClick={() => setMobileMenuOpen(false)}
                             className="text-gray-400 hover:text-white transition-colors py-2"
                         >
                             [ CAPABILITIES ]
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                             href="/docs"
                             onClick={() => setMobileMenuOpen(false)}
                             className="text-gray-400 hover:text-white transition-colors py-2"
                         >
                             [ DOCUMENTATION ]
-                        </a>
-                        <a
-                            href="#roadmap"
+                        </Link>
+                        <Link
+                            href="/brand-guidelines"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-gray-400 hover:text-white transition-colors py-2"
+                        >
+                            [ BRAND ]
+                        </Link>
+                        <Link
+                            href="/#roadmap"
                             onClick={() => setMobileMenuOpen(false)}
                             className="text-gray-400 hover:text-white transition-colors py-2"
                         >
                             [ ROADMAP ]
-                        </a>
+                        </Link>
                     </nav>
 
                     <div className="mt-8">

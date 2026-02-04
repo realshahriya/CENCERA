@@ -58,10 +58,10 @@ export default function Features() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ delay: 0.05, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 hover:border-purple-500/50 group"
+                        className="card-surface card-hover p-6 sm:p-8 hover:border-mint/50 group"
                     >
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center mb-6">
-                            <Search className="w-6 h-6 text-purple-400" strokeWidth={1.5} />
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-mint/20 to-mint/5 flex items-center justify-center mb-6">
+                            <Search className="w-6 h-6 text-mint" strokeWidth={1.5} />
                         </div>
                         <h3 className="font-sans text-lg sm:text-xl font-bold mb-3">Entity Analysis</h3>
                         <p className="font-mono text-xs sm:text-sm text-gray-400 mb-4">
@@ -69,11 +69,11 @@ export default function Features() {
                         </p>
                         <ul className="space-y-2 font-mono text-xs text-gray-500">
                             <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-purple-400 rounded-full"></div>
+                                <div className="w-1 h-1 bg-mint rounded-full"></div>
                                 Multi-chain support
                             </li>
                             <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-purple-400 rounded-full"></div>
+                                <div className="w-1 h-1 bg-mint rounded-full"></div>
                                 Historical score tracking
                             </li>
                         </ul>
@@ -85,10 +85,10 @@ export default function Features() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 hover:border-blue-500/50 group"
+                        className="card-surface card-hover p-6 sm:p-8 hover:border-secondary/50 group"
                     >
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-blue-500/5 flex items-center justify-center mb-6">
-                            <Play className="w-6 h-6 text-blue-400" strokeWidth={1.5} />
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-secondary/20 to-secondary/5 flex items-center justify-center mb-6">
+                            <Play className="w-6 h-6 text-secondary" strokeWidth={1.5} />
                         </div>
                         <h3 className="font-sans text-lg sm:text-xl font-bold mb-3">Transaction Simulator</h3>
                         <p className="font-mono text-xs sm:text-sm text-gray-400 mb-4">
@@ -96,11 +96,11 @@ export default function Features() {
                         </p>
                         <ul className="space-y-2 font-mono text-xs text-gray-500">
                             <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-blue-400 rounded-full"></div>
+                                <div className="w-1 h-1 bg-secondary rounded-full"></div>
                                 Honeypot detection
                             </li>
                             <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-blue-400 rounded-full"></div>
+                                <div className="w-1 h-1 bg-secondary rounded-full"></div>
                                 Transfer tax checking
                             </li>
                         </ul>
@@ -112,10 +112,10 @@ export default function Features() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ delay: 0.15, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 hover:border-orange-500/50 group"
+                        className="card-surface card-hover p-6 sm:p-8 hover:border-mint/50 group"
                     >
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500/20 to-orange-500/5 flex items-center justify-center mb-6">
-                            <AlertTriangle className="w-6 h-6 text-orange-400" strokeWidth={1.5} />
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-mint/20 to-mint/5 flex items-center justify-center mb-6">
+                            <AlertTriangle className="w-6 h-6 text-mint" strokeWidth={1.5} />
                         </div>
                         <h3 className="font-sans text-lg sm:text-xl font-bold mb-3">dApp Connection Guard</h3>
                         <p className="font-mono text-xs sm:text-sm text-gray-400 mb-4">
@@ -123,11 +123,11 @@ export default function Features() {
                         </p>
                         <ul className="space-y-2 font-mono text-xs text-gray-500">
                             <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-orange-400 rounded-full"></div>
+                                <div className="w-1 h-1 bg-mint rounded-full"></div>
                                 Phishing prevention
                             </li>
                             <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-orange-400 rounded-full"></div>
+                                <div className="w-1 h-1 bg-mint rounded-full"></div>
                                 Gas fee monitoring
                             </li>
                         </ul>
@@ -139,10 +139,10 @@ export default function Features() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 hover:border-green-500/50 group"
+                        className="card-surface card-hover p-6 sm:p-8 hover:border-safe/50 group"
                     >
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center mb-6">
-                            <Zap className="w-6 h-6 text-green-400" strokeWidth={1.5} />
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-safe/20 to-safe/5 flex items-center justify-center mb-6">
+                            <Zap className="w-6 h-6 text-safe" strokeWidth={1.5} />
                         </div>
                         <h3 className="font-sans text-lg sm:text-xl font-bold mb-3">API Platform</h3>
                         <p className="font-mono text-xs sm:text-sm text-gray-400 mb-4">
@@ -150,11 +150,11 @@ export default function Features() {
                         </p>
                         <ul className="space-y-2 font-mono text-xs text-gray-500">
                             <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-green-400 rounded-full"></div>
+                                <div className="w-1 h-1 bg-safe rounded-full"></div>
                                 Rate limiting & control
                             </li>
                             <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-green-400 rounded-full"></div>
+                                <div className="w-1 h-1 bg-safe rounded-full"></div>
                                 Multiple environments
                             </li>
                         </ul>
@@ -166,10 +166,10 @@ export default function Features() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ delay: 0.25, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 hover:border-pink-500/50 group"
+                        className="card-surface card-hover p-6 sm:p-8 hover:border-soft/50 group"
                     >
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-pink-500/20 to-pink-500/5 flex items-center justify-center mb-6">
-                            <Database className="w-6 h-6 text-pink-400" strokeWidth={1.5} />
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-soft/20 to-soft/5 flex items-center justify-center mb-6">
+                            <Database className="w-6 h-6 text-soft" strokeWidth={1.5} />
                         </div>
                         <h3 className="font-sans text-lg sm:text-xl font-bold mb-3">Interactive Sandbox</h3>
                         <p className="font-mono text-xs sm:text-sm text-gray-400 mb-4">
@@ -177,11 +177,11 @@ export default function Features() {
                         </p>
                         <ul className="space-y-2 font-mono text-xs text-gray-500">
                             <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-pink-400 rounded-full"></div>
+                                <div className="w-1 h-1 bg-soft rounded-full"></div>
                                 10+ color schemes
                             </li>
                             <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-pink-400 rounded-full"></div>
+                                <div className="w-1 h-1 bg-soft rounded-full"></div>
                                 Simulation testing
                             </li>
                         </ul>

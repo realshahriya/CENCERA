@@ -6,13 +6,13 @@ export default function NetworkStats() {
     const reduceMotion = useReducedMotion();
 
     return (
-        <section className="section-padding border-t border-b border-white/5 bg-black relative">
+        <section className="section-padding border-t border-b border-white/5 bg-void relative">
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 bg-repeat bg-[length:100px_100px]"></div>
             <div className="pointer-events-none absolute inset-0 opacity-70">
                 <svg className="w-full h-full" viewBox="0 0 1200 520" fill="none" preserveAspectRatio="xMidYMid slice">
                     <motion.path
                         d="M80 280 C240 120 360 420 520 260 C680 100 820 420 980 260 C1060 180 1120 170 1160 210"
-                        stroke="rgba(125, 211, 252, 0.16)"
+                        stroke="rgba(146, 220, 229, 0.16)"
                         strokeWidth="2"
                         initial={{ pathLength: reduceMotion ? 1 : 0 }}
                         whileInView={{ pathLength: 1 }}
@@ -21,7 +21,7 @@ export default function NetworkStats() {
                     />
                     <motion.path
                         d="M60 360 C240 220 340 420 520 320 C700 220 860 380 1040 300"
-                        stroke="rgba(168, 85, 247, 0.14)"
+                        stroke="rgba(136, 213, 181, 0.14)"
                         strokeWidth="2"
                         initial={{ pathLength: reduceMotion ? 1 : 0 }}
                         whileInView={{ pathLength: 1 }}
@@ -29,11 +29,11 @@ export default function NetworkStats() {
                         transition={reduceMotion ? { duration: 0 } : { delay: 0.08, duration: 2.0, ease: "easeOut" }}
                     />
                     {[
-                        { cx: 170, cy: 220, r: 6, fill: "rgba(125, 211, 252, 0.55)" },
-                        { cx: 420, cy: 280, r: 7, fill: "rgba(125, 211, 252, 0.35)" },
-                        { cx: 660, cy: 220, r: 6, fill: "rgba(168, 85, 247, 0.35)" },
-                        { cx: 860, cy: 310, r: 7, fill: "rgba(125, 211, 252, 0.45)" },
-                        { cx: 1020, cy: 260, r: 6, fill: "rgba(168, 85, 247, 0.30)" }
+                        { cx: 170, cy: 220, r: 6, fill: "rgba(146, 220, 229, 0.55)" },
+                        { cx: 420, cy: 280, r: 7, fill: "rgba(146, 220, 229, 0.35)" },
+                        { cx: 660, cy: 220, r: 6, fill: "rgba(136, 213, 181, 0.35)" },
+                        { cx: 860, cy: 310, r: 7, fill: "rgba(146, 220, 229, 0.45)" },
+                        { cx: 1020, cy: 260, r: 6, fill: "rgba(136, 213, 181, 0.30)" }
                     ].map((n, i) => (
                         <motion.circle
                             key={i}
@@ -68,7 +68,7 @@ export default function NetworkStats() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.35 }}
                         transition={{ duration: 0.45, ease: "easeOut" }}
-                        className="bg-black/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
+                        className="bg-void/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
                     >
                         <p className="font-mono text-[10px] sm:text-xs text-gray-500 mb-2">BLOCKCHAINS</p>
                         <p className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white group-hover:text-neon transition-colors">18+</p>
@@ -79,7 +79,7 @@ export default function NetworkStats() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.35 }}
                         transition={{ delay: 0.05, duration: 0.45, ease: "easeOut" }}
-                        className="bg-black/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
+                        className="bg-void/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
                     >
                         <p className="font-mono text-[10px] sm:text-xs text-gray-500 mb-2">UPTIME</p>
                         <p className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white group-hover:text-safe transition-colors">120ms</p>
@@ -90,10 +90,10 @@ export default function NetworkStats() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.35 }}
                         transition={{ delay: 0.1, duration: 0.45, ease: "easeOut" }}
-                        className="bg-black/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
+                        className="bg-void/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
                     >
                         <p className="font-mono text-[10px] sm:text-xs text-gray-500 mb-2">WALLETS</p>
-                        <p className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white group-hover:text-purple-400 transition-colors">12M+</p>
+                        <p className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white group-hover:text-mint transition-colors">12M+</p>
                     </motion.div>
                     {/* Stats 4 */}
                     <motion.div
@@ -101,7 +101,7 @@ export default function NetworkStats() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.35 }}
                         transition={{ delay: 0.15, duration: 0.45, ease: "easeOut" }}
-                        className="bg-black/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
+                        className="bg-void/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
                     >
                         <p className="font-mono text-[10px] sm:text-xs text-gray-500 mb-2">TOKENS</p>
                         <p className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white group-hover:text-neon transition-colors">5M+</p>

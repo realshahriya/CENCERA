@@ -64,18 +64,18 @@ export default function DarkForest() {
             ? "border-safe/40 bg-safe/10 text-safe"
             : active.verdictTone === "danger"
                 ? "border-danger/40 bg-danger/10 text-danger"
-                : "border-orange-400/35 bg-orange-400/10 text-orange-300";
+                : "border-mint/35 bg-mint/10 text-mint";
     const scoreAccent =
         active.verdictTone === "safe"
             ? "from-safe/40"
             : active.verdictTone === "danger"
                 ? "from-danger/40"
-                : "from-orange-400/40";
+                : "from-mint/40";
     const Icon = active.verdictTone === "safe" ? CheckCircle2 : active.verdictTone === "danger" ? ShieldAlert : AlertTriangle;
 
     return (
         <section className="section-padding border-t border-white/5 bg-void relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(125,211,252,0.12),transparent_55%),radial-gradient(circle_at_78%_70%,rgba(168,85,247,0.10),transparent_55%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(146,220,229,0.12),transparent_55%),radial-gradient(circle_at_78%_70%,rgba(136,213,181,0.10),transparent_55%)]" />
 
             <div className="section-container grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
                 <motion.div
@@ -189,7 +189,7 @@ export default function DarkForest() {
                                             ? "border-safe/30 bg-safe/10 text-safe"
                                             : s.tone === "danger"
                                                 ? "border-danger/30 bg-danger/10 text-danger"
-                                                : "border-orange-400/25 bg-orange-400/10 text-orange-200";
+                                                : "border-mint/25 bg-mint/10 text-mint";
                                     return (
                                         <div key={s.label} className="rounded-xl border border-white/10 bg-black/30 p-3">
                                             <div className="font-mono text-[10px] text-gray-500 uppercase tracking-[0.18em]">
@@ -233,5 +233,3 @@ export default function DarkForest() {
         </section>
     );
 }
-
-

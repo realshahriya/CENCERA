@@ -24,21 +24,21 @@ export default function RiskDetectionPage() {
 
                     <div className="grid md:grid-cols-2 gap-4">
                         <div className="bg-surface border border-white/5 p-4 rounded-lg flex items-start gap-4">
-                            <AlertTriangle className="w-5 h-5 text-red-500 mt-1 shrink-0" />
+                            <AlertTriangle className="w-5 h-5 text-danger mt-1 shrink-0" />
                             <div>
                                 <h4 className="font-bold text-white">Phishing Scams</h4>
                                 <p className="text-xs text-gray-500 mt-1">Detection of wallet drainers, fake mint sites, and approval farming contracts.</p>
                             </div>
                         </div>
                         <div className="bg-surface border border-white/5 p-4 rounded-lg flex items-start gap-4">
-                            <Shield className="w-5 h-5 text-orange-500 mt-1 shrink-0" />
+                            <Shield className="w-5 h-5 text-mint mt-1 shrink-0" />
                             <div>
                                 <h4 className="font-bold text-white">Sybil Attacks</h4>
                                 <p className="text-xs text-gray-500 mt-1">Identification of bot clusters and automated farming behaviors.</p>
                             </div>
                         </div>
                         <div className="bg-surface border border-white/5 p-4 rounded-lg flex items-start gap-4">
-                            <Eye className="w-5 h-5 text-yellow-500 mt-1 shrink-0" />
+                            <Eye className="w-5 h-5 text-soft mt-1 shrink-0" />
                             <div>
                                 <h4 className="font-bold text-white">Money Laundering</h4>
                                 <p className="text-xs text-gray-500 mt-1">Tracing funds through mixers like Tornado Cash and known darknet markets.</p>

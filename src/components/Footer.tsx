@@ -81,7 +81,7 @@ export default function Footer() {
                         <div className={`absolute bottom-0 left-0 h-0.5 bg-neon rounded-full transition-all duration-1000 ${status === 'loading' ? 'w-full' : 'w-0 group-hover:w-full'}`}></div>
                     </form>
                     {status === 'error' && (
-                        <p className="text-red-500 font-mono text-xs mt-2">CONNECTION_FAILED: PLEASE_RETRY</p>
+                        <p className="text-danger font-mono text-xs mt-2">CONNECTION_FAILED: PLEASE_RETRY</p>
                     )}
                 </div>
             </div>

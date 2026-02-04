@@ -46,18 +46,18 @@ export default function QuickStartPage() {
                 <div className="bg-surface border border-white/10 rounded-lg p-6 font-mono text-sm overflow-x-auto">
                     <code className="text-gray-300">
                         <span className="text-gray-500"># Example using fetch (Node 18+ / modern runtimes)</span><br />
-                        <span className="text-purple-400">const</span> apiKey = <span className="text-green-400">&apos;YOUR_API_KEY&apos;</span>;<br />
-                        <span className="text-purple-400">const</span> userAddress = <span className="text-green-400">&apos;0xYOURWALLET...&apos;</span>;<br />
+                        <span className="text-neon">const</span> apiKey = <span className="text-soft">&apos;YOUR_API_KEY&apos;</span>;<br />
+                        <span className="text-neon">const</span> userAddress = <span className="text-soft">&apos;0xYOURWALLET...&apos;</span>;<br />
                         <br />
-                        <span className="text-purple-400">const</span> url = <span className="text-green-400">&apos;https://api.cencera.xyz/v1/analyze&apos;</span> +<br />
-                        &nbsp;&nbsp;<span className="text-green-400">&apos;?q=vitalik.eth&amp;chain=1&amp;user=&apos;</span> + userAddress;<br />
+                        <span className="text-neon">const</span> url = <span className="text-soft">&apos;https://api.cencera.xyz/v1/analyze&apos;</span> +<br />
+                        &nbsp;&nbsp;<span className="text-soft">&apos;?q=vitalik.eth&amp;chain=1&amp;user=&apos;</span> + userAddress;<br />
                         <br />
-                        <span className="text-purple-400">const</span> res = <span className="text-purple-400">await</span> fetch(url, {"{"}<br />
+                        <span className="text-neon">const</span> res = <span className="text-neon">await</span> fetch(url, {"{"}<br />
                         &nbsp;&nbsp;headers: {"{"}<br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-400">&apos;Authorization&apos;</span>: <span className="text-green-400">&apos;Bearer &apos;</span> + apiKey,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-soft">&apos;Authorization&apos;</span>: <span className="text-soft">&apos;Bearer &apos;</span> + apiKey,<br />
                         &nbsp;&nbsp;{"}"}<br />
                         {"}"});<br />
-                        <span className="text-purple-400">const</span> data = <span className="text-purple-400">await</span> res.json();
+                        <span className="text-neon">const</span> data = <span className="text-neon">await</span> res.json();
                     </code>
                 </div>
             </div>
@@ -74,12 +74,12 @@ export default function QuickStartPage() {
 
                 <div className="bg-surface border border-white/10 rounded-lg p-6 font-mono text-sm overflow-x-auto">
                     <code className="text-gray-300">
-                        <span className="text-purple-400">const</span> score = data.trust_score;<br />
-                        <span className="text-purple-400">const</span> level = data.risk_level;<br />
-                        <span className="text-purple-400">const</span> flags = data.risk_flags;<br />
+                        <span className="text-neon">const</span> score = data.trust_score;<br />
+                        <span className="text-neon">const</span> level = data.risk_level;<br />
+                        <span className="text-neon">const</span> flags = data.risk_flags;<br />
                         <br />
-                        <span className="text-blue-400">console</span>.log(<span className="text-green-400">&apos;Score&apos;</span>, score, <span className="text-green-400">&apos;level&apos;</span>, level);<br />
-                        <span className="text-blue-400">console</span>.log(<span className="text-green-400">&apos;Flags&apos;</span>, flags);
+                        <span className="text-mint">console</span>.log(<span className="text-soft">&apos;Score&apos;</span>, score, <span className="text-soft">&apos;level&apos;</span>, level);<br />
+                        <span className="text-mint">console</span>.log(<span className="text-soft">&apos;Flags&apos;</span>, flags);
                     </code>
                 </div>
             </div>

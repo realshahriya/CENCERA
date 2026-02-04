@@ -66,14 +66,14 @@ export default function TrustPipeline() {
             <svg className="w-full h-full" viewBox="0 0 1000 100" preserveAspectRatio="none">
               <path
                 d="M 0 50 L 1000 50"
-                stroke="rgba(125, 211, 252, 0.08)"
+                stroke="rgba(146, 220, 229, 0.08)"
                 strokeWidth="1.5"
                 fill="none"
               />
               {pulseActive ? (
                 <motion.path
                   d="M 0 50 L 1000 50"
-                  stroke="rgba(125, 211, 252, 0.95)"
+                  stroke="rgba(146, 220, 229, 0.95)"
                   strokeWidth="4"
                   strokeLinecap="round"
                   fill="none"
@@ -87,7 +87,7 @@ export default function TrustPipeline() {
                     repeat: Infinity,
                     repeatDelay: pulseRepeatDelay
                   }}
-                  style={{ filter: "drop-shadow(0 0 12px rgba(125, 211, 252, 0.9))" }}
+                  style={{ filter: "drop-shadow(0 0 12px rgba(146, 220, 229, 0.9))" }}
                 />
               ) : null}
             </svg>
@@ -97,14 +97,14 @@ export default function TrustPipeline() {
             <svg className="w-full h-full" viewBox="0 0 100 1000" preserveAspectRatio="none">
               <path
                 d="M 50 0 L 50 1000"
-                stroke="rgba(125, 211, 252, 0.08)"
+                stroke="rgba(146, 220, 229, 0.08)"
                 strokeWidth="1.5"
                 fill="none"
               />
               {pulseActive ? (
                 <motion.path
                   d="M 50 0 L 50 1000"
-                  stroke="rgba(125, 211, 252, 0.95)"
+                  stroke="rgba(146, 220, 229, 0.95)"
                   strokeWidth="4"
                   strokeLinecap="round"
                   fill="none"
@@ -118,7 +118,7 @@ export default function TrustPipeline() {
                     repeat: Infinity,
                     repeatDelay: pulseRepeatDelay
                   }}
-                  style={{ filter: "drop-shadow(0 0 12px rgba(125, 211, 252, 0.9))" }}
+                  style={{ filter: "drop-shadow(0 0 12px rgba(146, 220, 229, 0.9))" }}
                 />
               ) : null}
             </svg>
@@ -190,9 +190,9 @@ function StepShape({
   pulseCount: number;
 }) {
   const baseBorder = "rgba(255, 255, 255, 0.12)";
-  const glowBorder = "rgba(125, 211, 252, 0.85)";
+  const glowBorder = "rgba(146, 220, 229, 0.85)";
   const shadow = "0 20px 50px rgba(0,0,0,0.5)";
-  const glowShadow = `0 0 0 1px rgba(125, 211, 252, 0.85), 0 0 40px rgba(125, 211, 252, 0.45), 0 0 70px rgba(125, 211, 252, 0.25), ${shadow}`;
+  const glowShadow = `0 0 0 1px rgba(146, 220, 229, 0.85), 0 0 40px rgba(146, 220, 229, 0.45), 0 0 70px rgba(146, 220, 229, 0.25), ${shadow}`;
   const startMin = 0.06;
   const startMax = 0.78;
   const pulsePosition = pulseCount > 1 ? pulseIndex / (pulseCount - 1) : 0;
@@ -200,7 +200,7 @@ function StepShape({
   const glowEndAll = 0.9;
   const glowSnap = Math.min(0.99, glowStart + 0.002);
   const iconBase = "rgba(255, 255, 255, 0.58)";
-  const iconGlow = "rgba(125, 211, 252, 0.95)";
+  const iconGlow = "rgba(146, 220, 229, 0.95)";
   const Icon = stepId === "input" ? Keyboard : stepId === "gather" ? Network : stepId === "engine" ? Cpu : BadgeCheck;
 
   return (
@@ -233,158 +233,71 @@ function StepShape({
       }
     >
       {inView && stepId === "gather" ? (
-        reduceMotion ? (
-          <svg
-            className="absolute -top-10 -bottom-10 -left-12 -right-12 w-auto h-auto opacity-45 pointer-events-none"
-            viewBox="0 0 140 110"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-            focusable="false"
-            style={{ filter: "drop-shadow(0 0 18px rgba(125, 211, 252, 0.45))" }}
+        <svg
+          className="absolute -top-10 -bottom-10 -left-12 -right-12 w-auto h-auto opacity-45 pointer-events-none"
+          viewBox="0 0 140 110"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          focusable="false"
+          style={{ filter: "drop-shadow(0 0 18px rgba(146, 220, 229, 0.45))" }}
+        >
+          <g
+            stroke="rgba(146, 220, 229, 0.34)"
+            strokeWidth="1.6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <g
-              stroke="rgba(125, 211, 252, 0.34)"
-              strokeWidth="1.6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="12" y1="18" x2="40" y2="30" />
-              <line x1="128" y1="18" x2="100" y2="30" />
-              <line x1="12" y1="92" x2="40" y2="80" />
-              <line x1="128" y1="92" x2="100" y2="80" />
-              <line x1="70" y1="10" x2="70" y2="26" />
-              <line x1="70" y1="100" x2="70" y2="84" />
-              <line x1="18" y1="55" x2="36" y2="55" />
-              <line x1="122" y1="55" x2="104" y2="55" />
-            </g>
+            <line x1="12" y1="18" x2="40" y2="30" />
+            <line x1="128" y1="18" x2="100" y2="30" />
+            <line x1="12" y1="92" x2="40" y2="80" />
+            <line x1="128" y1="92" x2="100" y2="80" />
+            <line x1="70" y1="10" x2="70" y2="26" />
+            <line x1="70" y1="100" x2="70" y2="84" />
+            <line x1="18" y1="55" x2="36" y2="55" />
+            <line x1="122" y1="55" x2="104" y2="55" />
+          </g>
 
-            <g
-              stroke="rgba(125, 211, 252, 0.3)"
-              strokeWidth="1.1"
-              fill="none"
-              strokeLinecap="round"
-            >
-              <line x1="40" y1="30" x2="70" y2="55" />
-              <line x1="100" y1="30" x2="70" y2="55" />
-              <line x1="40" y1="80" x2="70" y2="55" />
-              <line x1="100" y1="80" x2="70" y2="55" />
-              <line x1="36" y1="55" x2="70" y2="55" />
-              <line x1="104" y1="55" x2="70" y2="55" />
-            </g>
-
-            <g>
-              <circle cx="12" cy="18" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
-              <circle cx="12" cy="18" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
-
-              <circle cx="128" cy="18" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
-              <circle cx="128" cy="18" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
-
-              <circle cx="12" cy="92" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
-              <circle cx="12" cy="92" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
-
-              <circle cx="128" cy="92" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
-              <circle cx="128" cy="92" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
-
-              <circle cx="70" cy="10" r="2.4" fill="rgba(125, 211, 252, 0.6)" />
-              <circle cx="70" cy="10" r="5.8" stroke="rgba(125, 211, 252, 0.22)" strokeWidth="1.2" fill="none" />
-
-              <circle cx="70" cy="100" r="2.4" fill="rgba(125, 211, 252, 0.6)" />
-              <circle cx="70" cy="100" r="5.8" stroke="rgba(125, 211, 252, 0.22)" strokeWidth="1.2" fill="none" />
-
-              <circle cx="18" cy="55" r="2.6" fill="rgba(125, 211, 252, 0.62)" />
-              <circle cx="18" cy="55" r="6.2" stroke="rgba(125, 211, 252, 0.23)" strokeWidth="1.2" fill="none" />
-
-              <circle cx="122" cy="55" r="2.6" fill="rgba(125, 211, 252, 0.62)" />
-              <circle cx="122" cy="55" r="6.2" stroke="rgba(125, 211, 252, 0.23)" strokeWidth="1.2" fill="none" />
-            </g>
-          </svg>
-        ) : (
-          <motion.svg
-            className="absolute -top-10 -bottom-10 -left-12 -right-12 w-auto h-auto pointer-events-none"
-            viewBox="0 0 140 110"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-            focusable="false"
-            initial={{ opacity: 0.16 }}
-            animate={{
-              opacity: [0.16, 0.16, 0.8, 0.8, 0.16],
-              x: [0, 3.5, -2.5, 2, 0],
-              y: [0, -2, 3, -1.2, 0],
-              rotate: [0, 1.3, -1.7, 0.8, 0]
-            }}
-            transition={{
-              opacity: {
-                duration: pulseDuration,
-                ease: "linear",
-                times: [0, glowStart, glowSnap, glowEndAll, 1],
-                repeat: Infinity,
-                repeatDelay: pulseRepeatDelay
-              },
-              x: { duration: 4.2, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" },
-              y: { duration: 4.9, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" },
-              rotate: { duration: 6.1, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }
-            }}
-            style={{ filter: "drop-shadow(0 0 18px rgba(125, 211, 252, 0.55))" }}
+          <g
+            stroke="rgba(146, 220, 229, 0.3)"
+            strokeWidth="1.1"
+            fill="none"
+            strokeLinecap="round"
           >
-            <g
-              stroke="rgba(125, 211, 252, 0.34)"
-              strokeWidth="1.6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="12" y1="18" x2="40" y2="30" />
-              <line x1="128" y1="18" x2="100" y2="30" />
-              <line x1="12" y1="92" x2="40" y2="80" />
-              <line x1="128" y1="92" x2="100" y2="80" />
-              <line x1="70" y1="10" x2="70" y2="26" />
-              <line x1="70" y1="100" x2="70" y2="84" />
-              <line x1="18" y1="55" x2="36" y2="55" />
-              <line x1="122" y1="55" x2="104" y2="55" />
-            </g>
+            <line x1="40" y1="30" x2="70" y2="55" />
+            <line x1="100" y1="30" x2="70" y2="55" />
+            <line x1="40" y1="80" x2="70" y2="55" />
+            <line x1="100" y1="80" x2="70" y2="55" />
+            <line x1="36" y1="55" x2="70" y2="55" />
+            <line x1="104" y1="55" x2="70" y2="55" />
+          </g>
 
-            <g
-              stroke="rgba(125, 211, 252, 0.3)"
-              strokeWidth="1.1"
-              fill="none"
-              strokeLinecap="round"
-            >
-              <line x1="40" y1="30" x2="70" y2="55" />
-              <line x1="100" y1="30" x2="70" y2="55" />
-              <line x1="40" y1="80" x2="70" y2="55" />
-              <line x1="100" y1="80" x2="70" y2="55" />
-              <line x1="36" y1="55" x2="70" y2="55" />
-              <line x1="104" y1="55" x2="70" y2="55" />
-            </g>
+          <g>
+            <circle cx="12" cy="18" r="2.8" fill="rgba(146, 220, 229, 0.65)" />
+            <circle cx="12" cy="18" r="6.5" stroke="rgba(146, 220, 229, 0.25)" strokeWidth="1.2" fill="none" />
 
-            <g>
-              <circle cx="12" cy="18" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
-              <circle cx="12" cy="18" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+            <circle cx="128" cy="18" r="2.8" fill="rgba(146, 220, 229, 0.65)" />
+            <circle cx="128" cy="18" r="6.5" stroke="rgba(146, 220, 229, 0.25)" strokeWidth="1.2" fill="none" />
 
-              <circle cx="128" cy="18" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
-              <circle cx="128" cy="18" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+            <circle cx="12" cy="92" r="2.8" fill="rgba(146, 220, 229, 0.65)" />
+            <circle cx="12" cy="92" r="6.5" stroke="rgba(146, 220, 229, 0.25)" strokeWidth="1.2" fill="none" />
 
-              <circle cx="12" cy="92" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
-              <circle cx="12" cy="92" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+            <circle cx="128" cy="92" r="2.8" fill="rgba(146, 220, 229, 0.65)" />
+            <circle cx="128" cy="92" r="6.5" stroke="rgba(146, 220, 229, 0.25)" strokeWidth="1.2" fill="none" />
 
-              <circle cx="128" cy="92" r="2.8" fill="rgba(125, 211, 252, 0.65)" />
-              <circle cx="128" cy="92" r="6.5" stroke="rgba(125, 211, 252, 0.25)" strokeWidth="1.2" fill="none" />
+            <circle cx="70" cy="10" r="2.4" fill="rgba(146, 220, 229, 0.6)" />
+            <circle cx="70" cy="10" r="5.8" stroke="rgba(146, 220, 229, 0.22)" strokeWidth="1.2" fill="none" />
 
-              <circle cx="70" cy="10" r="2.4" fill="rgba(125, 211, 252, 0.6)" />
-              <circle cx="70" cy="10" r="5.8" stroke="rgba(125, 211, 252, 0.22)" strokeWidth="1.2" fill="none" />
+            <circle cx="70" cy="100" r="2.4" fill="rgba(146, 220, 229, 0.6)" />
+            <circle cx="70" cy="100" r="5.8" stroke="rgba(146, 220, 229, 0.22)" strokeWidth="1.2" fill="none" />
 
-              <circle cx="70" cy="100" r="2.4" fill="rgba(125, 211, 252, 0.6)" />
-              <circle cx="70" cy="100" r="5.8" stroke="rgba(125, 211, 252, 0.22)" strokeWidth="1.2" fill="none" />
+            <circle cx="18" cy="55" r="2.6" fill="rgba(146, 220, 229, 0.62)" />
+            <circle cx="18" cy="55" r="6.2" stroke="rgba(146, 220, 229, 0.23)" strokeWidth="1.2" fill="none" />
 
-              <circle cx="18" cy="55" r="2.6" fill="rgba(125, 211, 252, 0.62)" />
-              <circle cx="18" cy="55" r="6.2" stroke="rgba(125, 211, 252, 0.23)" strokeWidth="1.2" fill="none" />
-
-              <circle cx="122" cy="55" r="2.6" fill="rgba(125, 211, 252, 0.62)" />
-              <circle cx="122" cy="55" r="6.2" stroke="rgba(125, 211, 252, 0.23)" strokeWidth="1.2" fill="none" />
-            </g>
-          </motion.svg>
-        )
+            <circle cx="122" cy="55" r="2.6" fill="rgba(146, 220, 229, 0.62)" />
+            <circle cx="122" cy="55" r="6.2" stroke="rgba(146, 220, 229, 0.23)" strokeWidth="1.2" fill="none" />
+          </g>
+        </svg>
       ) : null}
 
       <motion.div
@@ -396,11 +309,11 @@ function StepShape({
             : {
                 color: [iconBase, iconBase, iconGlow, iconGlow, iconBase],
                 filter: [
-                  "drop-shadow(0 0 0 rgba(125, 211, 252, 0))",
-                  "drop-shadow(0 0 0 rgba(125, 211, 252, 0))",
-                  "drop-shadow(0 0 16px rgba(125, 211, 252, 0.65))",
-                  "drop-shadow(0 0 16px rgba(125, 211, 252, 0.65))",
-                  "drop-shadow(0 0 0 rgba(125, 211, 252, 0))"
+                  "drop-shadow(0 0 0 rgba(146, 220, 229, 0))",
+                  "drop-shadow(0 0 0 rgba(146, 220, 229, 0))",
+                  "drop-shadow(0 0 16px rgba(146, 220, 229, 0.65))",
+                  "drop-shadow(0 0 16px rgba(146, 220, 229, 0.65))",
+                  "drop-shadow(0 0 0 rgba(146, 220, 229, 0))"
                 ],
                 scale: type === "circle" ? 1 : 0.98
               }

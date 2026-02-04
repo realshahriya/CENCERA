@@ -41,19 +41,19 @@ export default function DocumentationPage() {
                     href="/docs/quick-start"
                 />
                 <Card
-                    icon={<Shield className="w-6 h-6 text-blue-400" />}
+                    icon={<Shield className="w-6 h-6 text-mint" />}
                     title="Risk Detection"
                     description="Learn how our AI models classify and detect on-chain threats."
                     href="/docs/risk-detection"
                 />
                 <Card
-                    icon={<Lock className="w-6 h-6 text-purple-400" />}
+                    icon={<Lock className="w-6 h-6 text-neon" />}
                     title="Authentication"
                     description="Secure your API requests with API keys and signatures."
                     href="/docs/authentication"
                 />
                 <Card
-                    icon={<Activity className="w-6 h-6 text-emerald-400" />}
+                    icon={<Activity className="w-6 h-6 text-secondary" />}
                     title="Monitoring"
                     description="Track wallet activities and setup webhooks for real-time alerts."
                     href="/docs/monitoring"
@@ -65,9 +65,9 @@ export default function DocumentationPage() {
                 <h2 className="text-2xl font-bold tracking-tight">Installation</h2>
                 <div className="bg-surface border border-white/10 rounded-lg p-6 font-mono text-sm overflow-x-auto relative group">
                     <div className="absolute top-4 right-4 flex gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500/20"></div>
-                        <div className="w-3 h-3 rounded-full bg-yellow-500/20"></div>
-                        <div className="w-3 h-3 rounded-full bg-green-500/20"></div>
+                        <div className="w-3 h-3 rounded-full bg-danger/20"></div>
+                        <div className="w-3 h-3 rounded-full bg-soft/20"></div>
+                        <div className="w-3 h-3 rounded-full bg-secondary/20"></div>
                     </div>
                     <code className="text-gray-300">
                         <span className="text-neon">$</span> npm install @cencera/sdk

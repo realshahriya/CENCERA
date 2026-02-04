@@ -23,21 +23,21 @@ export default function TrustScorePage() {
 
                     <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                            <div className="w-20 h-20 shrink-0 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center font-bold text-green-500 text-xl whitespace-nowrap">80+</div>
+                            <div className="w-20 h-20 shrink-0 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center font-bold text-secondary text-xl whitespace-nowrap">80+</div>
                             <div>
                                 <h3 className="text-white font-bold">High Trust</h3>
                                 <p className="text-sm text-gray-500">Established history, KYC verified, known entity.</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
-                            <div className="w-20 h-20 shrink-0 rounded-full bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center font-bold text-yellow-500 text-xl whitespace-nowrap">50-79</div>
+                            <div className="w-20 h-20 shrink-0 rounded-full bg-mint/10 border border-mint/20 flex items-center justify-center font-bold text-mint text-xl whitespace-nowrap">50-79</div>
                             <div>
                                 <h3 className="text-white font-bold">Medium Trust</h3>
                                 <p className="text-sm text-gray-500">New wallet, low activity, or minor suspicious associations.</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
-                            <div className="w-20 h-20 shrink-0 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center font-bold text-red-500 text-xl whitespace-nowrap">&lt;50</div>
+                            <div className="w-20 h-20 shrink-0 rounded-full bg-danger/10 border border-danger/20 flex items-center justify-center font-bold text-danger text-xl whitespace-nowrap">&lt;50</div>
                             <div>
                                 <h3 className="text-white font-bold">High Risk</h3>
                                 <p className="text-sm text-gray-500">Known malicious actor, mixer interactions, or phishing involvement.</p>

@@ -26,11 +26,11 @@ export default function SandboxPage() {
                             Configurable Risk Thresholds
                         </li>
                         <li className="flex items-center gap-3 text-sm text-gray-300">
-                            <Box className="w-4 h-4 text-blue-400" />
+                            <Box className="w-4 h-4 text-secondary" />
                             10+ Color Schemes & Theme Support
                         </li>
                         <li className="flex items-center gap-3 text-sm text-gray-300">
-                            <Monitor className="w-4 h-4 text-purple-400" />
+                            <Monitor className="w-4 h-4 text-mint" />
                             Real-time Simulation Testing
                         </li>
                     </ul>

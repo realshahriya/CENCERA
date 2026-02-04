@@ -16,8 +16,8 @@ export default function ConnectionGuardPage() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-3">
-                <div className="col-span-full bg-red-500/10 border border-red-500/20 p-6 rounded-xl flex items-center gap-4">
-                    <ShieldAlert className="w-10 h-10 text-red-500" />
+                <div className="col-span-full bg-danger/10 border border-danger/20 p-6 rounded-xl flex items-center gap-4">
+                    <ShieldAlert className="w-10 h-10 text-danger" />
                     <div>
                         <h3 className="text-xl font-bold text-white">Phishing Prevention</h3>
                         <p className="text-sm text-gray-400">
@@ -35,7 +35,7 @@ export default function ConnectionGuardPage() {
                 </div>
 
                 <div className="bg-surface border border-white/5 p-6 rounded-xl">
-                    <Lock className="w-6 h-6 text-orange-400 mb-4" />
+                    <Lock className="w-6 h-6 text-mint mb-4" />
                     <h3 className="text-lg font-bold text-white mb-2">Permission Analysis</h3>
                     <p className="text-sm text-gray-400">
                         Alerts when a dApp requests excessive permissions, such as unlimited token approvals or access to NFTs not involved in the transaction.

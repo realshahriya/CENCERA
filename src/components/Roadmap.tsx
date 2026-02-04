@@ -66,13 +66,13 @@ export default function Roadmap() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ delay: 0.05, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-purple-500/50"
+                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-mint/50"
                     >
                         <div className="absolute top-0 right-0 font-mono text-5xl sm:text-6xl font-bold text-white/[0.09] p-4">02</div>
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-4">
-                                <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
-                                    <CheckCircle2 className="w-5 h-5 text-purple-400" strokeWidth={2} />
+                                <div className="w-8 h-8 rounded-full bg-mint/20 flex items-center justify-center">
+                                    <CheckCircle2 className="w-5 h-5 text-mint" strokeWidth={2} />
                                 </div>
                                 <span className="font-mono text-[10px] sm:text-xs text-gray-500">Q1 2026</span>
                             </div>
@@ -100,13 +100,13 @@ export default function Roadmap() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-blue-500/50"
+                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-secondary/50"
                     >
                         <div className="absolute top-0 right-0 font-mono text-5xl sm:text-6xl font-bold text-white/[0.09] p-4">03</div>
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-4">
-                                <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
-                                    <Circle className="w-5 h-5 text-blue-400" strokeWidth={2} />
+                                <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
+                                    <Circle className="w-5 h-5 text-secondary" strokeWidth={2} />
                                 </div>
                                 <span className="font-mono text-[10px] sm:text-xs text-gray-500">Q2 2026</span>
                             </div>
@@ -134,13 +134,13 @@ export default function Roadmap() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ delay: 0.15, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-orange-500/50"
+                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-soft/50"
                     >
                         <div className="absolute top-0 right-0 font-mono text-5xl sm:text-6xl font-bold text-white/[0.09] p-4">04</div>
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-4">
-                                <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center">
-                                    <Circle className="w-5 h-5 text-orange-400" strokeWidth={2} />
+                                <div className="w-8 h-8 rounded-full bg-soft/20 flex items-center justify-center">
+                                    <Circle className="w-5 h-5 text-soft" strokeWidth={2} />
                                 </div>
                                 <span className="font-mono text-[10px] sm:text-xs text-gray-500">Q3 2026</span>
                             </div>

@@ -48,7 +48,7 @@ export default function ApiPage() {
 
                     <div className="space-y-2">
                         <div className="flex items-center gap-3">
-                            <span className="bg-green-500/10 text-green-500 px-2 py-1 rounded text-xs font-bold font-mono">GET</span>
+                            <span className="bg-secondary/10 text-secondary px-2 py-1 rounded text-xs font-bold font-mono">GET</span>
                             <code className="text-white font-mono text-sm">/analyze</code>
                         </div>
                         <p className="text-sm text-gray-400 pl-16">
@@ -66,16 +66,16 @@ export default function ApiPage() {
                         <div className="bg-surface border border-white/10 rounded-lg p-4 font-mono text-xs text-gray-300 mt-3 overflow-x-auto">
                             <code>
                                 {"{"}<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;address&quot;</span>: <span className="text-yellow-300">&quot;0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&quot;</span>,<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;type&quot;</span>: <span className="text-yellow-300">&quot;wallet&quot;</span>,<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;trust_score&quot;</span>: <span className="text-blue-400">94</span>,<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;risk_level&quot;</span>: <span className="text-yellow-300">&quot;low&quot;</span>,<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;risk_flags&quot;</span>: [<span className="text-yellow-300">&quot;airdrop_hunter&quot;</span>],<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;summary&quot;</span>: <span className="text-yellow-300">&quot;High reputation wallet with long history and diversified activity.&quot;</span>,<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;market_data&quot;</span>: {"{"} ... {"}"},<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;report&quot;</span>: {"{"} ... {"}"},<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;validation&quot;</span>: {"{"} ... {"}"},<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;social_detail&quot;</span>: {"{"} ... {"}"}<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;address&quot;</span>: <span className="text-soft">&quot;0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&quot;</span>,<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;type&quot;</span>: <span className="text-soft">&quot;wallet&quot;</span>,<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;trust_score&quot;</span>: <span className="text-neon">94</span>,<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;risk_level&quot;</span>: <span className="text-soft">&quot;low&quot;</span>,<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;risk_flags&quot;</span>: [<span className="text-soft">&quot;airdrop_hunter&quot;</span>],<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;summary&quot;</span>: <span className="text-soft">&quot;High reputation wallet with long history and diversified activity.&quot;</span>,<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;market_data&quot;</span>: {"{"} ... {"}"},<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;report&quot;</span>: {"{"} ... {"}"},<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;validation&quot;</span>: {"{"} ... {"}"},<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;social_detail&quot;</span>: {"{"} ... {"}"}<br />
                                 {"}"}
                             </code>
                         </div>
@@ -87,7 +87,7 @@ export default function ApiPage() {
 
                     <div className="space-y-2">
                         <div className="flex items-center gap-3">
-                            <span className="bg-green-500/10 text-green-500 px-2 py-1 rounded text-xs font-bold font-mono">GET</span>
+                            <span className="bg-secondary/10 text-secondary px-2 py-1 rounded text-xs font-bold font-mono">GET</span>
                             <code className="text-white font-mono text-sm">/x-sentiment</code>
                         </div>
                         <p className="text-sm text-gray-400 pl-16">
@@ -102,7 +102,7 @@ export default function ApiPage() {
 
                     <div className="space-y-2">
                         <div className="flex items-center gap-3">
-                            <span className="bg-green-500/10 text-green-500 px-2 py-1 rounded text-xs font-bold font-mono">GET</span>
+                            <span className="bg-secondary/10 text-secondary px-2 py-1 rounded text-xs font-bold font-mono">GET</span>
                             <code className="text-white font-mono text-sm">/trust-agent</code>
                         </div>
                         <p className="text-sm text-gray-400 pl-16">
@@ -121,7 +121,7 @@ export default function ApiPage() {
 
                     <div className="space-y-2">
                         <div className="flex items-center gap-3">
-                            <span className="bg-blue-500/10 text-blue-500 px-2 py-1 rounded text-xs font-bold font-mono">POST</span>
+                            <span className="bg-neon/10 text-neon px-2 py-1 rounded text-xs font-bold font-mono">POST</span>
                             <code className="text-white font-mono text-sm">/simulate</code>
                         </div>
                         <p className="text-sm text-gray-400 pl-16">
@@ -133,11 +133,11 @@ export default function ApiPage() {
                                 Content-Type: application/json<br />
                                 <br />
                                 {"{"}<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;chainId&quot;</span>: <span className="text-yellow-300">&quot;1&quot;</span>,<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;action&quot;</span>: <span className="text-yellow-300">&quot;native_transfer&quot;</span>,<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;from&quot;</span>: <span className="text-yellow-300">&quot;0xFROM...&quot;</span>,<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;to&quot;</span>: <span className="text-yellow-300">&quot;0xTO...&quot;</span>,<br />
-                                &nbsp;&nbsp;<span className="text-green-400">&quot;value&quot;</span>: <span className="text-yellow-300">&quot;0.05&quot;</span><br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;chainId&quot;</span>: <span className="text-soft">&quot;1&quot;</span>,<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;action&quot;</span>: <span className="text-soft">&quot;native_transfer&quot;</span>,<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;from&quot;</span>: <span className="text-soft">&quot;0xFROM...&quot;</span>,<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;to&quot;</span>: <span className="text-soft">&quot;0xTO...&quot;</span>,<br />
+                                &nbsp;&nbsp;<span className="text-mint">&quot;value&quot;</span>: <span className="text-soft">&quot;0.05&quot;</span><br />
                                 {"}"}
                             </code>
                         </div>
@@ -145,7 +145,7 @@ export default function ApiPage() {
 
                     <div className="space-y-2">
                         <div className="flex items-center gap-3">
-                            <span className="bg-green-500/10 text-green-500 px-2 py-1 rounded text-xs font-bold font-mono">GET</span>
+                            <span className="bg-secondary/10 text-secondary px-2 py-1 rounded text-xs font-bold font-mono">GET</span>
                             <code className="text-white font-mono text-sm">/ca-report/pdf</code>
                         </div>
                         <p className="text-sm text-gray-400 pl-16">

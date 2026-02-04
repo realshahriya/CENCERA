@@ -17,19 +17,19 @@ export default function EntityAnalysisPage() {
 
             <div className="grid gap-6 md:grid-cols-2">
                 <div className="bg-surface border border-white/5 p-6 rounded-xl">
-                    <Search className="w-8 h-8 text-blue-400 mb-4" />
+                    <Search className="w-8 h-8 text-neon mb-4" />
                     <h3 className="text-xl font-bold text-white mb-2">Deep Identification</h3>
                     <p className="text-sm text-gray-400">We resolve identities across multiple vectors: ENS, Lens, Farcaster, and Unstoppable Domains, linking them to real-world entities where known.</p>
                 </div>
 
                 <div className="bg-surface border border-white/5 p-6 rounded-xl">
-                    <Database className="w-8 h-8 text-purple-400 mb-4" />
+                    <Database className="w-8 h-8 text-mint mb-4" />
                     <h3 className="text-xl font-bold text-white mb-2">Token & NFT Metadata</h3>
                     <p className="text-sm text-gray-400">Instantly fetch contract metadata, ownership distribution, and liquidity lock status for any token or NFT collection.</p>
                 </div>
 
                 <div className="bg-surface border border-white/5 p-6 rounded-xl">
-                    <Globe className="w-8 h-8 text-emerald-400 mb-4" />
+                    <Globe className="w-8 h-8 text-secondary mb-4" />
                     <h3 className="text-xl font-bold text-white mb-2">Multi-Chain Support</h3>
                     <p className="text-sm text-gray-400">Unified profile view across EVM chains (Ethereum, Arbitrum, Optimism, Base) and Solana.</p>
                 </div>

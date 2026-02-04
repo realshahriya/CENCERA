@@ -24,8 +24,8 @@ export default function Integration() {
         {
             id: "growth",
             label: "Growth",
-            priceMonthly: "$299",
-            priceAnnual: "$249",
+            priceMonthly: "$310",
+            priceAnnual: "$290",
             priceNote: "per month",
             description: "Ship at scale.",
             alertRate: "1.4%",
