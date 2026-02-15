@@ -1,7 +1,7 @@
- "use client";
+"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { AlertTriangle, ArrowRight, CheckCircle2, ShieldAlert } from "lucide-react";
+import { Warning, ArrowRight, CheckCircle, ShieldWarning } from "phosphor-react";
 import { useMemo, useState } from "react";
 
 export default function DarkForest() {
@@ -71,7 +71,7 @@ export default function DarkForest() {
             : active.verdictTone === "danger"
                 ? "from-danger/40"
                 : "from-mint/40";
-    const Icon = active.verdictTone === "safe" ? CheckCircle2 : active.verdictTone === "danger" ? ShieldAlert : AlertTriangle;
+    const Icon = active.verdictTone === "safe" ? CheckCircle : active.verdictTone === "danger" ? ShieldWarning : Warning;
 
     return (
         <section className="section-padding border-t border-white/5 bg-void relative overflow-hidden">
@@ -115,7 +115,7 @@ export default function DarkForest() {
                                     <div className="font-sans font-bold text-white">Built for Web3 UX</div>
                                     <div className="font-mono text-xs text-gray-500">Explainable decisions users understand</div>
                                 </div>
-                                <ArrowRight className="w-5 h-5 text-neon" />
+                                <ArrowRight className="w-5 h-5 text-neon" weight="bold" />
                             </div>
                         </div>
                     </div>
@@ -138,11 +138,10 @@ export default function DarkForest() {
                                         key={p.id}
                                         type="button"
                                         onClick={() => setActiveId(p.id)}
-                                        className={`px-3 py-1 rounded-full border font-mono text-[10px] sm:text-xs transition-colors ${
-                                            isActive
-                                                ? "border-neon bg-neon/10 text-neon"
-                                                : "border-white/10 text-gray-400 hover:border-neon/50 hover:text-white"
-                                        }`}
+                                        className={`px-3 py-1 rounded-full border font-mono text-[10px] sm:text-xs transition-colors ${isActive
+                                            ? "border-neon bg-neon/10 text-neon"
+                                            : "border-white/10 text-gray-400 hover:border-neon/50 hover:text-white"
+                                            }`}
                                     >
                                         {p.label}
                                     </button>
@@ -161,7 +160,7 @@ export default function DarkForest() {
                                         <div className="font-mono text-xs text-gray-400 mt-1">{active.address}</div>
                                     </div>
                                     <div className={`shrink-0 inline-flex items-center gap-2 px-3 py-1 rounded-full border ${verdictClasses}`}>
-                                        <Icon className="w-4 h-4" strokeWidth={2} />
+                                        <Icon className="w-4 h-4" weight="bold" />
                                         <span className="font-mono text-xs">{active.verdict}</span>
                                     </div>
                                 </div>
@@ -223,7 +222,7 @@ export default function DarkForest() {
                                     <div className="font-mono text-xs text-gray-500">Enforce policy in your transaction flow</div>
                                 </div>
                                 <a href="/docs/quick-start" className="btn-secondary flex items-center gap-2">
-                                    QUICK START <ArrowRight className="w-4 h-4" />
+                                    QUICK START <ArrowRight className="w-4 h-4" weight="bold" />
                                 </a>
                             </div>
                         </div>

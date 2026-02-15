@@ -5,14 +5,14 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "What is Cencera?",
+    question: "What is Agentic Security Intelligence?",
     answer:
-      "Cencera is a trust and safety layer for Web3. We provide real-time risk detection APIs that help wallets, exchanges, and dApps protect users from malicious activity.",
+      "Cencera is the first Agentic Security Intelligence for Web3 platforms. Unlike traditional security tools, our system learns, detects, and predicts security threats in real-time, protecting your users before attacks happen.",
   },
   {
     question: "Who is Cencera for?",
     answer:
-      "Cencera is built for teams shipping Web3 products: consumer wallets, trading platforms, NFT marketplaces, infrastructure providers, and security-focused dApps.",
+      "Cencera is built for security-critical platforms: wallet providers, exchanges & trading platforms, DeFi protocols, stablecoin & token issuers, and institutions entering Web3.",
   },
   {
     question: "How do I integrate the API?",
@@ -22,12 +22,12 @@ const faqs = [
   {
     question: "Which chains do you support?",
     answer:
-      "We focus first on major ecosystems such as EVM chains and Solana, and expand coverage based on demand. Reach out if you need support for a specific network.",
+      "We support 18+ blockchains with coverage across major ecosystems such as EVM chains and Solana. We expand coverage based on demand and ecosystem needs.",
   },
   {
-    question: "Is there a dashboard?",
+    question: "How does behavioral risk analysis work?",
     answer:
-      "Yes. The Cencera dashboard lets you explore risk events, monitor usage, and fine-tune policies. You can access it through the live product link on this page.",
+      "Our system analyzes entity behavior across time, not just single transactions. We identify patterns and track historical behavior to detect emerging threats and unusual activity before they become attacks.",
   },
   {
     question: "How do I get early access or support?",

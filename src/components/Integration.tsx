@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Check, Shield, Activity, Layers } from "lucide-react";
+import { CheckCircle, ShieldCheck, Activity, Stack } from "phosphor-react";
 
 export default function Integration() {
     const reduceMotion = useReducedMotion();
@@ -71,7 +71,7 @@ export default function Integration() {
                     <div className="space-y-4">
                         <div className="flex items-start gap-4">
                             <div className="w-10 h-10 rounded bg-gradient-to-br from-neon to-neon/70 flex items-center justify-center text-black flex-shrink-0">
-                                <Shield className="w-5 h-5" strokeWidth={2} />
+                                <ShieldCheck className="w-5 h-5" weight="bold" />
                             </div>
                             <div>
                                 <h5 className="font-sans font-bold text-sm sm:text-base">Policy-Ready Signals</h5>
@@ -82,7 +82,7 @@ export default function Integration() {
                         </div>
                         <div className="flex items-start gap-4">
                             <div className="w-10 h-10 rounded bg-surface border border-neon/50 flex items-center justify-center text-neon flex-shrink-0">
-                                <Layers className="w-5 h-5" strokeWidth={2} />
+                                <Stack className="w-5 h-5" weight="bold" />
                             </div>
                             <div>
                                 <h5 className="font-sans font-bold text-sm sm:text-base">Composable Coverage</h5>
@@ -93,7 +93,7 @@ export default function Integration() {
                         </div>
                         <div className="flex items-start gap-4">
                             <div className="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center text-white flex-shrink-0">
-                                <Activity className="w-5 h-5" strokeWidth={2} />
+                                <Activity className="w-5 h-5" weight="bold" />
                             </div>
                             <div>
                                 <h5 className="font-sans font-bold text-sm sm:text-base">Always-On Monitoring</h5>
@@ -154,11 +154,10 @@ export default function Integration() {
                                     viewport={{ once: true, amount: 0.25 }}
                                     transition={{ delay: index * 0.06, duration: 0.45, ease: "easeOut" }}
                                     whileHover={reduceMotion ? undefined : { y: -2 }}
-                                    className={`h-full text-left card-surface p-6 sm:p-7 shadow-2xl transition-colors ${
-                                        isFeatured
-                                            ? "border-neon/50 bg-neon/5"
-                                            : "border-white/10 bg-surface"
-                                    }`}
+                                    className={`h-full text-left card-surface p-6 sm:p-7 shadow-2xl transition-colors ${isFeatured
+                                        ? "border-neon/50 bg-neon/5"
+                                        : "border-white/10 bg-surface"
+                                        }`}
                                 >
                                     <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-2">
                                         <div className="min-w-0">
@@ -191,7 +190,7 @@ export default function Integration() {
                                     <div className="mt-4 grid gap-2">
                                         {tier.bullets.map((b) => (
                                             <div key={b} className="flex items-center gap-2 font-mono text-[11px] sm:text-xs text-gray-300">
-                                                <Check className="w-4 h-4 text-neon" strokeWidth={2} />
+                                                <CheckCircle className="w-4 h-4 text-neon" weight="bold" />
                                                 <span>{b}</span>
                                             </div>
                                         ))}
@@ -203,7 +202,7 @@ export default function Integration() {
 
                     <div className="mt-4 rounded-2xl border border-white/10 bg-black/30 p-4 sm:p-5">
                         <div className="flex items-center gap-3 text-white mb-3">
-                            <Layers className="w-5 h-5 text-neon" strokeWidth={2} />
+                            <Stack className="w-5 h-5 text-neon" weight="bold" />
                             <span className="font-sans font-bold text-sm sm:text-base">Primary Use Cases</span>
                         </div>
                         <div className="flex flex-wrap gap-2 text-[10px] sm:text-xs font-mono">

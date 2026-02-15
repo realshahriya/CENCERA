@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { List, X } from "phosphor-react";
 import { useState } from "react";
 
 export default function Header() {
@@ -35,7 +35,7 @@ export default function Header() {
                     className="md:hidden w-10 h-10 flex items-center justify-center text-white hover:text-neon transition-colors"
                     aria-label="Toggle menu"
                 >
-                    {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                    {mobileMenuOpen ? <X className="w-6 h-6" weight="bold" /> : <List className="w-6 h-6" weight="bold" />}
                 </button>
             </nav>
 

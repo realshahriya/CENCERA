@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Linkedin, Book } from "lucide-react";
+import { GithubLogo, LinkedinLogo, BookOpen } from "phosphor-react";
 import Image from "next/image";
 const XIcon = ({ className }: { className?: string }) => (
     <svg
@@ -106,13 +106,13 @@ export default function Footer() {
                         <TelegramIcon className="w-4 h-4" />
                     </a>
                     <a href="https://github.com/cencera-xyz" className="hover:text-white transition-colors flex items-center gap-2">
-                        <Github className="w-4 h-4" strokeWidth={1.5} />
+                        <GithubLogo className="w-4 h-4" weight="bold" />
                     </a>
                     <a href="https://www.linkedin.com/company/cenceraxyz/" className="hover:text-white transition-colors flex items-center gap-2">
-                        <Linkedin className="w-4 h-4" strokeWidth={1.5} />
+                        <LinkedinLogo className="w-4 h-4" weight="bold" />
                     </a>
                     <a href="/docs" className="hover:text-white transition-colors flex items-center gap-2">
-                        <Book className="w-4 h-4" strokeWidth={1.5} />
+                        <BookOpen className="w-4 h-4" weight="bold" />
                     </a>
                 </div>
             </div>

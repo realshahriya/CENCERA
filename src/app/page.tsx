@@ -8,6 +8,7 @@ import Roadmap from "../components/Roadmap";
 import Faq from "../components/Faq";
 import NetworkStats from "../components/NetworkStats";
 import Footer from "../components/Footer";
+import WhoItsFor from "../components/WhoItsFor";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <TrustPipeline />
       <DarkForest />
       <Integration />
+      <WhoItsFor />
       <Roadmap />
       <Faq />
       <NetworkStats />

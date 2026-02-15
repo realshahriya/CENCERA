@@ -1,7 +1,7 @@
- "use client";
+"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { CheckCircle2, Circle } from "lucide-react";
+import { CheckCircle, Circle } from "phosphor-react";
 
 export default function Roadmap() {
     const reduceMotion = useReducedMotion();
@@ -38,7 +38,7 @@ export default function Roadmap() {
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-4">
                                 <div className="w-8 h-8 rounded-full bg-neon/20 flex items-center justify-center">
-                                    <CheckCircle2 className="w-5 h-5 text-neon" strokeWidth={2} />
+                                    <CheckCircle className="w-5 h-5 text-neon" weight="bold" />
                                 </div>
                                 <span className="font-mono text-[10px] sm:text-xs text-gray-500">Q4 2025</span>
                             </div>
@@ -72,7 +72,7 @@ export default function Roadmap() {
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 mb-4">
                                 <div className="w-8 h-8 rounded-full bg-mint/20 flex items-center justify-center">
-                                    <CheckCircle2 className="w-5 h-5 text-mint" strokeWidth={2} />
+                                    <CheckCircle className="w-5 h-5 text-mint" weight="bold" />
                                 </div>
                                 <span className="font-mono text-[10px] sm:text-xs text-gray-500">Q1 2026</span>
                             </div>
