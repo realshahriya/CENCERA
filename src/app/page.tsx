@@ -3,7 +3,6 @@ import Hero from "../components/Hero";
 import Features from "../components/Features";
 import TrustPipeline from "../components/TrustPipeline";
 import DarkForest from "../components/DarkForest";
-import Integration from "../components/Integration";
 import Roadmap from "../components/Roadmap";
 import Faq from "../components/Faq";
 import NetworkStats from "../components/NetworkStats";
@@ -18,7 +17,6 @@ export default function Home() {
       <Features />
       <TrustPipeline />
       <DarkForest />
-      <Integration />
       <WhoItsFor />
       <Roadmap />
       <Faq />
