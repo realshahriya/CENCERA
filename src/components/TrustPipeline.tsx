@@ -52,6 +52,7 @@ export default function TrustPipeline() {
 
     return (
         <section
+            id="trust"
             className="section-padding border-t border-white/5 bg-void relative overflow-hidden"
         >
             <div className="section-container">

@@ -74,7 +74,7 @@ export default function DarkForest() {
     const Icon = active.verdictTone === "safe" ? CheckCircle : active.verdictTone === "danger" ? ShieldWarning : Warning;
 
     return (
-        <section className="section-padding border-t border-white/5 bg-void relative overflow-hidden">
+        <section id="darkforest" className="section-padding border-t border-white/5 bg-void relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(146,220,229,0.12),transparent_55%),radial-gradient(circle_at_78%_70%,rgba(136,213,181,0.10),transparent_55%)]" />
 
             <div className="section-container grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">

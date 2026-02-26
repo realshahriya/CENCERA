@@ -6,7 +6,7 @@ export default function NetworkStats() {
     const reduceMotion = useReducedMotion();
 
     return (
-        <section className="section-padding border-t border-b border-white/5 bg-void relative">
+        <section id="stats" className="section-padding border-t border-b border-white/5 bg-void relative">
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 bg-repeat bg-[length:100px_100px]"></div>
             <div className="pointer-events-none absolute inset-0 opacity-70">
                 <svg className="w-full h-full" viewBox="0 0 1200 520" fill="none" preserveAspectRatio="xMidYMid slice">

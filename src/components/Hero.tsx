@@ -83,7 +83,7 @@ export default function Hero() {
             <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[100] mix-blend-overlay opacity-20" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/carbon-fibre.png')" }}></div>
             <div className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-void via-neon to-void z-[101]"></div>
 
-            <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-void section-padding pt-24 sm:pt-28">
+            <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-void section-padding pt-24 sm:pt-28">
                 {/* Solid gray base with grid spotlight effect */}
                 <div className="absolute inset-0 bg-void" />
 
