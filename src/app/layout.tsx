@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
 import ScrollGuideClient from "../components/ScrollGuideClient";
+import SmoothScroll from "../components/SmoothScroll";
+import CanvasBackground from "../components/CanvasBackground";
 
 const poppins = Poppins({
   variable: "--font-sans",
@@ -79,8 +81,13 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${montserrat.variable} antialiased selection:bg-neon selection:text-void`}
       >
-        {children}
-        <ScrollGuideClient />
+        <SmoothScroll>
+          <CanvasBackground />
+          <div className="relative z-50">
+            {children}
+            <ScrollGuideClient />
+          </div>
+        </SmoothScroll>
       </body>
     </html>
   );

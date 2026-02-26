@@ -1,111 +1,67 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+const stats = [
+    { target: 18, label: "Blockchains Supported", suffix: "+" },
+    { target: 120, label: "Average Latency (ms)", suffix: "ms" },
+    { target: 12, label: "Wallets Monitored (Millions)", suffix: "M+" },
+    { target: 5, label: "Tokens Tracked (Millions)", suffix: "M+" },
+];
 
 export default function NetworkStats() {
-    const reduceMotion = useReducedMotion();
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const metricNums = document.querySelectorAll('.metric__num');
+        metricNums.forEach(el => {
+            const target = Number(el.getAttribute('data-count'));
+            gsap.fromTo(el, { textContent: 0 }, {
+                textContent: target,
+                duration: 2,
+                ease: 'power2.out',
+                snap: { textContent: 1 },
+                scrollTrigger: { trigger: el, start: 'top 85%' },
+                onUpdate: function () {
+                    // Update text to include the suffix
+                    const num = Math.round(Number(this.targets()[0].textContent));
+                    const suffix = el.getAttribute('data-suffix');
+                    this.targets()[0].innerHTML = num + (suffix || "");
+                }
+            });
+        });
+
+        const metrics = document.querySelectorAll('.metric');
+        metrics.forEach((m, i) => {
+            gsap.fromTo(m,
+                { y: 30, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.7, delay: i * 0.1, ease: 'power2.out',
+                    scrollTrigger: { trigger: m, start: 'top 90%' }
+                }
+            );
+        });
+    }, []);
 
     return (
-        <section id="stats" className="section-padding border-t border-b border-white/5 bg-void relative">
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 bg-repeat bg-[length:100px_100px]"></div>
-            <div className="pointer-events-none absolute inset-0 opacity-70">
-                <svg className="w-full h-full" viewBox="0 0 1200 520" fill="none" preserveAspectRatio="xMidYMid slice">
-                    <motion.path
-                        d="M80 280 C240 120 360 420 520 260 C680 100 820 420 980 260 C1060 180 1120 170 1160 210"
-                        stroke="rgba(146, 220, 229, 0.16)"
-                        strokeWidth="2"
-                        initial={{ pathLength: reduceMotion ? 1 : 0 }}
-                        whileInView={{ pathLength: 1 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={reduceMotion ? { duration: 0 } : { duration: 2.2, ease: "easeOut" }}
-                    />
-                    <motion.path
-                        d="M60 360 C240 220 340 420 520 320 C700 220 860 380 1040 300"
-                        stroke="rgba(136, 213, 181, 0.14)"
-                        strokeWidth="2"
-                        initial={{ pathLength: reduceMotion ? 1 : 0 }}
-                        whileInView={{ pathLength: 1 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={reduceMotion ? { duration: 0 } : { delay: 0.08, duration: 2.0, ease: "easeOut" }}
-                    />
-                    {[
-                        { cx: 170, cy: 220, r: 6, fill: "rgba(146, 220, 229, 0.55)" },
-                        { cx: 420, cy: 280, r: 7, fill: "rgba(146, 220, 229, 0.35)" },
-                        { cx: 660, cy: 220, r: 6, fill: "rgba(136, 213, 181, 0.35)" },
-                        { cx: 860, cy: 310, r: 7, fill: "rgba(146, 220, 229, 0.45)" },
-                        { cx: 1020, cy: 260, r: 6, fill: "rgba(136, 213, 181, 0.30)" }
-                    ].map((n, i) => (
-                        <motion.circle
-                            key={i}
-                            cx={n.cx}
-                            cy={n.cy}
-                            r={n.r}
-                            fill={n.fill}
-                            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.75 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true, amount: 0.35 }}
-                            transition={reduceMotion ? { duration: 0 } : { delay: 0.18 + i * 0.05, duration: 0.35, ease: "easeOut" }}
-                        />
+        <section className="metrics section bg-transparent relative z-10" id="metrics">
+            <div className="container">
+                <div className="metrics__grid cap-card p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
+                    {stats.map((stat, i) => (
+                        <div className="metric flex-1 w-full flex flex-col items-center justify-center text-center pt-8 md:pt-0 first:pt-0" key={i}>
+                            <span
+                                className="metric__num font-display font-bold text-4xl sm:text-5xl md:text-6xl text-white mb-2"
+                                data-count={stat.target}
+                                data-suffix={stat.suffix}
+                            >
+                                0{stat.suffix}
+                            </span>
+                            <span className="metric__label font-mono text-sm text-gray-400">{stat.label}</span>
+                        </div>
                     ))}
-                </svg>
-            </div>
-
-            <div className="section-container text-center">
-                <motion.h2
-                    initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.45, ease: "easeOut" }}
-                    className="section-title text-2xl sm:text-3xl mb-8 sm:mb-12"
-                >
-                    SYSTEM METRICS
-                </motion.h2>
-
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
-                    {/* Stats 1 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.35 }}
-                        transition={{ duration: 0.45, ease: "easeOut" }}
-                        className="bg-void/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
-                    >
-                        <p className="font-mono text-[10px] sm:text-xs text-gray-500 mb-2">BLOCKCHAINS</p>
-                        <p className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white group-hover:text-neon transition-colors">18+</p>
-                    </motion.div>
-                    {/* Stats 2 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.35 }}
-                        transition={{ delay: 0.05, duration: 0.45, ease: "easeOut" }}
-                        className="bg-void/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
-                    >
-                        <p className="font-mono text-[10px] sm:text-xs text-gray-500 mb-2">UPTIME</p>
-                        <p className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white group-hover:text-safe transition-colors">120ms</p>
-                    </motion.div>
-                    {/* Stats 3 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.35 }}
-                        transition={{ delay: 0.1, duration: 0.45, ease: "easeOut" }}
-                        className="bg-void/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
-                    >
-                        <p className="font-mono text-[10px] sm:text-xs text-gray-500 mb-2">WALLETS</p>
-                        <p className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white group-hover:text-mint transition-colors">12M+</p>
-                    </motion.div>
-                    {/* Stats 4 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.35 }}
-                        transition={{ delay: 0.15, duration: 0.45, ease: "easeOut" }}
-                        className="bg-void/80 p-4 sm:p-6 md:p-8 group hover:bg-white/5 transition-colors"
-                    >
-                        <p className="font-mono text-[10px] sm:text-xs text-gray-500 mb-2">TOKENS</p>
-                        <p className="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white group-hover:text-neon transition-colors">5M+</p>
-                    </motion.div>
                 </div>
             </div>
         </section>

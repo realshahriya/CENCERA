@@ -5,131 +5,151 @@ import { motion, useSpring, useMotionValue, AnimatePresence } from "framer-motio
 
 // ── Section config ────────────────────────────────────────────────
 const SECTIONS = [
-    { id: "hero", label: "Home", quip: "Welcome! I'll guide you 👋", mood: "happy" },
-    { id: "features", label: "Intelligence", quip: "Threats never sleep. Neither do I. ⚡", mood: "alert" },
-    { id: "trust", label: "Trust Pipeline", quip: "Analyzing... trust confirmed ✓", mood: "scanning" },
-    { id: "darkforest", label: "Risk Reports", quip: "I see danger you can't see. 🔍", mood: "danger" },
-    { id: "who-its-for", label: "Who It's For", quip: "Built for those who protect.", mood: "happy" },
-    { id: "roadmap", label: "Roadmap", quip: "The future is already mapped.", mood: "scanning" },
-    { id: "faq", label: "FAQ", quip: "Ask me anything! I know everything.", mood: "happy" },
-    { id: "stats", label: "Network Stats", quip: "Numbers don't lie. Trust me.", mood: "alert" },
+    { id: "hero", label: "Home", quip: "Hi there! I'm your guide ✨", mood: "wave" },
+    { id: "capabilities", label: "Intelligence", quip: "Threats never sleep. But I do sometimes... 💤", mood: "sleepy" },
+    { id: "process", label: "Trust Pipeline", quip: "Analyzing... oh, you're safe! 💚", mood: "love" },
+    { id: "darkforest", label: "Risk Reports", quip: "Wait, did you see that?! 😰", mood: "danger" },
+    { id: "who-its-for", label: "Who It's For", quip: "We protect the best builders.", mood: "happy" },
+    { id: "roadmap", label: "Roadmap", quip: "Hmm, mapping the future... 🤔", mood: "confused" },
+    { id: "faq", label: "FAQ", quip: "Ask me! I love questions! 🤩", mood: "excited" },
+    { id: "metrics", label: "Network Stats", quip: "Look at those numbers... whoa.", mood: "alert" },
 ];
 
-type Mood = "happy" | "alert" | "scanning" | "danger" | "excited" | "wave";
+type Mood = "happy" | "alert" | "scanning" | "danger" | "excited" | "wave" | "sleepy" | "love" | "confused";
 const NEON = "#92DCE5";
 const GLOW = `drop-shadow(0 0 6px ${NEON})`;
 
-// ── Bot SVG Face ─────────────────────────────────────────────────
+// ── Cute Bot SVG ─────────────────────────────────────────────────
 function BotFace({ mood, glowing, lookX, lookY, near }: {
     mood: Mood; glowing: boolean; lookX: number; lookY: number; near: boolean;
 }) {
-    const px = lookX * 2.5;
-    const py = lookY * 2;
+    const px = lookX * 3;
+    const py = lookY * 4;
 
     const eyes = () => {
         if (mood === "danger") return (
             <>
-                <line x1="11" y1="25" x2="19" y2="31" stroke={NEON} strokeWidth="2.2" strokeLinecap="round" style={{ filter: GLOW }} />
-                <line x1="19" y1="25" x2="11" y2="31" stroke={NEON} strokeWidth="2.2" strokeLinecap="round" style={{ filter: GLOW }} />
-                <line x1="29" y1="25" x2="37" y2="31" stroke={NEON} strokeWidth="2.2" strokeLinecap="round" style={{ filter: GLOW }} />
-                <line x1="37" y1="25" x2="29" y2="31" stroke={NEON} strokeWidth="2.2" strokeLinecap="round" style={{ filter: GLOW }} />
+                <motion.path d="M 12 18 L 18 22" stroke={NEON} strokeWidth="2.5" strokeLinecap="round" />
+                <motion.path d="M 28 22 L 34 18" stroke={NEON} strokeWidth="2.5" strokeLinecap="round" />
+                <circle cx="15" cy="25" r="3" fill={NEON} />
+                <circle cx="31" cy="25" r="3" fill={NEON} />
             </>
         );
-        if (mood === "scanning") return (
+        if (mood === "sleepy") return (
             <>
-                <rect x="10" y="26" width="10" height="4" rx="2" fill="rgba(146,220,229,0.12)" stroke={NEON} strokeWidth="0.7" />
-                <motion.rect x="10" y="26" width="4" height="4" rx="2" fill={NEON} opacity="0.7"
-                    animate={{ x: [10, 16, 10] }} transition={{ duration: 1.1, repeat: Infinity, ease: "linear" }} />
-                <rect x="28" y="26" width="10" height="4" rx="2" fill="rgba(146,220,229,0.12)" stroke={NEON} strokeWidth="0.7" />
-                <motion.rect x="28" y="26" width="4" height="4" rx="2" fill={NEON} opacity="0.7"
-                    animate={{ x: [28, 34, 28] }} transition={{ duration: 1.1, repeat: Infinity, ease: "linear", delay: 0.3 }} />
+                <path d="M 11 25 Q 15 28 19 25" fill="none" stroke={NEON} strokeWidth="2.5" strokeLinecap="round" opacity="0.6" />
+                <path d="M 27 25 Q 31 28 35 25" fill="none" stroke={NEON} strokeWidth="2.5" strokeLinecap="round" opacity="0.6" />
+                <motion.text x="32" y="14" fontSize="10" fill={NEON} animate={{ opacity: [0, 1, 0], y: [0, -5, -10] }} transition={{ duration: 2, repeat: Infinity }}>z</motion.text>
+                <motion.text x="38" y="8" fontSize="14" fill={NEON} animate={{ opacity: [0, 1, 0], y: [0, -5, -10] }} transition={{ duration: 2, delay: 0.5, repeat: Infinity }}>Z</motion.text>
+            </>
+        );
+        if (mood === "love") return (
+            <>
+                <motion.path d="M 15 21 C 15 21 12 18 10 20 C 8 22 10 26 15 29 C 20 26 22 22 20 20 C 18 18 15 21 15 21 Z" fill={NEON} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
+                <motion.path d="M 31 21 C 31 21 28 18 26 20 C 24 22 26 26 31 29 C 36 26 38 22 36 20 C 34 18 31 21 31 21 Z" fill={NEON} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1.5, delay: 0.2, repeat: Infinity }} />
             </>
         );
         if (mood === "excited") return (
             <>
-                <motion.text x="10" y="32" fontSize="10" fill={NEON} style={{ filter: GLOW }}>★</motion.text>
-                <motion.text x="28" y="32" fontSize="10" fill={NEON} style={{ filter: GLOW }}>★</motion.text>
+                <path d="M 11 26 L 15 20 L 19 26 L 15 23 Z" fill={NEON} />
+                <path d="M 27 26 L 31 20 L 35 26 L 31 23 Z" fill={NEON} />
+                <motion.circle cx="15" cy="20" r="1.5" fill="white" animate={{ opacity: [0, 1, 0] }} transition={{ duration: 0.5, repeat: Infinity }} />
+                <motion.circle cx="31" cy="20" r="1.5" fill="white" animate={{ opacity: [0, 1, 0] }} transition={{ duration: 0.6, repeat: Infinity }} />
             </>
         );
-        // happy / alert / wave — look at cursor
+        if (mood === "confused") return (
+            <>
+                <circle cx={14 + px} cy={24 + py} r="4" fill={NEON} />
+                <circle cx={32 + px} cy={24 + py} r="2.5" fill={NEON} />
+                <path d="M 11 18 Q 14 15 17 18" fill="none" stroke={NEON} strokeWidth="2" strokeLinecap="round" />
+                <path d="M 29 19 Q 32 17 35 19" fill="none" stroke={NEON} strokeWidth="2" strokeLinecap="round" />
+            </>
+        );
+        if (mood === "scanning") return (
+            <>
+                <rect x="10" y="23" width="10" height="4" rx="2" fill="rgba(146,220,229,0.2)" />
+                <motion.rect x="10" y="23" width="4" height="4" rx="2" fill={NEON} animate={{ x: [10, 16, 10] }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }} />
+                <rect x="26" y="23" width="10" height="4" rx="2" fill="rgba(146,220,229,0.2)" />
+                <motion.rect x="26" y="23" width="4" height="4" rx="2" fill={NEON} animate={{ x: [26, 32, 26] }} transition={{ duration: 1, repeat: Infinity, ease: "linear", delay: 0.2 }} />
+            </>
+        );
+        // Default happy/alert/wave
         return (
             <>
-                <circle cx="15" cy="28" r={near ? 5.5 : 5} fill="#111" stroke="rgba(146,220,229,0.2)" strokeWidth="0.8" />
-                <circle cx={15 + px} cy={28 + py} r={near ? 3.2 : 2.8} fill={NEON} style={{ filter: GLOW }} />
-                <circle cx={15 + px + 1} cy={28 + py - 1} r="0.8" fill="white" opacity="0.8" />
+                <circle cx={15 + px} cy={24 + py} r={near ? 4.5 : 3.5} fill={NEON} />
+                <circle cx={15 + px + 1} cy={24 + py - 1} r="1.5" fill="white" opacity="0.8" />
 
-                <circle cx="33" cy="28" r={near ? 5.5 : 5} fill="#111" stroke="rgba(146,220,229,0.2)" strokeWidth="0.8" />
-                <circle cx={33 + px} cy={28 + py} r={near ? 3.2 : 2.8} fill={NEON} style={{ filter: GLOW }} />
-                <circle cx={33 + px + 1} cy={28 + py - 1} r="0.8" fill="white" opacity="0.8" />
+                <circle cx={31 + px} cy={24 + py} r={near ? 4.5 : 3.5} fill={NEON} />
+                <circle cx={31 + px + 1} cy={24 + py - 1} r="1.5" fill="white" opacity="0.8" />
 
-                {mood === "alert" && (
+                {mood === "wave" || mood === "happy" ? (
                     <>
-                        <path d="M 10 24 L 15 27 L 20 24" stroke={NEON} strokeWidth="1.2" fill="none" strokeLinecap="round" opacity="0.5" />
-                        <path d="M 28 24 L 33 27 L 38 24" stroke={NEON} strokeWidth="1.2" fill="none" strokeLinecap="round" opacity="0.5" />
+                        <path d="M 12 18 Q 15 15 18 18" fill="none" stroke={NEON} strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
+                        <path d="M 28 18 Q 31 15 34 18" fill="none" stroke={NEON} strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
                     </>
-                )}
+                ) : null}
             </>
         );
     };
 
     const mouth = () => {
-        if (mood === "happy" || mood === "wave" || mood === "excited")
-            return <path d={near ? "M 16 38 Q 24 44 32 38" : "M 16 38 Q 24 42 32 38"}
-                stroke={NEON} strokeWidth="1.8" fill="none" strokeLinecap="round" opacity="0.85" />;
-        if (mood === "alert")
-            return <path d="M 16 39 L 32 39" stroke={NEON} strokeWidth="1.8" strokeLinecap="round" opacity="0.75" />;
-        if (mood === "scanning")
-            return <rect x="14" y="37" width="20" height="4" rx="2" fill="none" stroke={NEON} strokeWidth="0.8" opacity="0.5" />;
-        if (mood === "danger")
-            return <path d="M 16 42 Q 24 37 32 42" stroke={NEON} strokeWidth="1.8" fill="none" strokeLinecap="round" opacity="0.85" />;
-        return null;
+        if (mood === "sleepy") return <circle cx="23" cy="33" r="2" fill="none" stroke={NEON} strokeWidth="1.5" opacity="0.5" />;
+        if (mood === "danger") return <path d="M 19 35 Q 23 31 27 35" stroke={NEON} strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.8" />;
+        if (mood === "confused") return <path d="M 20 34 L 23 34 L 26 32" stroke={NEON} strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.8" />;
+        if (mood === "excited" || mood === "happy" || mood === "wave" || mood === "love")
+            return <path d={near ? "M 18 32 Q 23 38 28 32" : "M 19 32 Q 23 36 27 32"} stroke={NEON} strokeWidth="2.5" fill="none" strokeLinecap="round" />;
+        if (mood === "alert") return <line x1="20" y1="33" x2="26" y2="33" stroke={NEON} strokeWidth="2" strokeLinecap="round" opacity="0.8" />;
+        return null; // scanning has no mouth
     };
 
     return (
-        <svg viewBox="0 0 48 60" width="60" height="76" fill="none" xmlns="http://www.w3.org/2000/svg"
-            style={{
-                filter: glowing
-                    ? "drop-shadow(0 0 14px rgba(146,220,229,0.5))"
-                    : "drop-shadow(0 0 5px rgba(0,0,0,0.7))"
-            }}>
-            {/* Antenna */}
-            <line x1="24" y1="0" x2="24" y2="8" stroke={NEON} strokeWidth="1.6" strokeLinecap="round" />
-            <motion.circle cx="24" cy="3.5" r="2.5" fill={NEON}
-                animate={{ opacity: [1, 0.2, 1], r: [2.5, 3.2, 2.5] }}
-                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-                style={{ filter: GLOW }} />
+        <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        >
+            <svg viewBox="0 0 46 54" width="56" height="66" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style={{
+                    filter: glowing
+                        ? `drop-shadow(0 0 16px ${NEON}66)`
+                        : "drop-shadow(0 8px 16px rgba(0,0,0,0.4))"
+                }}>
 
-            {/* Neck */}
-            <rect x="20" y="8" width="8" height="5" rx="1.5" fill="#141414" stroke="rgba(146,220,229,0.25)" strokeWidth="0.8" />
+                {/* Cute Antenna */}
+                <path d="M 23 4 L 23 10" stroke={NEON} strokeWidth="3" strokeLinecap="round" />
+                <motion.circle cx="23" cy="4" r="3.5" fill={NEON}
+                    animate={{ opacity: [1, 0.6, 1], scale: [1, 1.25, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }} style={{ filter: GLOW }} />
 
-            {/* Head */}
-            <path d="M 4 16 L 44 16 L 46 19 L 46 46 L 44 48 L 4 48 L 2 46 L 2 19 Z"
-                fill="#0e0e0e" stroke="rgba(146,220,229,0.3)" strokeWidth="1.2" />
-            <rect x="7" y="19" width="34" height="27" rx="2" fill="rgba(146,220,229,0.02)" />
+                {/* Main Orb Body */}
+                <rect x="4" y="10" width="38" height="36" rx="18" fill="rgba(18, 18, 18, 1)" stroke="rgba(146,220,229,0.7)" strokeWidth="2" />
+                <rect x="5" y="11" width="36" height="34" rx="17" fill="url(#glass)" />
 
-            {/* Screws */}
-            {[[7, 19], [41, 19], [7, 46], [41, 46]].map(([cx, cy], i) => (
-                <circle key={i} cx={cx} cy={cy} r="1.2" fill="rgba(146,220,229,0.2)" />
-            ))}
+                {/* Cheeks */}
+                {(mood === "happy" || mood === "love" || mood === "excited" || mood === "wave") && (
+                    <>
+                        <ellipse cx="10" cy="28" rx="3" ry="2" fill={NEON} opacity="0.6" style={{ filter: GLOW }} />
+                        <ellipse cx="36" cy="28" rx="3" ry="2" fill={NEON} opacity="0.6" style={{ filter: GLOW }} />
+                    </>
+                )}
 
-            {eyes()}
-            {mouth()}
+                {eyes()}
+                {mouth()}
 
-            {/* Wave arm */}
-            {mood === "wave" && (
-                <motion.g
-                    animate={{ rotate: [-15, 20, -15] }}
-                    transition={{ duration: 0.35, repeat: 5, ease: "easeInOut" }}
-                    style={{ transformOrigin: "44px 32px" }}>
-                    <line x1="44" y1="32" x2="52" y2="23" stroke={NEON} strokeWidth="2" strokeLinecap="round" style={{ filter: GLOW }} />
-                    <circle cx="53" cy="22" r="2" fill={NEON} style={{ filter: GLOW }} />
-                </motion.g>
-            )}
+                {/* Floating Ring / Base */}
+                <ellipse cx="23" cy="50" rx="12" ry="2" fill="none" stroke={NEON} strokeWidth="1" opacity="0.3" />
+                <motion.ellipse cx="23" cy="50" rx="4" ry="1" fill={NEON} opacity="0.5"
+                    animate={{ rx: [4, 10, 4], opacity: [0.5, 0.1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity }} />
 
-            {/* Chin */}
-            <rect x="15" y="48" width="18" height="7" rx="2.5" fill="#0e0e0e" stroke="rgba(146,220,229,0.2)" strokeWidth="0.8" />
-            <line x1="18" y1="51.5" x2="30" y2="51.5" stroke="rgba(146,220,229,0.3)" strokeWidth="0.8" strokeLinecap="round" />
-        </svg>
+                {/* Definitions */}
+                <defs>
+                    <linearGradient id="glass" x1="4" y1="10" x2="42" y2="46" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stopColor="white" stopOpacity="0.1" />
+                        <stop offset="100%" stopColor="white" stopOpacity="0" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </motion.div>
     );
 }
 
@@ -139,8 +159,8 @@ export default function ScrollGuide() {
     const targetX = useMotionValue(0);
     const targetY = useMotionValue(0);
 
-    const springX = useSpring(targetX, { stiffness: 30, damping: 15, mass: 1.1 });
-    const springY = useSpring(targetY, { stiffness: 30, damping: 15, mass: 1.1 });
+    const springX = useSpring(targetX, { stiffness: 80, damping: 20, mass: 0.8 });
+    const springY = useSpring(targetY, { stiffness: 80, damping: 20, mass: 0.8 });
 
     const [mounted, setMounted] = useState(false);
     const [mood, setMood] = useState<Mood>("happy");
@@ -183,15 +203,23 @@ export default function ScrollGuide() {
 
     function startIdle() {
         stopIdle();
-        const cx = botPos.current.x;
-        const cy = botPos.current.y;
-        const r = 50;
 
         function wander() {
-            idleAngle.current += 0.012;
+            idleAngle.current += 0.004;
             const t = idleAngle.current;
-            const nx = Math.max(50, Math.min(cx + Math.sin(t) * r, window.innerWidth - 100));
-            const ny = Math.max(50, Math.min(cy + Math.sin(t * 2) * (r / 2), window.innerHeight - 120));
+
+            // Full viewport wandering using Lissajous-like smooth curves
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            const cx = w / 2;
+            const cy = h / 2;
+            const ampX = cx - 80; // Keep away from edges
+            const ampY = cy - 100;
+
+            // Complex smooth path exploring the whole screen
+            const nx = cx + Math.sin(t) * ampX * Math.sin(t * 0.4);
+            const ny = cy + Math.cos(t * 1.3) * ampY * Math.cos(t * 0.6);
+
             targetX.set(nx);
             targetY.set(ny);
             idleRaf.current = requestAnimationFrame(wander);
@@ -223,10 +251,10 @@ export default function ScrollGuide() {
         function onMouseMove(e: MouseEvent) {
             const now = Date.now();
 
-            // Bot trails the cursor by an offset
-            const OX = 55, OY = 65;
-            const tx = Math.max(50, Math.min(e.clientX + OX, window.innerWidth - 100));
-            const ty = Math.max(50, Math.min(e.clientY + OY, window.innerHeight - 120));
+            // Bot trails the cursor closer
+            const OX = 35, OY = 45;
+            const tx = Math.max(30, Math.min(e.clientX + OX, window.innerWidth - 60));
+            const ty = Math.max(30, Math.min(e.clientY + OY, window.innerHeight - 80));
             targetX.set(tx);
             targetY.set(ty);
 

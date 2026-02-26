@@ -5,7 +5,7 @@ export default function QuickStartPage() {
         <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
 
             <div className="space-y-6 border-b border-white/10 pb-8">
-                <h1 className="text-4xl md:text-5xl font-sans font-bold tracking-tighter text-white">
+                <h1 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-white">
                     Quick <span className="text-neon">Start</span>
                 </h1>
                 <p className="text-lg text-gray-400 max-w-2xl font-light leading-relaxed">

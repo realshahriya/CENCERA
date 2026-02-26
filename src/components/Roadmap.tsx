@@ -1,166 +1,138 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { CheckCircle, Circle } from "phosphor-react";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CircleCheck as CheckCircle, Circle } from "lucide-react";
 
 export default function Roadmap() {
-    const reduceMotion = useReducedMotion();
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const items = document.querySelectorAll('.timeline-item');
+        items.forEach((item, i) => {
+            gsap.fromTo(item,
+                { y: 50, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.8, delay: i * 0.1, ease: 'power2.out',
+                    scrollTrigger: { trigger: item, start: 'top 85%' }
+                }
+            );
+        });
+
+        // Animate the line
+        gsap.fromTo('.timeline-line-glow',
+            { height: 0 },
+            {
+                height: '100%',
+                duration: 2,
+                ease: 'power2.out',
+                scrollTrigger: { trigger: '.timeline-container', start: 'top 80%', end: 'bottom 80%', scrub: 1 }
+            }
+        );
+    }, []);
+
+    const phases = [
+        {
+            quarter: "Q4 2025",
+            title: "Phase 1: Foundation",
+            color: "text-neon",
+            icon: <CheckCircle className="w-4 h-4 mt-1 text-neon" />,
+            status: "completed",
+            items: [
+                "Team Building & Research",
+                "System Architecture Design",
+                "Core Engine Prototypes"
+            ]
+        },
+        {
+            quarter: "Q1 2026",
+            title: "Phase 2: Testnet",
+            color: "text-mint",
+            icon: <CheckCircle className="w-4 h-4 mt-1 text-mint" />,
+            status: "in-progress",
+            items: [
+                "Public Testnet Launch",
+                "Key Infrastructure Partnerships"
+            ]
+        },
+        {
+            quarter: "Q2 2026",
+            title: "Phase 3: Mainnet V1",
+            color: "text-white",
+            icon: <Circle className="w-4 h-4 mt-1" strokeWidth={2} />,
+            status: "upcoming",
+            items: [
+                "Mainnet API Deployment",
+                "Enterprise Pilot Integrations"
+            ]
+        },
+        {
+            quarter: "Q3 2026",
+            title: "Phase 4: Advanced AI",
+            color: "text-neon",
+            icon: <Circle className="w-4 h-4 mt-1 text-neon" strokeWidth={2} />,
+            status: "upcoming",
+            items: [
+                "Predictive Neural Models",
+                "Cross-chain Behavior Maps",
+                "Decentralized Node Operators"
+            ]
+        }
+    ];
 
     return (
-        <section id="roadmap" className="section-padding border-t border-white/5 bg-void relative overflow-hidden">
-            {/* Background decoration */}
-            <div className="hidden md:block absolute top-0 left-0 font-mono text-[6rem] sm:text-[10rem] font-bold text-white/[0.09] pointer-events-none select-none -translate-y-1/2 -translate-x-1/4">2025</div>
+        <section className="section bg-transparent relative z-10" id="roadmap">
+            <div className="container max-w-5xl mx-auto">
+                <div className="section-tag justify-center w-full flex">Development Roadmap</div>
+                <h2 className="text-center">
+                    <span className="heading-reveal">
+                        <span className="heading-reveal__inner uppercase tracking-tight">Timeline</span>
+                    </span>
+                </h2>
 
-            <div className="section-container">
-                <motion.div
-                    initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.35 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="text-center mb-12 sm:mb-16"
-                >
-                    <h2 className="section-title text-3xl sm:text-4xl md:text-6xl mb-4">DEVELOPMENT ROADMAP</h2>
-                    <p className="section-subtitle text-xs sm:text-sm max-w-2xl mx-auto px-4">
-                        Our path to becoming the industry-standard security API for Web3
-                    </p>
-                </motion.div>
+                <div className="mt-20 relative timeline-container">
+                    {/* The Background Line */}
+                    <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-white/10 transform md:-translate-x-1/2"></div>
+                    {/* The Glowing Line */}
+                    <div className="absolute left-6 md:left-1/2 top-0 w-px bg-gradient-to-b from-neon to-mint transform md:-translate-x-1/2 timeline-line-glow" style={{ boxShadow: '0 0 15px 2px rgba(146,220,229,0.5)' }}></div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                    {/* Phase 1 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.25 }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-neon/50"
-                    >
-                        <div className="absolute top-0 right-0 font-mono text-5xl sm:text-6xl font-bold text-white/[0.09] p-4">01</div>
-                        <div className="relative z-10">
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="w-8 h-8 rounded-full bg-neon/20 flex items-center justify-center">
-                                    <CheckCircle className="w-5 h-5 text-neon" weight="bold" />
+                    <div className="space-y-12 md:space-y-20">
+                        {phases.map((phase, i) => {
+                            const isEven = i % 2 === 0;
+                            return (
+                                <div key={i} className={`timeline-item relative flex flex-col md:flex-row items-center justify-between w-full`}>
+
+                                    {/* Center Node */}
+                                    <div className="absolute left-6 md:left-1/2 w-5 h-5 rounded-full bg-black border border-white/20 transform -translate-x-1/2 flex items-center justify-center z-10 shadow-[0_0_10px_rgba(0,0,0,0.8)]">
+                                        <div className={`w-2 h-2 rounded-full ${phase.status === 'completed' || phase.status === 'in-progress' ? 'bg-neon shadow-[0_0_8px_rgba(146,220,229,0.8)]' : 'bg-white/30'}`}></div>
+                                    </div>
+
+                                    {/* Left Content (or right on mobile) */}
+                                    <div className={`w-full md:w-5/12 pl-16 md:pl-0 ${isEven ? 'md:text-right md:pr-12' : 'md:order-2 md:text-left md:pl-12'}`}>
+                                        <div className="cap-card p-6 md:p-8 border border-white/5 hover:border-white/20 transition-colors shadow-2xl">
+                                            <span className={`font-mono text-xs font-bold uppercase tracking-[0.2em] mb-3 block ${phase.color}`}>{phase.quarter}</span>
+                                            <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-5">{phase.title}</h3>
+                                            <ul className={`space-y-3 text-sm font-mono text-gray-400 flex flex-col ${isEven ? 'md:items-end' : ''}`}>
+                                                {phase.items.map((item, idx) => (
+                                                    <li key={idx} className={`flex items-start gap-3 ${isEven ? 'md:flex-row-reverse' : ''}`}>
+                                                        <div className="shrink-0 flex items-center justify-center">
+                                                            {phase.icon}
+                                                        </div>
+                                                        <span className={isEven ? 'md:text-right' : 'text-left'}>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    {/* Empty space for desktop alternating layout */}
+                                    <div className={`hidden md:block w-5/12 ${isEven ? 'md:order-2' : ''}`}></div>
                                 </div>
-                                <span className="font-mono text-[10px] sm:text-xs text-gray-500">Q4 2025</span>
-                            </div>
-                            <h4 className="font-sans text-lg sm:text-xl font-bold mb-3 sm:mb-4">Phase 1: Foundation</h4>
-                            <ul className="space-y-2 text-xs sm:text-sm font-mono text-gray-400">
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Team Building</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Research</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Initial Planning</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </motion.div>
-
-                    {/* Phase 2 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.25 }}
-                        transition={{ delay: 0.05, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-mint/50"
-                    >
-                        <div className="absolute top-0 right-0 font-mono text-5xl sm:text-6xl font-bold text-white/[0.09] p-4">02</div>
-                        <div className="relative z-10">
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="w-8 h-8 rounded-full bg-mint/20 flex items-center justify-center">
-                                    <CheckCircle className="w-5 h-5 text-mint" weight="bold" />
-                                </div>
-                                <span className="font-mono text-[10px] sm:text-xs text-gray-500">Q1 2026</span>
-                            </div>
-                            <h4 className="font-sans text-lg sm:text-xl font-bold mb-3 sm:mb-4">Phase 2: Testnet</h4>
-                            <ul className="space-y-2 text-xs sm:text-sm font-mono text-gray-400">
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Testnet Launch</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Basic Features Launch</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Partnerships</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </motion.div>
-
-                    {/* Phase 3 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.25 }}
-                        transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-secondary/50"
-                    >
-                        <div className="absolute top-0 right-0 font-mono text-5xl sm:text-6xl font-bold text-white/[0.09] p-4">03</div>
-                        <div className="relative z-10">
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
-                                    <Circle className="w-5 h-5 text-secondary" strokeWidth={2} />
-                                </div>
-                                <span className="font-mono text-[10px] sm:text-xs text-gray-500">Q2 2026</span>
-                            </div>
-                            <h4 className="font-sans text-lg sm:text-xl font-bold mb-3 sm:mb-4">Phase 3: Mainnet V1</h4>
-                            <ul className="space-y-2 text-xs sm:text-sm font-mono text-gray-400">
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Mainnet Launch (V1)</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Pilot Integrations</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Community Report Feature Launch</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </motion.div>
-
-                    {/* Phase 4 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.25 }}
-                        transition={{ delay: 0.15, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 relative overflow-hidden group hover:border-soft/50"
-                    >
-                        <div className="absolute top-0 right-0 font-mono text-5xl sm:text-6xl font-bold text-white/[0.09] p-4">04</div>
-                        <div className="relative z-10">
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="w-8 h-8 rounded-full bg-soft/20 flex items-center justify-center">
-                                    <Circle className="w-5 h-5 text-soft" strokeWidth={2} />
-                                </div>
-                                <span className="font-mono text-[10px] sm:text-xs text-gray-500">Q3 2026</span>
-                            </div>
-                            <h4 className="font-sans text-lg sm:text-xl font-bold mb-3 sm:mb-4">Phase 4: Advanced AI</h4>
-                            <ul className="space-y-2 text-xs sm:text-sm font-mono text-gray-400">
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Advanced AI Model Launch</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>Business Expansion</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <Circle className="w-3 h-3 mt-1 flex-shrink-0" />
-                                    <span>New Features Integrations</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </motion.div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </section>

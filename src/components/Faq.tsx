@@ -1,7 +1,8 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const faqs = [
   {
@@ -22,78 +23,81 @@ const faqs = [
   {
     question: "Which chains do you support?",
     answer:
-      "We support 18+ blockchains with coverage across major ecosystems such as EVM chains and Solana. We expand coverage based on demand and ecosystem needs.",
+      "We support 18+ blockchains with coverage across major ecosystems. We expand coverage based on demand and ecosystem needs.",
   },
   {
     question: "How does behavioral risk analysis work?",
     answer:
       "Our system analyzes entity behavior across time, not just single transactions. We identify patterns and track historical behavior to detect emerging threats and unusual activity before they become attacks.",
   },
-  {
-    question: "How do I get early access or support?",
-    answer:
-      "Contact us through the dashboard or the docs support links. We work closely with early partners on integrations, custom rules, and enterprise features.",
-  },
 ];
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const items = document.querySelectorAll('.faq-item');
+    items.forEach((item, i) => {
+      gsap.fromTo(item,
+        { y: 30, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.6, delay: i * 0.1, ease: 'power2.out',
+          scrollTrigger: { trigger: item, start: 'top 90%' }
+        }
+      );
+    });
+  }, []);
+
+  useEffect(() => {
+    contentRefs.current.forEach((el, index) => {
+      if (!el) return;
+      if (index === openIndex) {
+        gsap.to(el, { height: 'auto', opacity: 1, duration: 0.4, ease: 'power2.out' });
+      } else {
+        gsap.to(el, { height: 0, opacity: 0, duration: 0.3, ease: 'power2.inOut' });
+      }
+    });
+  }, [openIndex]);
 
   return (
-    <section id="faq" className="section-padding border-t border-white/5 bg-void">
-      <div className="section-container">
-        <div className="text-center mb-10 sm:mb-12">
-          <p className="font-mono text-[10px] sm:text-xs text-neon/80 tracking-[0.2em] uppercase mb-3">
-            FAQ
-          </p>
-          <h2 className="section-title text-3xl sm:text-4xl md:text-5xl mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="section-subtitle max-w-2xl mx-auto px-4">
-            Learn how teams use Cencera to ship safer Web3 experiences.
-          </p>
-        </div>
+    <section id="faq" className="section bg-transparent relative z-10">
+      <div className="container flex flex-col items-center max-w-4xl mx-auto">
+        <div className="section-tag justify-center w-full">FAQ</div>
+        <h2 className="text-center">
+          <span className="heading-reveal">
+            <span className="heading-reveal__inner uppercase tracking-tight">Questions</span>
+          </span>
+        </h2>
 
-        <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4">
+        <div className="w-full space-y-4 mt-12">
           {faqs.map((item, index) => {
             const isOpen = openIndex === index;
 
             return (
               <div
-                key={item.question}
-                className="card-surface card-hover p-5 sm:p-6 cursor-pointer"
-                onClick={() =>
-                  setOpenIndex(isOpen ? null : index)
-                }
+                key={index}
+                className="faq-item cap-card cursor-pointer p-6"
+                onClick={() => setOpenIndex(isOpen ? null : index)}
               >
-                <div className="flex items-center justify-between gap-4">
-                  <h3 className="font-sans text-sm sm:text-base md:text-lg font-semibold">
+                <div className="flex items-center justify-between gap-4 relative z-10">
+                  <h3 className="font-display text-lg font-bold text-white">
                     {item.question}
                   </h3>
-                  <motion.span
-                    className="flex items-center justify-center w-6 h-6 rounded-full bg-white/5 text-neon text-sm font-mono"
-                    animate={{ rotate: isOpen ? 90 : 0 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
-                  >
+                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/5 text-neon text-sm font-mono transition-transform duration-300" style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>
                     {isOpen ? "−" : "+"}
-                  </motion.span>
+                  </span>
                 </div>
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="content"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="mt-3 font-mono text-xs sm:text-sm text-gray-400">
-                        {item.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div
+                  ref={el => { contentRefs.current[index] = el; }}
+                  className="overflow-hidden relative z-10 opacity-0 h-0"
+                >
+                  <p className="mt-4 font-mono text-sm text-gray-400">
+                    {item.answer}
+                  </p>
+                </div>
               </div>
             );
           })}

@@ -30,7 +30,7 @@ function Section({
   return (
     <section className="space-y-6">
       <div className="space-y-2">
-        <h2 className="text-2xl sm:text-3xl font-sans font-bold tracking-tight text-white">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-white">
           {title}
         </h2>
         <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-3xl">
@@ -65,7 +65,7 @@ export default function BrandGuidelinesPage() {
       <Header />
 
       <div className="section-padding pt-32 sm:pt-36">
-        <div className="section-container max-w-6xl space-y-14">
+        <div className="section-container max-w-6xl mx-auto space-y-14">
           <header className="space-y-6 border-b border-white/10 pb-10">
             <div className="inline-flex items-center gap-2 border border-white/10 px-3 py-1 rounded-full bg-white/5">
               <span className="w-1.5 h-1.5 bg-[#92DCE5] rounded-full animate-pulse"></span>
@@ -74,7 +74,7 @@ export default function BrandGuidelinesPage() {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-bold tracking-tighter text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold tracking-tighter text-white">
               CENCERA{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#92DCE5] to-white">
                 Brand Guidelines
@@ -111,7 +111,7 @@ export default function BrandGuidelinesPage() {
                     className="w-10 h-10 sm:w-14 sm:h-14"
                   />
                   <div className="space-y-1">
-                    <div className="font-sans font-bold text-2xl tracking-tighter">
+                    <div className="font-display font-bold text-2xl tracking-tighter">
                       CENCERA
                     </div>
                     <div className="font-mono text-xs text-gray-400">

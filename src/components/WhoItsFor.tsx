@@ -1,118 +1,101 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { Wallet, TrendUp, CirclesThreePlus, Buildings, Briefcase } from "phosphor-react";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ShieldCheck, TrendingUp as ChartLineUp, Cpu, Coins, Landmark as Bank, Network as ShareNetwork } from "lucide-react";
+
+const audiences = [
+    {
+        icon: ShieldCheck,
+        title: "Wallet Providers",
+        description: "Embed native security layers. Automatically block malicious contracts, identify phishing domains, and simulate approval outcomes before a transaction is ever signed."
+    },
+    {
+        icon: ChartLineUp,
+        title: "Exchanges (CEX/DEX)",
+        description: "Monitor inflows and outflows in real-time. Instantly flag deposits from sanctioned entities, mixers, or known exploitation pathways before funds settle."
+    },
+    {
+        icon: Cpu,
+        title: "DeFi Protocols",
+        description: "Secure smart contracts from flash loan attacks, oracle manipulation, and abnormal withdrawal patterns using continuous behavioral anomaly detection."
+    },
+    {
+        icon: Coins,
+        title: "Token Issuers",
+        description: "Maintain network integrity. Track asset velocity, identify high-risk holders, and automate compliance operations without sacrificing decentralization."
+    },
+    {
+        icon: Bank,
+        title: "Institutions & Custodians",
+        description: "Operate with intelligence-grade security. Enforce granular, role-based transaction policies and maintain comprehensive audit trails for regulatory compliance."
+    },
+    {
+        icon: ShareNetwork,
+        title: "Infrastructure Nodes",
+        description: "Protect RPCs and sequencing layers. Filter toxic MEV vectors, throttle malicious requests, and guarantee uptime against coordinated distributed attacks."
+    }
+];
 
 export default function WhoItsFor() {
-    const reduceMotion = useReducedMotion();
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
 
-    const audiences = [
-        {
-            icon: Wallet,
-            title: "Wallet Providers",
-            description: "Protect users from scams, drainers, and malicious approvals.",
-            color: "neon"
-        },
-        {
-            icon: TrendUp,
-            title: "Exchanges & Trading Platforms",
-            description: "Detect risky entities before funds are exposed.",
-            color: "mint"
-        },
-        {
-            icon: CirclesThreePlus,
-            title: "DeFi Protocols",
-            description: "Prevent exploit pathways and abnormal activity.",
-            color: "secondary"
-        },
-        {
-            icon: Buildings,
-            title: "Stablecoin & Token Issuers",
-            description: "Monitor ecosystem risk in real time.",
-            color: "safe"
-        },
-        {
-            icon: Briefcase,
-            title: "Institutions Entering Web3",
-            description: "Operate with intelligence-grade security infrastructure.",
-            color: "soft"
-        }
-    ];
+        const cards = document.querySelectorAll('.audience-card');
+        cards.forEach((card, i) => {
+            gsap.fromTo(card,
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.8, delay: i * 0.1, ease: 'power2.out',
+                    scrollTrigger: { trigger: card, start: 'top 88%' }
+                }
+            );
 
-    const getHoverBorderClass = (color: string) => {
-        switch (color) {
-            case "neon": return "hover:border-neon/50";
-            case "mint": return "hover:border-mint/50";
-            case "secondary": return "hover:border-secondary/50";
-            case "safe": return "hover:border-safe/50";
-            case "soft": return "hover:border-soft/50";
-            default: return "hover:border-white/50";
-        }
-    };
+            const handleMouseMove = (e: Event) => {
+                const mouseEvent = e as MouseEvent;
+                const r = card.getBoundingClientRect();
+                (card as HTMLElement).style.setProperty('--mx', ((mouseEvent.clientX - r.left) / r.width * 100) + '%');
+                (card as HTMLElement).style.setProperty('--my', ((mouseEvent.clientY - r.top) / r.height * 100) + '%');
+            };
+            card.addEventListener('mousemove', handleMouseMove);
 
-    const getBgGradientClass = (color: string) => {
-        switch (color) {
-            case "neon": return "bg-gradient-to-br from-neon/20 to-neon/5";
-            case "mint": return "bg-gradient-to-br from-mint/20 to-mint/5";
-            case "secondary": return "bg-gradient-to-br from-secondary/20 to-secondary/5";
-            case "safe": return "bg-gradient-to-br from-safe/20 to-safe/5";
-            case "soft": return "bg-gradient-to-br from-soft/20 to-soft/5";
-            default: return "bg-gradient-to-br from-white/20 to-white/5";
-        }
-    };
-
-    const getTextColorClass = (color: string) => {
-        switch (color) {
-            case "neon": return "text-neon";
-            case "mint": return "text-mint";
-            case "secondary": return "text-secondary";
-            case "safe": return "text-safe";
-            case "soft": return "text-soft";
-            default: return "text-white";
-        }
-    };
+            return () => {
+                card.removeEventListener('mousemove', handleMouseMove);
+            };
+        });
+    }, []);
 
     return (
-        <section id="who-its-for" className="section-padding bg-void border-t border-white/5">
-            <div className="section-container">
-                <motion.div
-                    initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.35 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="text-center mb-12 sm:mb-16"
-                >
-                    <p className="font-mono text-[10px] sm:text-xs text-neon/80 tracking-[0.2em] uppercase mb-3">
-                        WHO IT'S FOR
-                    </p>
-                    <h2 className="section-title mb-4 sm:mb-6 leading-tight">
-                        BUILT FOR<br />SECURITY-CRITICAL PLATFORMS
-                    </h2>
-                    <p className="section-subtitle max-w-2xl mx-auto px-4">
-                        Trusted by platforms that demand the highest level of security intelligence for their users
-                    </p>
-                </motion.div>
+        <section className="capabilities section bg-transparent relative z-10" id="who-its-for">
+            <div className="container">
+                <div className="section-tag">Who It's For</div>
+                <h2>
+                    <span className="heading-reveal">
+                        <span className="heading-reveal__inner uppercase tracking-tight">Ecosystem</span>
+                    </span>
+                </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    {audiences.map((audience, index) => {
+                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                    {audiences.map((audience, i) => {
                         const Icon = audience.icon;
                         return (
-                            <motion.div
-                                key={audience.title}
-                                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.25 }}
-                                transition={{ delay: index * 0.08, duration: 0.5, ease: "easeOut" }}
-                                className={`card-surface card-hover p-6 sm:p-8 ${getHoverBorderClass(audience.color)} group`}
-                            >
-                                <div className={`w-12 h-12 rounded-lg ${getBgGradientClass(audience.color)} flex items-center justify-center mb-6`}>
-                                    <Icon className={`w-6 h-6 ${getTextColorClass(audience.color)}`} weight="duotone" />
+                            <div className="cap-card audience-card" key={i}>
+                                <div className="flex items-start justify-between mb-6">
+                                    <div className="p-3.5 rounded-xl bg-white/5 text-neon border border-white/5 ring-1 ring-white/10 ring-inset">
+                                        <Icon size={26} className="lucide-icon-animated" />
+                                    </div>
+                                    <span className="font-mono text-[10px] text-gray-500 font-bold uppercase tracking-[0.2em] mt-1">
+                                        0{i + 1}
+                                    </span>
                                 </div>
-                                <h3 className="font-sans text-lg sm:text-xl font-bold mb-3">{audience.title}</h3>
-                                <p className="font-mono text-xs sm:text-sm text-gray-400">
+                                <h3 className="font-display text-xl font-bold text-white mb-3 tracking-tight">
+                                    {audience.title}
+                                </h3>
+                                <p className="font-mono text-xs text-gray-400 leading-relaxed max-w-[95%]">
                                     {audience.description}
                                 </p>
-                            </motion.div>
+                            </div>
                         );
                     })}
                 </div>

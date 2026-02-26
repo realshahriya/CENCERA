@@ -2,101 +2,61 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { List, X } from "phosphor-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 60);
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
         <>
-            <nav className="fixed top-0 w-full flex justify-between items-center px-4 sm:px-6 py-4 sm:py-6 z-50 glass-panel">
-                <Link href="/" className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity">
-                    <Image src="/logo.png" alt="Cencera Logo" width={40} height={40} className="w-7 h-7 sm:w-9 sm:h-9 shrink-0" />
-                    <span className="font-sans font-bold text-lg sm:text-xl tracking-tighter">
-                        CENCERA
-                    </span>
+            <nav className={`nav ${scrolled ? 'scrolled' : ''} ${mobileMenuOpen ? 'nav--menu-open' : ''}`}>
+                <Link href="/" className="nav__logo flex items-center gap-2 font-display select-none">
+                    <Image src="/logo.png" alt="Cencera Logo" width={32} height={32} className="w-8 h-8 shrink-0" />
+                    CENCERA
                 </Link>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex gap-8 font-mono text-xs text-gray-400">
-                    <Link href="/docs" className="hover:text-white transition-colors">[ DOCUMENTATION ]</Link>
-                    <Link href="/brand-guidelines" className="hover:text-white transition-colors">[ BRAND ]</Link>
+                <div className="nav__links hidden md:flex">
+                    <Link href="/docs">Documentation</Link>
+                    <Link href="/brand-guidelines">Brand</Link>
                 </div>
 
                 {/* Desktop Dashboard Button */}
-                <a href="https://app.cencera.xyz/dashboard" className="hidden md:block btn-primary">
-                    DASHBOARD //
+                <a href="https://app.cencera.xyz/dashboard" className="nav__cta hidden md:flex">
+                    Dashboard
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" className="iconify iconify--solar"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 12h16m0 0l-6-6m6 6l-6 6"></path></svg>
                 </a>
 
                 {/* Mobile Menu Button */}
                 <button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="md:hidden w-10 h-10 flex items-center justify-center text-white hover:text-neon transition-colors"
+                    className={`nav__toggle md:hidden ${mobileMenuOpen ? 'active' : ''}`}
                     aria-label="Toggle menu"
                 >
-                    {mobileMenuOpen ? <X className="w-6 h-6" weight="bold" /> : <List className="w-6 h-6" weight="bold" />}
+                    <span></span>
+                    <span></span>
                 </button>
             </nav>
 
-            {/* Mobile Menu Overlay */}
-            {mobileMenuOpen && (
-                <div
-                    className="fixed inset-0 bg-black/80 z-40 md:hidden backdrop-blur-sm"
-                    onClick={() => setMobileMenuOpen(false)}
-                />
-            )}
-
             {/* Mobile Menu */}
-            <div className={`fixed top-0 right-0 h-full w-64 bg-surface border-l border-white/10 z-50 md:hidden transform transition-transform duration-300 ease-in-out ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-                <div className="flex flex-col h-full p-6 pt-20">
-                    <nav className="flex flex-col gap-6 font-mono text-sm">
-                        <Link
-                            href="/#features"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="text-gray-400 hover:text-white transition-colors py-2"
-                        >
-                            [ FEATURES ]
-                        </Link>
-                        <Link
-                            href="/#core-mechanics"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="text-gray-400 hover:text-white transition-colors py-2"
-                        >
-                            [ CAPABILITIES ]
-                        </Link>
-                        <Link
-                            href="/docs"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="text-gray-400 hover:text-white transition-colors py-2"
-                        >
-                            [ DOCUMENTATION ]
-                        </Link>
-                        <Link
-                            href="/brand-guidelines"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="text-gray-400 hover:text-white transition-colors py-2"
-                        >
-                            [ BRAND ]
-                        </Link>
-                        <Link
-                            href="/#roadmap"
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="text-gray-400 hover:text-white transition-colors py-2"
-                        >
-                            [ ROADMAP ]
-                        </Link>
-                    </nav>
-
-                    <div className="mt-8">
-                        <a
-                            href="https://app.cencera.xyz/dashboard"
-                            className="btn-primary block w-full text-center"
-                        >
-                            DASHBOARD //
-                        </a>
-                    </div>
-                </div>
+            <div className={`nav__links md:hidden ${mobileMenuOpen ? 'open' : ''}`}>
+                <Link href="/#features" onClick={() => setMobileMenuOpen(false)}>Features</Link>
+                <Link href="/#core-mechanics" onClick={() => setMobileMenuOpen(false)}>Capabilities</Link>
+                <Link href="/docs" onClick={() => setMobileMenuOpen(false)}>Documentation</Link>
+                <Link href="/brand-guidelines" onClick={() => setMobileMenuOpen(false)}>Brand</Link>
+                <Link href="/#roadmap" onClick={() => setMobileMenuOpen(false)}>Roadmap</Link>
+                <a href="https://app.cencera.xyz/dashboard" className="text-neon mt-4" onClick={() => setMobileMenuOpen(false)}>
+                    Dashboard //
+                </a>
             </div>
         </>
     );

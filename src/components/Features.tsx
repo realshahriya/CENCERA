@@ -1,166 +1,126 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { Activity, ShieldCheck, Lightning, ShareNetwork, Database } from "phosphor-react";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Activity, ShieldCheck, Zap as Lightning, Network as ShareNetwork, Database } from "lucide-react";
 
 export default function Features() {
-    const reduceMotion = useReducedMotion();
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const cards = document.querySelectorAll('.cap-card');
+        cards.forEach(card => {
+            // Spotlight effect
+            const handleMouseMove = (e: Event) => {
+                const mouseEvent = e as MouseEvent;
+                const r = card.getBoundingClientRect();
+                (card as HTMLElement).style.setProperty('--mx', ((mouseEvent.clientX - r.left) / r.width * 100) + '%');
+                (card as HTMLElement).style.setProperty('--my', ((mouseEvent.clientY - r.top) / r.height * 100) + '%');
+            };
+            card.addEventListener('mousemove', handleMouseMove);
+
+            // Reveal animation
+            gsap.fromTo(card,
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.8, ease: 'power2.out',
+                    scrollTrigger: { trigger: card, start: 'top 88%' }
+                }
+            );
+
+            return () => {
+                card.removeEventListener('mousemove', handleMouseMove);
+            };
+        });
+
+        const revealText = document.querySelectorAll('.heading-reveal__inner');
+        revealText.forEach(el => {
+            gsap.to(el, {
+                y: 0,
+                duration: 1,
+                ease: 'expo.out',
+                scrollTrigger: { trigger: el.parentElement, start: 'top 85%' },
+            });
+        });
+    }, []);
+
+    // Helper for text scramble on hover
+    const handleScrambleStart = (e: React.MouseEvent<HTMLHeadingElement>) => {
+        const el = e.currentTarget;
+        const original = el.getAttribute('data-orig') || el.textContent || '';
+        if (!el.getAttribute('data-orig')) el.setAttribute('data-orig', original);
+
+        const chars = '!<>-_\\\\/[]{}—=+*^?#________';
+        let iter = 0;
+
+        // @ts-ignore
+        clearInterval(el._si);
+        // @ts-ignore
+        el._si = setInterval(() => {
+            el.textContent = original.split('').map((c, i) =>
+                i < iter ? original[i] : chars[Math.floor(Math.random() * chars.length)]
+            ).join('');
+            iter += 0.5;
+            if (iter >= original.length) {
+                // @ts-ignore
+                clearInterval(el._si);
+                el.textContent = original;
+            }
+        }, 30);
+    };
 
     return (
-        <section id="features" className="section-padding relative bg-void">
-            <div className="section-container">
-                <motion.div
-                    initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.35 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="text-center mb-12 sm:mb-16"
-                >
-                    <h2 className="section-title mb-4 sm:mb-6 leading-tight">
-                        SECURITY INTELLIGENCE<br />BUILT FOR MODERN THREATS
-                    </h2>
-                    <p className="section-subtitle max-w-2xl mx-auto px-4">
-                        Advanced threat detection and behavioral analysis to protect your users from emerging security risks
-                    </p>
-                </motion.div>
+        <section className="capabilities section bg-transparent relative z-10" id="capabilities">
+            <div className="container">
+                <div className="section-tag">Security Intelligence</div>
+                <h2>
+                    <span className="heading-reveal">
+                        <span className="heading-reveal__inner uppercase tracking-tight">Capabilities</span>
+                    </span>
+                </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    {/* Feature 1 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.25 }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 hover:border-neon/50 group"
-                    >
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-neon/20 to-neon/5 flex items-center justify-center mb-6">
-                            <Activity className="w-6 h-6 text-neon" weight="duotone" />
-                        </div>
-                        <h3 className="font-sans text-lg sm:text-xl font-bold mb-3">Behavioral Risk Analysis</h3>
-                        <p className="font-mono text-xs sm:text-sm text-gray-400 mb-4">
-                            Understand entity behavior across time, not just single transactions
-                        </p>
-                        <ul className="space-y-2 font-mono text-xs text-gray-500">
-                            <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-neon rounded-full"></div>
-                                Pattern recognition over time
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-neon rounded-full"></div>
-                                Historical behavior tracking
-                            </li>
-                        </ul>
-                    </motion.div>
+                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                    {/* Card 1 */}
+                    <div className="cap-card">
+                        <span className="cap-card__num">01</span>
+                        <Activity className="cap-card__icon lucide-feature" size={28} />
+                        <h3 className="cap-card__title" onMouseEnter={handleScrambleStart}>Behavioral Risk Analysis</h3>
+                        <p className="cap-card__desc">Understand entity behavior across time, not just single transactions. Pattern recognition over time and historical behavior tracking.</p>
+                    </div>
 
-                    {/* Feature 2 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.25 }}
-                        transition={{ delay: 0.05, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 hover:border-mint/50 group"
-                    >
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-mint/20 to-mint/5 flex items-center justify-center mb-6">
-                            <ShieldCheck className="w-6 h-6 text-mint" weight="duotone" />
-                        </div>
-                        <h3 className="font-sans text-lg sm:text-xl font-bold mb-3">Adaptive Threat Detection</h3>
-                        <p className="font-mono text-xs sm:text-sm text-gray-400 mb-4">
-                            Identify known exploits and emerging attack patterns early
-                        </p>
-                        <ul className="space-y-2 font-mono text-xs text-gray-500">
-                            <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-mint rounded-full"></div>
-                                Known exploit detection
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-mint rounded-full"></div>
-                                Emerging pattern identification
-                            </li>
-                        </ul>
-                    </motion.div>
+                    {/* Card 2 */}
+                    <div className="cap-card">
+                        <span className="cap-card__num">02</span>
+                        <ShieldCheck className="cap-card__icon lucide-feature" size={28} />
+                        <h3 className="cap-card__title" onMouseEnter={handleScrambleStart}>Adaptive Threat Detection</h3>
+                        <p className="cap-card__desc">Identify known exploits and emerging attack patterns early. Detect known vulnerabilities before they are exploited widely.</p>
+                    </div>
 
-                    {/* Feature 3 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.25 }}
-                        transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 hover:border-secondary/50 group"
-                    >
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-secondary/20 to-secondary/5 flex items-center justify-center mb-6">
-                            <Lightning className="w-6 h-6 text-secondary" weight="duotone" />
-                        </div>
-                        <h3 className="font-sans text-lg sm:text-xl font-bold mb-3">Real-Time Intelligence Delivery</h3>
-                        <p className="font-mono text-xs sm:text-sm text-gray-400 mb-4">
-                            Receive actionable risk signals instantly via low-latency API
-                        </p>
-                        <ul className="space-y-2 font-mono text-xs text-gray-500">
-                            <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-secondary rounded-full"></div>
-                                Low-latency responses
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-secondary rounded-full"></div>
-                                Instant risk signals
-                            </li>
-                        </ul>
-                    </motion.div>
+                    {/* Card 3 */}
+                    <div className="cap-card">
+                        <span className="cap-card__num">03</span>
+                        <Lightning className="cap-card__icon lucide-feature" size={28} />
+                        <h3 className="cap-card__title" onMouseEnter={handleScrambleStart}>Real-Time Intelligence</h3>
+                        <p className="cap-card__desc">Receive actionable risk signals instantly via low-latency API. Build smarter and safer applications with instant data feeds.</p>
+                    </div>
 
-                    {/* Feature 4 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.25 }}
-                        transition={{ delay: 0.15, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 hover:border-mint/50 group"
-                    >
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-mint/20 to-mint/5 flex items-center justify-center mb-6">
-                            <ShareNetwork className="w-6 h-6 text-mint" weight="duotone" />
-                        </div>
-                        <h3 className="font-sans text-lg sm:text-xl font-bold mb-3">Cross-Ecosystem Visibility</h3>
-                        <p className="font-mono text-xs sm:text-sm text-gray-400 mb-4">
-                            Monitor wallets, tokens, contracts, and dApps from one intelligence layer
-                        </p>
-                        <ul className="space-y-2 font-mono text-xs text-gray-500">
-                            <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-mint rounded-full"></div>
-                                Unified monitoring
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-mint rounded-full"></div>
-                                Multi-chain coverage
-                            </li>
-                        </ul>
-                    </motion.div>
+                    {/* Card 4 */}
+                    <div className="cap-card">
+                        <span className="cap-card__num">04</span>
+                        <ShareNetwork className="cap-card__icon lucide-feature" size={28} />
+                        <h3 className="cap-card__title" onMouseEnter={handleScrambleStart}>Cross-Ecosystem</h3>
+                        <p className="cap-card__desc">Monitor wallets, tokens, contracts, and dApps from one intelligence layer. Unified monitoring with multi-chain coverage.</p>
+                    </div>
 
-                    {/* Feature 5 */}
-                    <motion.div
-                        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.25 }}
-                        transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-                        className="card-surface card-hover p-6 sm:p-8 hover:border-safe/50 group"
-                    >
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-safe/20 to-safe/5 flex items-center justify-center mb-6">
-                            <Database className="w-6 h-6 text-safe" weight="duotone" />
-                        </div>
-                        <h3 className="font-sans text-lg sm:text-xl font-bold mb-3">Policy-Ready Signals</h3>
-                        <p className="font-mono text-xs sm:text-sm text-gray-400 mb-4">
-                            Automate security decisions with customizable risk thresholds
-                        </p>
-                        <ul className="space-y-2 font-mono text-xs text-gray-500">
-                            <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-safe rounded-full"></div>
-                                Customizable thresholds
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-safe rounded-full"></div>
-                                Automated enforcement
-                            </li>
-                        </ul>
-                    </motion.div>
-
-
+                    {/* Card 5 */}
+                    <div className="cap-card">
+                        <span className="cap-card__num">05</span>
+                        <Database className="cap-card__icon lucide-feature" size={28} />
+                        <h3 className="cap-card__title" onMouseEnter={handleScrambleStart}>Policy-Ready Signals</h3>
+                        <p className="cap-card__desc">Automate security decisions with customizable risk thresholds and automated enforcement tailored to your application's risk appetite.</p>
+                    </div>
                 </div>
             </div>
         </section>

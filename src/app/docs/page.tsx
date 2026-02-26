@@ -14,7 +14,7 @@ export default function DocumentationPage() {
                     <span className="font-mono text-[10px] text-neon uppercase tracking-widest">Docs v1.0</span>
                 </div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold tracking-tighter text-white">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tighter text-white">
                     Cencera <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon to-white">Documentation</span>
                 </h1>
 
